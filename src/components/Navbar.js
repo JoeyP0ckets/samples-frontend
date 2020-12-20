@@ -21,12 +21,12 @@ const Navbar = () => {
           </div>
           <Switch>
             <Route exact path="/">
-               <Home/>
+              <Home/>
             </Route>
             <Route exact path="/Samples">
-             <Samples/>
+              <Samples/>
             </Route>
-            <Route>
+            <Route exact path="/Profile">
               <Profile/>
             </Route>
           </Switch>
