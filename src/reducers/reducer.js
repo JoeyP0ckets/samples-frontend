@@ -5,7 +5,7 @@ const intitialState = {
 const reducer = (prevState=intitialState, action) => {
   switch(action.type) {
     case "LOGIN_USER":
-      return {prevState, user: action.payload.value}
+      return {prevState, user: action.user}
     
       default:
       return prevState
