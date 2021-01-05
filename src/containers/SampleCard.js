@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SampleCard = () => {
+const SampleCard = (props) => {
   return (
     <div>
-      I'm a sample card
+      {props.sample.sample_name}
     </div>
   )
 }
