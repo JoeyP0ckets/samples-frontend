@@ -25,7 +25,6 @@ class Samples extends React.Component {
   render() {
     return(
       <div>
-        I'm the Samples page. I hold all drug info
         {this.props.allSamples ? this.renderAllSamples() : null}
       </div>
     )
