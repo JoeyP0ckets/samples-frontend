@@ -17,7 +17,7 @@ class Home extends React.Component {
   render () {
     return(
       <div>
-        {this.props.user.name}
+        Hello, {this.props.user.name}
       </div>
     )
   }
