@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 class Samples extends React.Component {
   
@@ -9,7 +10,7 @@ class Samples extends React.Component {
   fetchSamples = () => {
     fetch ('http://localhost:3000/api/v1/samples')
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(allSamples => this.props.renderSamples(allSamples))
   }
   
   render() {
@@ -21,4 +22,16 @@ class Samples extends React.Component {
   }
 }
 
-export default Samples
+const msp = state => {
+  return {
+    allSamples: state.allSamples
+  }
+}
+
+const mdp = dispatch => {
+  return {
+    renderSamples: (allSamples) => dispatch({ type: "GET_ALL_SAMPLES", allSamples: allSamples})
+  }
+}
+
+export default connect(msp,mdp)(Samples)
