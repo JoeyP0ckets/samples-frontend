@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import SampleCard from '../containers/SampleCard'
 
 class Samples extends React.Component {
   
@@ -12,11 +13,20 @@ class Samples extends React.Component {
     .then(resp => resp.json())
     .then(allSamples => this.props.renderSamples(allSamples))
   }
+
+  renderAllSamples = () => {
+    return this.props.allSamples.map((sample, index) =>
+    <SampleCard
+      key={index}
+      sample={sample}
+    />)
+  }
   
   render() {
     return(
       <div>
         I'm the Samples page. I hold all drug info
+        {this.props.allSamples ? this.renderAllSamples() : null}
       </div>
     )
   }
