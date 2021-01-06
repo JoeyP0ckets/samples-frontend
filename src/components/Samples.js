@@ -25,7 +25,7 @@ class Samples extends React.Component {
   
   render() {
     return(
-      <div>
+      <div className="samples-container">
         {this.props.allSamples ? this.renderAllSamples() : null}
       </div>
     )
