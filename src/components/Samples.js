@@ -16,10 +16,11 @@ class Samples extends React.Component {
 
   renderAllSamples = () => {
     return this.props.allSamples.map((sample, index) =>
-    <SampleCard
-      key={index}
-      sample={sample}
-    />)
+      <SampleCard
+        key={index}
+        sample={sample}
+      />
+    )
   }
   
   render() {
