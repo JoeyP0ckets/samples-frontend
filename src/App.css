@@ -29,6 +29,14 @@
 }
 
 .navbar-container {
-  border-bottom: black;
+  border-bottom: double black;
+  text-align: center;
+}
+
+.samples-container {
+  text-align: center;
+}
+
+.home-main {
   text-align: center;
 }

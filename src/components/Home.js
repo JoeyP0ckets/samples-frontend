@@ -16,8 +16,8 @@ class Home extends React.Component {
   
   render () {
     return(
-      <div>
-        <h1>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h1>
+      <div className="home-main">
+        <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
       </div>
     )
   }
