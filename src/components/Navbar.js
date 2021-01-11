@@ -5,9 +5,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { connect } from "react-redux"
 import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
+// import Login from './Login'
+
+
 
 const Navbar = () => {
   return (
@@ -35,4 +39,10 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+const msp = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(msp)(Navbar)

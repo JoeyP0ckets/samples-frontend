@@ -1,10 +1,11 @@
 import React from 'react'
-import {Card, CardImg, Button} from 'react-bootstrap'
+import {Card, Button} from 'react-bootstrap'
+import { connect } from 'react-redux'
 
 const SampleCard = (props) => {
 
-  const selectSample = (name) => {
-   return console.log(`${name} was clicked!`)
+  const sampleClick = (selectedSample) => {
+   props.selectSample(selectedSample)
   }
 
   return (
@@ -15,15 +16,18 @@ const SampleCard = (props) => {
       <Card.Text>
         Click for details and ordering
       </Card.Text>
-      <Button variant="primary" onClick={() => selectSample(props.sample.sample_name)}>Place Order</Button>
+      <Button variant="primary" onClick={() => sampleClick(props.sample)}>Place Order</Button>
     </Card.Body>
   </Card>
   )
 }
 
-export default SampleCard 
+const mdp = dispatch => {
+  return {
+    selectSample: (selectedSample) => dispatch({ type: "SELECT_SAMPLE", selectedSample: selectedSample})
+  }
+}
 
-    // <div>
-    //     <img src={props.sample.image_url} alt={props.sample.sample_name}/>
-    //     {props.sample.sample_name}
-    // </div>
+export default connect(null,mdp)(SampleCard)
+
+  
