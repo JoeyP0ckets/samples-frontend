@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
 import { Row, Col } from 'react-bootstrap'
+import SampleView from '../containers/SampleView'
 
 class Samples extends React.Component {
   
@@ -34,7 +35,7 @@ class Samples extends React.Component {
         </Col>
         <Col>
           <div className="sample-view">          
-            {this.props.selectedSample ? this.props.selectedSample.sample_name : <h3>Please Select a Sample for Information.</h3>}
+            {this.props.selectedSample ? <SampleView/> : <h3>Please Select a Sample for Information.</h3>}
           </div>
         </Col>
       </Row>
