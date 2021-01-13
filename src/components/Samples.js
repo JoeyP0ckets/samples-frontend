@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
+import { Row, Col } from 'react-bootstrap'
+import SampleView from '../containers/SampleView'
 
 class Samples extends React.Component {
   
@@ -25,16 +27,26 @@ class Samples extends React.Component {
   
   render() {
     return(
-      <div>
-        {this.props.allSamples ? this.renderAllSamples() : null}
-      </div>
+      <Row>
+        <Col xs={6} md={4}>
+          <div className="samples-container">
+            {this.props.allSamples ? this.renderAllSamples() : null}
+          </div>
+        </Col>
+        <Col>
+          <div className="sample-view">          
+            {this.props.selectedSample ? <SampleView/> : <h3>Please Select a Sample for Information.</h3>}
+          </div>
+        </Col>
+      </Row>
     )
   }
 }
 
 const msp = state => {
   return {
-    allSamples: state.allSamples
+    allSamples: state.allSamples,
+    selectedSample: state.selectedSample
   }
 }
 

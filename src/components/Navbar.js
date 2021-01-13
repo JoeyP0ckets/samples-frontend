@@ -5,15 +5,19 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { connect } from "react-redux"
 import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
+// import Login from './Login'
+
+
 
 const Navbar = () => {
   return (
     <div>
       <Router>
-          <div className="navbar-row">
+          <div className="navbar-container">
           <h1 className="navbar-logo">First Dose</h1>
           <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/Samples">Samples List</Link>&nbsp;&nbsp;&nbsp;
@@ -35,4 +39,10 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+const msp = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(msp)(Navbar)

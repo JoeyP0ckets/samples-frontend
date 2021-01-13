@@ -8,7 +8,7 @@ class Home extends React.Component {
   }
 
   fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/doctors/1`)
+    fetch(`http://localhost:3000/api/v1/doctors/3`)
     .then(resp => resp.json())
     .then(user => this.props.loginUser(user))
   }
@@ -16,8 +16,8 @@ class Home extends React.Component {
   
   render () {
     return(
-      <div>
-        {this.props.user ? this.props.user.name : null}
+      <div className="home-main">
+        <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
       </div>
     )
   }
