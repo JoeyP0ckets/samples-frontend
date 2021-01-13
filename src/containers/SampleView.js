@@ -1,11 +1,17 @@
 import React from "react"
+import {connect} from "react-redux"
 
-const SampleView = () => {
+const SampleView = (props) => {
   return (
     <div classname="sample-view">
-      <h1>I'm the sample view</h1>
+      {props.selectedSample ? props.selectedSample.sample_name : "Please select a sample"}
     </div>
   )
 }
 
-export default SampleView
+const msp = state => {
+  return {
+    selectedSample: state.selectedSample
+  }
+}
+export default connect(msp)(SampleView)
