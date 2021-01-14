@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import UserSample from '../containers/UserSamples'
 
 class Home extends React.Component {
 
@@ -18,6 +19,7 @@ class Home extends React.Component {
     return(
       <div className="home-main">
         <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
+        {this.props.user ? <UserSample/> : null}
       </div>
     )
   }
