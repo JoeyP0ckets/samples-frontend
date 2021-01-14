@@ -35,7 +35,7 @@ class Samples extends React.Component {
         </Col>
         <Col>
           <div className="sample-view">          
-            <SampleView/> 
+            {this.props.selectedSample ? <SampleView/> : <h1>Please Select a Sample</h1>}
           </div>
         </Col>
       </Row>
