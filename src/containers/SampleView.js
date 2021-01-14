@@ -9,7 +9,7 @@ const SampleView = (props) => {
   }
   
   return (
-    <div className="sample-view">
+    <div className="sample-info-view">
       <h1>{props.selectedSample.sample_name}</h1>
       <Button onClick={() => orderClick(props.selectedSample)}>Order Sample</Button>
 
