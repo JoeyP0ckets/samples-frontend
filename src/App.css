@@ -35,16 +35,31 @@
 
 .samples-container {
   text-align: center;
+  
 }
 
 .home-main {
-  text-align: center;
+  height:100vh; 
+  width:100%;
+  background-image: url(https://wallpaperaccess.com/full/740142.jpg);
+
+  /* height: 100%;  */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 .sample-view {
   text-align: center;
+  
+}
+
+.sample-info-view {
+  text-align: 
 }
 
 .user-samples-container {
   text-align: left;
+  
 }
+

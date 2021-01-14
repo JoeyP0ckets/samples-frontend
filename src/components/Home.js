@@ -22,6 +22,7 @@ class Home extends React.Component {
         <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
         <Row>
           <Col className="user-samples-column">
+            <h3>Click on a past sample for tracking information</h3>
             {this.props.user ? <UserSample/> : "Loading Your Samples"}
           </Col>
           <Col>
