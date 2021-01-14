@@ -1,10 +1,18 @@
 import React from "react"
 import {connect} from "react-redux"
+import {Button} from "react-bootstrap"
 
 const SampleView = (props) => {
+
+  const orderClick = (sample) => {
+    console.log(`${sample.sample_name} was clicked`)
+  }
+  
   return (
-    <div classname="sample-view">
-      {props.selectedSample ? props.selectedSample.sample_name : "Please select a sample"}
+    <div className="sample-view">
+      <h1>{props.selectedSample.sample_name}</h1>
+      <Button onClick={() => orderClick(props.selectedSample)}>Order Sample</Button>
+
     </div>
   )
 }
