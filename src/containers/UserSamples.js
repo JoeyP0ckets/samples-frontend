@@ -12,7 +12,7 @@ const UserSample = (props) => {
   }
 
   return (
-    <div>
+    <div className="user-samples-container">
       <ul>
         {renderUserSamples()}
       </ul>

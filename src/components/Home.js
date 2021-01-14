@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
+import {Row, Col} from 'react-bootstrap'
 
 class Home extends React.Component {
 
@@ -19,8 +20,16 @@ class Home extends React.Component {
     return(
       <div className="home-main">
         <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
-        {this.props.user ? <UserSample/> : null}
+        <Row>
+          <Col className="user-samples-column">
+            {this.props.user ? <UserSample/> : "Loading Your Samples"}
+          </Col>
+          <Col>
+            I'm the second column foolish human
+          </Col>
+        </Row>
       </div>
+      
     )
   }
 }
