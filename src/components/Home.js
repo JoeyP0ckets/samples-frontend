@@ -21,12 +21,12 @@ class Home extends React.Component {
       <div className="home-main">
         <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
         <Row>
-          <Col className="user-samples-column">
+          <Col className="user-samples-main">
             <h3>Click on a past sample for tracking information</h3>
             {this.props.user ? <UserSample/> : "Loading Your Samples"}
           </Col>
-          <Col>
-            I'm the second column foolish human
+          <Col className="user-info-main">
+            <h3>I'm the second column foolish human</h3>
           </Col>
         </Row>
       </div>
