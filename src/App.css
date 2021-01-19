@@ -61,7 +61,7 @@
 }
 
 .user-samples-main {
-  background-color: grey;
+  background-image: linear-gradient(to right, white , grey);
   margin: 10px;
 }
 
