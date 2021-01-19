@@ -11,11 +11,8 @@ const SampleView = (props) => {
   return (
     <div className="sample-info-view">
       <h1>{props.selectedSample.sample_name}</h1>
-<<<<<<< HEAD
       <img src={props.selectedSample.image_url} alt={props.selectedSample.sample_name}/>
       <h4>{props.selectedSample.description}</h4>
-=======
->>>>>>> 961a2e84c632bae816efe173fbf91bade203345f
       <Button onClick={() => orderClick(props.selectedSample)}>Order Sample</Button>
 
     </div>
