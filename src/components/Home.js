@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import UserSample from '../containers/UserSamples'
+import {Row, Col} from 'react-bootstrap'
 
 class Home extends React.Component {
 
@@ -8,7 +10,7 @@ class Home extends React.Component {
   }
 
   fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/doctors/3`)
+    fetch(`http://localhost:3000/api/v1/doctors/1`)
     .then(resp => resp.json())
     .then(user => this.props.loginUser(user))
   }
@@ -18,7 +20,17 @@ class Home extends React.Component {
     return(
       <div className="home-main">
         <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
+        <Row>
+          <Col className="user-samples-main">
+            <h3>Click on a past sample for tracking information</h3>
+            {this.props.user ? <UserSample/> : "Loading Your Samples"}
+          </Col>
+          <Col className="user-info-main">
+            <h3>I'm the second column foolish human</h3>
+          </Col>
+        </Row>
       </div>
+      
     )
   }
 }
