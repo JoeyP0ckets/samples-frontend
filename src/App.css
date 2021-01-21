@@ -39,7 +39,7 @@
 
 .samples-container {
   text-align: center;
-  padding: 0px;
+  display: inline-block;
   
 }
 
@@ -63,23 +63,27 @@
 }
 
 .user-samples-main {
+  border-radius: 25px;
+  border: 2px solid red;
+  text-align: left;
   background-image: linear-gradient(to right, white , grey);
   margin: 10px;
 }
 
 .user-info-main {
+  border-radius: 25px;
+  border: 2px solid red;
   background-color: gray;
   margin: 10px;
 }
 
 .user-samples-container {
-  text-align: left;
   
 }
 
 .sample-column {
   text-align: center;
-  height:100vh; 
+  min-height:100vh; 
   width:100%;
   background-image: url(https://cutewallpaper.org/21/medicine-wallpapers/42-Medical-Doctor-Wallpaper-on-WallpaperSafari.jpg);
   background-position: center;
@@ -87,6 +91,3 @@
   background-size: cover; 
 }
 
-.card_column {
-  width: auto;
-}
