@@ -30,6 +30,7 @@
 
 .navbar-container {
   border-bottom: double black;
+  background-color: lightgray;
   text-align: center;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
   background-repeat: no-repeat;
@@ -38,6 +39,7 @@
 
 .samples-container {
   text-align: center;
+  padding: 0px;
   
 }
 
@@ -75,3 +77,16 @@
   
 }
 
+.sample-column {
+  text-align: center;
+  height:100vh; 
+  width:100%;
+  background-image: url(https://cutewallpaper.org/21/medicine-wallpapers/42-Medical-Doctor-Wallpaper-on-WallpaperSafari.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.card_column {
+  width: auto;
+}

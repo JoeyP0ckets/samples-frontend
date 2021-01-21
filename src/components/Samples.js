@@ -28,12 +28,12 @@ class Samples extends React.Component {
   render() {
     return(
       <Row>
-        <Col xs={6} md={4}>
+        <Col className="card-column"xs={6} md={4}>
           <div className="samples-container">
             {this.props.allSamples ? this.renderAllSamples() : "samples deleted from state"}
           </div>
         </Col>
-        <Col>
+        <Col className="sample-column">
           <div className="sample-view">          
             {this.props.selectedSample ? <SampleView/> : <h1>Please Select a Sample</h1>}
           </div>
