@@ -14,7 +14,12 @@ const SampleView = (props) => {
       to_name: "First Dose Ordering",
       sample_name: `${props.selectedSample.sample_name}`,
       user_name: `${props.user.name}`,
-      });
+      address_1: `${props.user.address_1}`,
+      address_2: `${props.user.address_2}`,
+      city: `${props.user.city}`,
+      state: `${props.user.state}`,
+      zipcode: `${props.user.zipcode}`
+      }, "user_Ypmj33LBBAihNfVMLDVYj");
       alert("Your order has been sent")
   }
   
