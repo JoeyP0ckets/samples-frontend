@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
-import Form from './Form'
+
 
 class Home extends React.Component {
 
@@ -27,7 +27,7 @@ class Home extends React.Component {
             {this.props.user ? <UserSample/> : "Loading Your Samples"}
           </Col>
           <Col className="user-info-main">
-            <Form/>
+            I'm the second column foolish human.
           </Col>
         </Row>
       </div>
