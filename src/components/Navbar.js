@@ -20,7 +20,7 @@ const Navbar = (props) => {
       <Router>
           <div className="navbar-container">
           <h1 className="navbar-logo">First Dose</h1>
-          {/* {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp; */}
+          {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp;
           <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/Samples">Samples List</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/Profile">Profile</Link> 
