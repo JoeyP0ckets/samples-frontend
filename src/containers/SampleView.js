@@ -19,8 +19,9 @@ const SampleView = (props) => {
       city: `${props.user.city}`,
       state: `${props.user.state}`,
       zipcode: `${props.user.zipcode}`
-      }, "user_Ypmj33LBBAihNfVMLDVYj");
+      });
       alert("Your order has been sent")
+      //fetch POST to new doctorsample. Make sure to check backend for model change.
   }
   
   return (
