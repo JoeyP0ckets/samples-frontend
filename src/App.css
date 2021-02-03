@@ -30,17 +30,64 @@
 
 .navbar-container {
   border-bottom: double black;
+  background-color: lightgray;
   text-align: center;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: 100px;
 }
 
 .samples-container {
   text-align: center;
+  display: inline-block;
+  
 }
 
 .home-main {
   text-align: center;
+  height:100vh; 
+  width:100%;
+  background-image: url(https://wallpaperaccess.com/full/740142.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 .sample-view {
   text-align: center;
+  
 }
+
+.sample-info-view {
+  text-align: center
+}
+
+.user-samples-main {
+  border-radius: 25px;
+  border: 2px solid red;
+  text-align: left;
+  background-image: linear-gradient(to right, white , grey);
+  margin: 10px;
+}
+
+.user-info-main {
+  border-radius: 25px;
+  border: 2px solid red;
+  background-color: gray;
+  margin: 10px;
+}
+
+.user-samples-container {
+  
+}
+
+.sample-column {
+  text-align: center;
+  min-height:100vh; 
+  width:100%;
+  background-image: url(https://cutewallpaper.org/21/medicine-wallpapers/42-Medical-Doctor-Wallpaper-on-WallpaperSafari.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
