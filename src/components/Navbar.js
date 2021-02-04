@@ -23,7 +23,8 @@ const Navbar = (props) => {
           {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Link to="/Profile">Profile</Link> : null}
+          {props.user ? <Link to="/Profile">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <Link to="/Logout">Logout</Link> : null}
           </div>
           <Switch>
             <Route exact path="/">
