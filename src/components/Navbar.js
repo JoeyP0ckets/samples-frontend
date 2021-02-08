@@ -9,23 +9,26 @@ import { connect } from "react-redux"
 import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
-// import Login from './Login'
+import Login from './Login'
 
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+  
   return (
     <div>
       <Router>
           <div className="navbar-container">
           <h1 className="navbar-logo">First Dose</h1>
-          <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
-          <Link to="/Samples">Samples List</Link>&nbsp;&nbsp;&nbsp;
-          <Link to="/Profile">Profile</Link>
+          {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp;
+          {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <Link to="/Profile">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <Link to="/Logout">Logout</Link> : null}
           </div>
           <Switch>
             <Route exact path="/">
-              <Home/>
+              {props.user ? <Home/> : <Login/>}
             </Route>
             <Route exact path="/Samples">
               <Samples/>
