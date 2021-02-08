@@ -10,6 +10,7 @@ import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
 import Login from './Login'
+import Signup from './Signup'
 
 
 
@@ -28,7 +29,7 @@ const Navbar = (props) => {
           </div>
           <Switch>
             <Route exact path="/">
-              {props.user ? <Home/> : <Login/>}
+              {props.user ? <Home/> : <Login/>, <Signup/>}
             </Route>
             <Route exact path="/Samples">
               <Samples/>
