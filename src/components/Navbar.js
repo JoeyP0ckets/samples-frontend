@@ -9,8 +9,7 @@ import { connect } from "react-redux"
 import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
-import Login from './Login'
-import Signup from './Signup'
+import LoginSignup from '../containers/LoginSignup';
 
 
 
@@ -29,7 +28,7 @@ const Navbar = (props) => {
           </div>
           <Switch>
             <Route exact path="/">
-              {props.user ? <Home/> : <Login/>, <Signup/>}
+              {props.user ? <Home/> : <LoginSignup/>}
             </Route>
             <Route exact path="/Samples">
               <Samples/>
