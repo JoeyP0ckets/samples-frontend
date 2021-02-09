@@ -18,7 +18,9 @@ const SampleView = (props) => {
       address_2: `${props.user.address_2}`,
       city: `${props.user.city}`,
       state: `${props.user.state}`,
-      zipcode: `${props.user.zipcode}`
+      zipcode: `${props.user.zipcode}`,
+      license_id: `${props.user.license_id}`,
+      professional_title: `${props.user.professional_title}`
       });
       alert("Your order has been sent")
       createDoctorSample();
