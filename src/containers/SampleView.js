@@ -21,8 +21,34 @@ const SampleView = (props) => {
       zipcode: `${props.user.zipcode}`
       });
       alert("Your order has been sent")
+      createDoctorSample();
       //fetch POST to new doctorsample. Make sure to check backend for model change.
   }
+
+  const createDoctorSample= () => {
+    const doctor_sample = {
+      quantity: 1,
+      doctor_id: props.user.id,
+      sample_id: props.selectedSample.id
+    }
+    console.log(doctor_sample)
+    fetch (`http://localhost:3000/api/v1/doctor_samples`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+         Accept: "application/json"
+      },
+      body: JSON.stringify({
+        doctor_sample
+      })
+    })
+      .then(resp => resp.json())
+      .then((docsample) => {
+        console.log(docsample)
+      })
+  }
+
+  
   
   return (
     <div className="sample-info-view">

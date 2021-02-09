@@ -12,7 +12,6 @@ const Login = (props) => {
         password: e.target.password.value
       }
     }
-    console.log(doctor)
     fetch (`http://localhost:3000/api/v1/doctors/login`, {
       method: "POST",
       headers: {
