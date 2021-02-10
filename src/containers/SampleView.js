@@ -8,7 +8,6 @@ init("user_ID");
 const SampleView = (props) => {
 
   const orderClick = (sample) => {
-    console.log(`${sample.sample_name} was clicked by doctor ${props.user.name}`)
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
       from_name: "Joe",
       to_name: "First Dose Ordering",
@@ -19,12 +18,12 @@ const SampleView = (props) => {
       city: `${props.user.city}`,
       state: `${props.user.state}`,
       zipcode: `${props.user.zipcode}`,
+      phone_number: `${props.user.phone_number}`,
       license_id: `${props.user.license_id}`,
       professional_title: `${props.user.professional_title}`
-      });
+      }, "user_Ypmj33LBBAihNfVMLDVYj");
       alert("Your order has been sent")
       createDoctorSample();
-      //fetch POST to new doctorsample. Make sure to check backend for model change.
   }
 
   const createDoctorSample= () => {
