@@ -15,9 +15,10 @@ const Signup = (props) => {
       city: e.target.city.value,
       state: e.target.state.value,
       zipcode: e.target.zipcode.value,
-      license_number: e.target.license_number.value,
+      license_id: e.target.license_id.value,
       signature: e.target.signature.value,
-      professional_title: e.target.professional_title.value
+      professional_title: e.target.professional_title.value,
+      phone_number: e.target.phone_number.value
     }
     console.log(doctor)
     fetch (`http://localhost:3000/api/v1/doctors`, {
@@ -46,6 +47,7 @@ const Signup = (props) => {
         <Form.Control type="text" placeholder="Name" name="name"/>  
         <Form.Control type="text" placeholder="Email" name="email"/>
         <Form.Control type="text" placeholder="Password" name="password"/>
+        <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>
         <br></br>
           Address Information
         <Form.Control type="text" placeholder="Address 1" name="address_1"/>
@@ -55,7 +57,7 @@ const Signup = (props) => {
         <Form.Control type="text" placeholder="Zipcode" name="zipcode"/>
         <br></br>
           Licensing Information
-        <Form.Control type="text" placeholder="License Number" name="license_number"/>
+        <Form.Control type="text" placeholder="License ID" name="license_id"/>
           Signature
         <Form.Control type="text" placeholder="Signature" name="signature"/>
         <br></br>   

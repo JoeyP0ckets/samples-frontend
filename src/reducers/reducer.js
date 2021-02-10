@@ -12,6 +12,8 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, allSamples: action.allSamples}
     case "SELECT_SAMPLE":
       return {...prevState, selectedSample: action.selectedSample}
+    case "RENDER_NEW_SAMPLE":
+      return {...prevState, user: {...prevState.user, samples: [...prevState.user.samples, action.newSample]}} 
     
       default:
       return prevState
