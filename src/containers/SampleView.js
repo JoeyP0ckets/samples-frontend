@@ -21,7 +21,7 @@ const SampleView = (props) => {
       phone_number: `${props.user.phone_number}`,
       license_id: `${props.user.license_id}`,
       professional_title: `${props.user.professional_title}`
-      }, "user_Ypmj33LBBAihNfVMLDVYj");
+      });
       alert("Your order has been sent")
       createDoctorSample();
   }
@@ -57,7 +57,6 @@ const SampleView = (props) => {
       <img src={props.selectedSample.image_url} alt={props.selectedSample.sample_name}/>
       <h4>{props.selectedSample.description}</h4>
       <Button onClick={() => orderClick(props.selectedSample)}>Order Sample</Button>
-
     </div>
   )
 }
