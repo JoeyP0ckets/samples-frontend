@@ -9,7 +9,7 @@ const SampleView = (props) => {
 
   const orderClick = (sample) => {
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
-      from_name: "Joe",
+      from_name: `${props.user.name}`,
       to_name: "First Dose Ordering",
       sample_name: `${props.selectedSample.sample_name}`,
       user_name: `${props.user.name}`,
@@ -44,8 +44,8 @@ const SampleView = (props) => {
       })
     })
       .then(resp => resp.json())
-      .then((docsample) => {
-        console.log(docsample)
+      .then((newSample) => {
+        props.renderNewSample(newSample)
       })
   }
 
@@ -68,4 +68,10 @@ const msp = state => {
     selectedSample: state.selectedSample
   }
 }
-export default connect(msp)(SampleView)
+
+const mdp = dispatch => {
+  return {
+    renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample})
+  }
+}
+export default connect(msp,mdp)(SampleView)
