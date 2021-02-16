@@ -2,6 +2,7 @@ const intitialState = {
   user: null,
   allSamples: [],
   selectedSample: null,
+  quantity: 0
 }
 
 const reducer = (prevState=intitialState, action) => {
@@ -14,6 +15,8 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, selectedSample: action.selectedSample}
     case "RENDER_NEW_SAMPLE":
       return {...prevState, user: {...prevState.user, samples: [...prevState.user.samples, action.newSample]}} 
+    case "SELECT_QUANTITY":
+      return {...prevState, quantity: action.value}
     
       default:
       return prevState

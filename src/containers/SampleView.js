@@ -6,6 +6,7 @@ import{ init } from 'emailjs-com';
 init("user_ID");
 
 const SampleView = (props) => {
+  console.log(props.quantity)
 
   const orderClick = () => {
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
@@ -20,7 +21,8 @@ const SampleView = (props) => {
       zipcode: `${props.user.zipcode}`,
       phone_number: `${props.user.phone_number}`,
       license_id: `${props.user.license_id}`,
-      professional_title: `${props.user.professional_title}`
+      professional_title: `${props.user.professional_title}`,
+      quantity: `${props.quantity}`
       }, "user_Ypmj33LBBAihNfVMLDVYj");
       alert("Your order has been sent")
       createDoctorSample();
@@ -28,7 +30,7 @@ const SampleView = (props) => {
 
   const createDoctorSample= () => {
     const doctor_sample = {
-      quantity: 1,
+      quantity: props.quantity,
       doctor_id: props.user.id,
       sample_id: props.selectedSample.id
     }
@@ -48,13 +50,26 @@ const SampleView = (props) => {
       })
   }
 
-  
+  const handleSelect = e => {
+    let value = e.target.value
+    props.selectQuantity(value)
+  }
   
   return (
     <div className="sample-info-view">
       <h1>{props.selectedSample.sample_name}</h1>
       <img src={props.selectedSample.image_url} alt={props.selectedSample.sample_name}/>
       <h4>{props.selectedSample.description}</h4>
+      <br></br>
+      <select name="quantity" onChange={handleSelect}>
+      <option value="none"> 
+          Select Quantity
+      </option> 
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <br></br>
       <Button onClick={() => orderClick(props.selectedSample)}>Order Sample</Button>
 
     </div>
@@ -64,13 +79,15 @@ const SampleView = (props) => {
 const msp = state => {
   return {
     user: state.user,
-    selectedSample: state.selectedSample
+    selectedSample: state.selectedSample,
+    quantity: state.quantity
   }
 }
 
 const mdp = dispatch => {
   return {
-    renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample})
+    renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample}),
+    selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value})
   }
 }
 export default connect(msp,mdp)(SampleView)
