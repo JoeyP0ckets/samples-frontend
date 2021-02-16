@@ -7,7 +7,7 @@ init("user_ID");
 
 const SampleView = (props) => {
 
-  const orderClick = (sample) => {
+  const orderClick = () => {
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
       from_name: `${props.user.name}`,
       to_name: "First Dose Ordering",
@@ -32,7 +32,6 @@ const SampleView = (props) => {
       doctor_id: props.user.id,
       sample_id: props.selectedSample.id
     }
-    console.log(doctor_sample)
     fetch (`http://localhost:3000/api/v1/doctor_samples`, {
       method: "POST",
       headers: {
