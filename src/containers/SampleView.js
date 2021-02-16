@@ -6,8 +6,7 @@ import{ init } from 'emailjs-com';
 init("user_ID");
 
 const SampleView = (props) => {
-  console.log(props.quantity)
-
+  
   const orderClick = () => {
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
       from_name: `${props.user.name}`,
@@ -62,7 +61,7 @@ const SampleView = (props) => {
       <h4>{props.selectedSample.description}</h4>
       <br></br>
       <select name="quantity" onChange={handleSelect}>
-      <option value="none"> 
+      <option value="none" > 
           Select Quantity
       </option> 
         <option value="1">1</option>
@@ -70,7 +69,7 @@ const SampleView = (props) => {
         <option value="3">3</option>
       </select>
       <br></br>
-      <Button onClick={() => orderClick(props.selectedSample)}>Order Sample</Button>
+      <Button onClick={() => orderClick(props.selectedSample)} disabled={!props.quantity}>Order Sample</Button>
 
     </div>
   )

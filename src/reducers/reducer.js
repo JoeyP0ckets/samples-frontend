@@ -2,7 +2,7 @@ const intitialState = {
   user: null,
   allSamples: [],
   selectedSample: null,
-  quantity: 0
+  quantity: null
 }
 
 const reducer = (prevState=intitialState, action) => {
