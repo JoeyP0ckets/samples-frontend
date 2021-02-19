@@ -59,6 +59,7 @@ const SampleView = (props) => {
       <h1>{props.selectedSample.sample_name}</h1>
       <img src={props.selectedSample.image_url} alt={props.selectedSample.sample_name}/>
       <h4>{props.selectedSample.description}</h4>
+  <h4>Sample Size: {props.selectedSample.sample_size}</h4>
       <br></br>
       <select name="quantity" onChange={handleSelect}>
       <option value="none" > 
