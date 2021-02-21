@@ -17,7 +17,8 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, user: {...prevState.user, samples: [...prevState.user.samples, action.newSample]}} 
     case "SELECT_QUANTITY":
       return {...prevState, quantity: action.value}
-    
+    case "RESET_QUANTITY":
+      return {...prevState, quantity: null}
       default:
       return prevState
   }
