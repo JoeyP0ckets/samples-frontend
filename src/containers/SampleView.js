@@ -25,6 +25,7 @@ const SampleView = (props) => {
       }, "user_Ypmj33LBBAihNfVMLDVYj");
       alert("Your order has been sent")
       createDoctorSample();
+      props.resetQuantity()
   }
 
   const createDoctorSample= () => {
@@ -87,7 +88,8 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample}),
-    selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value})
+    selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value}),
+    resetQuantity: () => dispatch({type:"RESET_QUANTITY"})
   }
 }
 export default connect(msp,mdp)(SampleView)
