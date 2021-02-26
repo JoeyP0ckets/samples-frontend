@@ -59,7 +59,15 @@
 }
 
 .sample-info-view {
-  text-align: center
+  text-align: center;
+}
+
+.sample-info-container {
+  text-align: center;
+  background-color: white;
+  margin-left: 30px;
+  margin-right: 30px;
+  border: 2px solid red;
 }
 
 .user-samples-main {
