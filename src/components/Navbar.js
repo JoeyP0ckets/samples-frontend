@@ -31,10 +31,10 @@ const Navbar = (props) => {
               {props.user ? <Home/> : <LoginSignup/>}
             </Route>
             <Route exact path="/Samples">
-              <Samples/>
+              {props.user ? <Samples/> : <LoginSignup/>}
             </Route>
             <Route exact path="/Profile">
-              <Profile/>
+              {props.user ? <Profile/> : <LoginSignup/>}
             </Route>
           </Switch>
       </Router> 
