@@ -8,11 +8,11 @@ const LoginSignup = () => {
     <div className="login-container">
       <Row>
         <Col xs={6} md={6}>
-        <h3 className="review-text">Login</h3>
+        <h3 className="review-text" style={{ textAlign: "center"}}>Login</h3>
         <Login/>
         </Col>
         <Col xs={6} md={6}>
-        <h3 className="review-text" style={{ color: "black"}}>Signup</h3>
+        <h3 className="review-text" style={{ textAlign: "center"}}>Signup</h3>
         <Signup/>
         </Col>
       </Row>
