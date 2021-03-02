@@ -6,6 +6,10 @@ import OrderView from '../containers/OrderView'
 
 const SampleView = (props) => {
   
+  const togglePop = () => {
+    props.togglePopUp()
+  }
+
   return (
     <div className="sample-info-view">
       <h1>{props.selectedSample.sample_name}</h1>
@@ -14,7 +18,10 @@ const SampleView = (props) => {
         <h4>{props.selectedSample.description}</h4>
         <h4>Sample Size: {props.selectedSample.sample_size}</h4>
       </div>
-      <Button>Order Sample</Button>
+      <Button onClick={togglePop}>Order Sample</Button>
+      <div>
+      {props.seen ? <OrderView/> : null}
+      </div>
     </div>
   )
 }
@@ -23,15 +30,16 @@ const msp = state => {
   return {
     user: state.user,
     selectedSample: state.selectedSample,
-    quantity: state.quantity
+    quantity: state.quantity,
+    seen: state.seen
   }
 }
 
 const mdp = dispatch => {
   return {
-    renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample}),
-    selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value}),
-    resetQuantity: () => dispatch({type:"RESET_QUANTITY"})
+    togglePopUp: () => dispatch({type:"POP_UP"})
   }
 }
+
+
 export default connect(msp,mdp)(SampleView)

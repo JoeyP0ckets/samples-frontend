@@ -2,7 +2,8 @@ const intitialState = {
   user: null,
   allSamples: [],
   selectedSample: null,
-  quantity: null
+  quantity: null,
+  seen: false
 }
 
 const reducer = (prevState=intitialState, action) => {
@@ -19,6 +20,8 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, quantity: action.value}
     case "RESET_QUANTITY":
       return {...prevState, quantity: null}
+    case "POP_UP":
+      return {...prevState, seen: !prevState.seen}
       default:
       return prevState
   }
