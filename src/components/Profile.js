@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
+
 const Profile = (props) => {
   const {professional_title, name, address_1, address_2, state, city, zipcode, phone_number, license_id, email} = props.user
 
@@ -15,7 +16,6 @@ const Profile = (props) => {
      Telephone: {phone_number}
      <br></br>
      License ID: {license_id}
-
     </div>
   )
 }

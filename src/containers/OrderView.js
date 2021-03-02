@@ -2,7 +2,8 @@ import React from "react"
 import emailjs from 'emailjs-com';
 import {connect} from 'react-redux'
 import {Button} from 'react-bootstrap'
-const OrderForm = (props) => {
+
+const OrderView = (props) => {
   
   const orderClick = () => {
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
@@ -52,7 +53,7 @@ const OrderForm = (props) => {
     props.selectQuantity(value)
   }
 
-  
+  return (
   <div className="order-form-container">
     I'm the order form
       <br></br>
@@ -65,8 +66,9 @@ const OrderForm = (props) => {
         <option value="3">3</option>
       </select>
       <br></br>
-      <Button>onClick={() => orderClick(props.selectedSample)} disabled={!props.quantity}</Button>
+      <Button onClick={() => orderClick(props.selectedSample)} disabled={!props.quantity}>Order Sample</Button>
   </div>
+  )
 }
 
 const msp = state => {
@@ -84,4 +86,4 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(msp,mdp)(OrderForm) 
+export default connect(msp,mdp)(OrderView) 
