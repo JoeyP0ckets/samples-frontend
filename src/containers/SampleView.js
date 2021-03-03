@@ -1,14 +1,12 @@
-import React from "react"
+import React from 'react';
 import {connect} from "react-redux"
-import {Button} from "react-bootstrap"
+// import {Button} from "react-bootstrap"
 import OrderView from '../containers/OrderView'
 
 
 const SampleView = (props) => {
   
-  const togglePop = () => {
-    props.togglePopUp()
-  }
+  
 
   return (
     <div className="sample-info-view">
@@ -18,10 +16,7 @@ const SampleView = (props) => {
         <h4>{props.selectedSample.description}</h4>
         <h4>Sample Size: {props.selectedSample.sample_size}</h4>
       </div>
-      <Button onClick={togglePop}>Order Sample</Button>
-      <div>
-      {props.seen ? <OrderView/> : null}
-      </div>
+      <OrderView/>
     </div>
   )
 }
@@ -35,11 +30,11 @@ const msp = state => {
   }
 }
 
-const mdp = dispatch => {
-  return {
-    togglePopUp: () => dispatch({type:"POP_UP"})
-  }
-}
+// const mdp = dispatch => {
+//   return {
+//     togglePopUp: () => dispatch({type:"POP_UP"})
+//   }
+// }
 
 
-export default connect(msp,mdp)(SampleView)
+export default connect(msp,null)(SampleView)
