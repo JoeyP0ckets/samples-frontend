@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState } from "react";
 import emailjs from 'emailjs-com';
-import {connect} from 'react-redux'
-import {Button} from 'react-bootstrap'
+import {connect} from 'react-redux';
+import {Button, Modal, } from 'react-bootstrap';
+
 
 const OrderView = (props) => {
+
+  const [lgShow, setLgShow] = useState(false);
   
   const orderClick = () => {
     emailjs.send("service_c25ldbm","template_4c4r0yu", {
@@ -55,18 +58,36 @@ const OrderView = (props) => {
 
   return (
   <div className="order-form-container">
-    I'm the order form
       <br></br>
-      <select name="quantity" onChange={handleSelect}>
-      <option value="none" > 
-          Select Quantity
-      </option> 
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+     <Button onClick={() => setLgShow(true)}>Order Sample</Button>
+     <Modal
+        size="lg"
+        show={lgShow}
+        onHide={() => setLgShow(false)}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            Order Form
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Please Review Information
+          <div className="option-select">
+          <select name="quantity" onChange={handleSelect}>
+            <option value="none" > 
+              Select Quantity
+            </option> 
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          </div>
       <br></br>
       <Button onClick={() => orderClick(props.selectedSample)} disabled={!props.quantity}>Order Sample</Button>
+        </Modal.Body>
+      </Modal>
+      
   </div>
   )
 }
