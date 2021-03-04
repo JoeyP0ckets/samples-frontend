@@ -64,16 +64,24 @@ const OrderView = (props) => {
         size="lg"
         show={lgShow}
         onHide={() => setLgShow(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
+        aria-labelledby="modal-title"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">
+          <Modal.Title id="modal-title">
             Order Form
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Please Review Information
-          <div className="option-select">
+          <h5>Order will be sent to: </h5>
+          <div className="modal-doc-info"></div>
+            {props.user.professional_title} {props.user.name}
+            <br></br>
+            {props.user.address_1}
+            <br></br>
+            {props.user.address_2}
+            <br></br>
+            {props.user.city} {props.user.state}, {props.user.zipcode}
+          <div className="modal-quantity-select">
           <select name="quantity" onChange={handleSelect}>
             <option value="none" > 
               Select Quantity
