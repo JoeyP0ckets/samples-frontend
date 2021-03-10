@@ -24,7 +24,7 @@ const Home = props => {
 
     fetch(`http://localhost:3000/api/v1/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
-    .then(user => console.log(user))
+    .then(user => props.loginUser(user))
   }
   
   return(
@@ -33,7 +33,7 @@ const Home = props => {
       <Row>
         <Col className="user-samples-main">
           <h3>Click on a past sample for tracking information</h3>
-          {props.user ? <UserSample/> : "Loading Your Samples"}
+          {props.user ? <UserSample/> : "No First Doses"}
         </Col>
         <Col className="user-info-main">
           I'm the second column foolish human.

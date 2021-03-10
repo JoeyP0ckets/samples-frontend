@@ -4,17 +4,18 @@ import { connect } from "react-redux"
 const UserSample = (props) => {
   
   const renderUserSamples = () => {
-    // return props.user.samples.map((sample, index) =>
-    //   <li key={index}> 
-    //      {sample.sample_name}
-    //   </li>
-    // )
+    console.log(props.user)
+    return props.user.samples.map((sample, index) =>
+      <li key={index}> 
+         {sample.sample_name}
+      </li>
+    )
   }
 
   return (
     <div className="user-samples-container">
       <ul>
-        {/* {renderUserSamples()} */}
+        {renderUserSamples()}
       </ul>
     </div>
   )
