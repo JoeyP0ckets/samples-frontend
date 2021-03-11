@@ -4,7 +4,6 @@ import { connect } from "react-redux"
 const UserSample = (props) => {
   
   const renderUserSamples = () => {
-    console.log(props.user)
     return props.user.samples.map((sample, index) =>
       <li key={index}> 
          {sample.sample_name}
@@ -15,7 +14,7 @@ const UserSample = (props) => {
   return (
     <div className="user-samples-container">
       <ul>
-        {renderUserSamples()}
+        {props.user.samples ? renderUserSamples() : null}
       </ul>
     </div>
   )
