@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
+
 .App {
   /* text-align: center; */
 }
@@ -15,6 +17,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.navbar-logo {
+  font-family: 'Lora', serif;
 }
 
 .navbar-container {
