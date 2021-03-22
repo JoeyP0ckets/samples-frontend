@@ -1,39 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
 
 
-class Home extends React.Component {
+const Home = props => {
+  useEffect(() => fetchUser(), []);
 
-  componentDidMount() {
-    this.fetchUser()
-  }
+  const fetchUser = () => {
+    const token = localStorage.getItem('auth_token')
 
-  fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/doctors/${this.props.user.id}`)
+    if(!token) {
+      return
+    }
+
+    const fetchObj = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Auth-Token': token
+      },
+    }
+
+    fetch(`http://localhost:3000/api/v1/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
-    .then(user => this.props.loginUser(user))
+    .then(user => props.loginUser(user))
   }
   
-  
-  render () {
-    return(
-      <div className="home-main">
-        <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
-        <Row>
-          <Col className="user-samples-main">
-            <h3>Click on a past sample for tracking information</h3>
-            {this.props.user ? <UserSample/> : "Loading Your Samples"}
-          </Col>
-          <Col className="user-info-main">
-            I'm the second column foolish human.
-          </Col>
-        </Row>
-      </div>
-      
-    )
-  }
+  return(
+    <div className="home-main">
+      <h2>Welcome, Dr. {props.user ? props.user.name : null}</h2>
+      <Row>
+        <Col className="user-samples-main">
+          <h3>Click on a past sample for tracking information</h3>
+          {props.user ? <UserSample/> : "No First Doses"}
+        </Col>
+        <Col className="user-info-main">
+          I'm the second column foolish human.
+        </Col>
+      </Row>
+    </div>
+    
+  )
 }
 
 const msp = (state) => {

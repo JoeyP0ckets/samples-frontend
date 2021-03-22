@@ -19,7 +19,7 @@ const Navbar = (props) => {
     <div>
       <Router>
           <div className="navbar-container">
-          <h1 className="navbar-logo">First Dose</h1>
+          <h1 className="navbar-logo">First Dose Fulfillment</h1>
           {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
@@ -31,10 +31,10 @@ const Navbar = (props) => {
               {props.user ? <Home/> : <LoginSignup/>}
             </Route>
             <Route exact path="/Samples">
-              <Samples/>
+              {props.user ? <Samples/> : <LoginSignup/>}
             </Route>
             <Route exact path="/Profile">
-              <Profile/>
+              {props.user ? <Profile/> : <LoginSignup/>}
             </Route>
           </Switch>
       </Router> 
