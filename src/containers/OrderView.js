@@ -29,28 +29,34 @@ const OrderView = (props) => {
       props.resetQuantity()
   }
 
-  const createDoctorSample= () => {
-    // const doctor_sample = {
-    //   quantity: props.quantity,
-    //   doctor_id: props.user.id,
-    //   sample_id: props.selectedSample.id,
-    //   signature_status_success: false
-    // }
-    // fetch (`http://localhost:3000/api/v1/doctor_samples`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //      Accept: "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     doctor_sample
-    //   })
-    // })
+  
+
+  const createDoctorSample = () => {
+    // fetch ('http://localhost:3000/api/v1/docusign/create_session') 
     //   .then(resp => resp.json())
-    //   .then((newSample) => {
-    //     console.log(newSample)
-    //     props.renderNewSample(newSample)
-    //   })
+    //   .then(data => console.log(data))
+      
+    const doctor_sample = {
+      quantity: props.quantity,
+      doctor_id: props.user.id,
+      sample_id: props.selectedSample.id,
+      signature_status_success: false
+    }
+    fetch (`http://localhost:3000/api/v1/doctor_samples`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+         Accept: "application/json"
+      },
+      body: JSON.stringify({
+        doctor_sample
+      })
+    })
+      .then(resp => resp.json())
+      .then((newSample) => {
+        console.log(newSample)
+        props.renderNewSample(newSample)
+      })
   }
 
   const handleSelect = e => {
