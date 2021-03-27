@@ -10,6 +10,7 @@ import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
 import LoginSignup from '../containers/LoginSignup';
+import Logout from '../components/LogoutButton'
 
 
 
@@ -24,7 +25,7 @@ const Navbar = (props) => {
           {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Profile">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Link to="/Logout">Logout</Link> : null}
+          {props.user ? <Logout/> : null}
           </div>
           <Switch>
             <Route exact path="/">
