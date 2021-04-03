@@ -3,14 +3,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link, 
 } from "react-router-dom";
 import { connect } from "react-redux"
 import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
 import LoginSignup from '../containers/LoginSignup';
-import Logout from '../components/LogoutButton'
+import Logout from '../components/LogoutButton';
+import RetrieveAuthCode from './RetrieveAuthCode';
 
 
 
@@ -36,6 +37,13 @@ const Navbar = (props) => {
             </Route>
             <Route exact path="/Profile">
               {props.user ? <Profile/> : <LoginSignup/>}
+            </Route>
+            {/* <Route path='/Docusign-Auth' component={() => { 
+              window.location.href = 
+              return null; */}
+            {/* }}/> */}
+            <Route path='/retrieve_auth_code'>
+              <RetrieveAuthCode />
             </Route>
           </Switch>
       </Router> 

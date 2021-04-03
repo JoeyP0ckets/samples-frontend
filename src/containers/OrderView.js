@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import emailjs from 'emailjs-com';
 import {connect} from 'react-redux';
 import {Button, Modal, } from 'react-bootstrap';
 
 
 const OrderView = (props) => {
-
+  const history = useHistory();
   const [lgShow, setLgShow] = useState(false);
   
   const orderClick = () => {
@@ -32,9 +33,11 @@ const OrderView = (props) => {
   
 
   const createDoctorSample = () => {
-    fetch ('http://localhost:3000/api/v1/docusign/create_session') 
-      .then(resp => resp.json())
-      .then(data => console.log(data))
+    
+  history.push('/Docusign-Auth')
+    // fetch ('http://localhost:3000/api/v1/docusign/create_session') 
+    //   .then(resp => resp.json())
+    //   .then(data => console.log(data))
       
     // const doctor_sample = {
     //   quantity: props.quantity,
