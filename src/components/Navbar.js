@@ -10,7 +10,6 @@ import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
 import LoginSignup from '../containers/LoginSignup';
-import Logout from '../components/LogoutButton';
 import RetrieveAuthCode from './RetrieveAuthCode';
 
 
@@ -26,7 +25,6 @@ const Navbar = (props) => {
           {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Profile">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Logout/> : null}
           </div>
           <Switch>
             <Route exact path="/">
@@ -40,8 +38,8 @@ const Navbar = (props) => {
             </Route>
             {/* <Route path='/Docusign-Auth' component={() => { 
               window.location.href = 
-              return null; */}
-            {/* }}/> */}
+              return null;
+            }}/> */}
             <Route path='/retrieve_auth_code'>
               <RetrieveAuthCode />
             </Route>
