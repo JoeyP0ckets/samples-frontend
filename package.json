@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.5.3",
     "emailjs-com": "^2.6.4",
+    "jquery": "^3.6.0",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.2",

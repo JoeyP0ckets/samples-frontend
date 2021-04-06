@@ -11,6 +11,7 @@ import Home from './Home'
 import Profile from './Profile'
 import LoginSignup from '../containers/LoginSignup';
 import RetrieveAuthCode from './RetrieveAuthCode';
+import RetrieveAuthToken from './RetrieveAuthToken';
 
 
 
@@ -42,6 +43,9 @@ const Navbar = (props) => {
             }}/> */}
             <Route path='/retrieve_auth_code'>
               <RetrieveAuthCode />
+            </Route>
+            <Route path='/Get-Token'>
+              <RetrieveAuthToken />
             </Route>
           </Switch>
       </Router> 
