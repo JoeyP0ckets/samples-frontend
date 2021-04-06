@@ -8,8 +8,7 @@ const RetrieveAuthCode = () => {
   const { code } = queryString.parse(search);
 
   localStorage.setItem('docusign_auth_code', code);
-  debugger
-  history.push('/');
+  history.push('/Get-Token');
   return null;
 };
 
