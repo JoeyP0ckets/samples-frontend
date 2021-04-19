@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
+import FedExSearch from './FedExSearch'
 
 
 const Home = props => {
@@ -36,7 +37,8 @@ const Home = props => {
           {props.user ? <UserSample/> : "No First Doses"}
         </Col>
         <Col className="user-info-main">
-          I'm the second column foolish human.
+          <h3>Pending orders</h3>
+          <FedExSearch/>
         </Col>
       </Row>
     </div>
