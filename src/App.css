@@ -74,6 +74,9 @@
 }
 
 .user-info-main {
+  background-image: url(https://assets.turbologo.com/blog/en/2019/12/19084817/Fedex-logo.png);
+  background-repeat: no-repeat;
+  background-size: 100px;
   border-radius: 25px;
   border: 2px solid red;
   background-color: gray;

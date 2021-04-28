@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
-import FedExSearch from './FedExSearch'
+
 
 
 const Home = props => {
@@ -37,8 +37,7 @@ const Home = props => {
           {props.user ? <UserSample/> : "No First Doses"}
         </Col>
         <Col className="user-info-main">
-          <h3>Pending orders</h3>
-          <FedExSearch/>
+          <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
         </Col>
       </Row>
     </div>
