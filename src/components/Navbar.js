@@ -37,10 +37,10 @@ const Navbar = (props) => {
             <Route exact path="/Profile">
               {props.user ? <Profile/> : <LoginSignup/>}
             </Route>
-            <Route path='/Docusign-Auth' component={() => { 
-              window.location.href = 'https://account-d.docusign.com/oauth/auth?response_type=code&client_id=19ecc229-d517-4c8e-b831-da8643669392&redirect_uri=http://localhost:3001/retrieve_auth_code/&scope=signature'
+            {/* <Route path='/Docusign-Auth' component={() => { 
+              window.location.href = 
               return null;
-            }}/>
+            }}/> */}
             <Route path='/retrieve_auth_code'>
               <RetrieveAuthCode />
             </Route>
