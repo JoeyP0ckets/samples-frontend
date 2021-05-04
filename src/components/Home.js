@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
+import LoginSignup from '../containers/LoginSignup'
 
 
 
@@ -28,7 +29,7 @@ const Home = props => {
     .then(user => props.loginUser(user))
   }
   
-  return(
+  return props.user ? (
     <div className="home-main">
       <h2>Welcome, Dr. {props.user ? props.user.name : null}</h2>
       <Row>
@@ -41,7 +42,9 @@ const Home = props => {
         </Col>
       </Row>
     </div>
-    
+  ) :
+  (
+    <LoginSignup />
   )
 }
 

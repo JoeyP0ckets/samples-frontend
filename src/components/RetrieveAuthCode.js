@@ -5,10 +5,9 @@ const RetrieveAuthCode = () => {
   const history = useHistory();
   const { hash } = useLocation();
   const { access_token } = queryString.parse(hash);
-  console.log(hash)
 
-  localStorage.setItem('docusign_auth_code', access_token);
-  history.push('/');
+  localStorage.setItem('docusign_access_token', access_token);
+  history.push('/user-info');
   return null;
 };
 
