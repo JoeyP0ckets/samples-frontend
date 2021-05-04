@@ -11,7 +11,8 @@ import Home from './Home'
 import Profile from './Profile'
 import LoginSignup from '../containers/LoginSignup';
 import RetrieveAuthCode from './RetrieveAuthCode';
-import RetrieveAuthToken from './RetrieveAuthToken';
+import RetrieveUserInfo from './RetrieveUserInfo';
+import CreateEnvelope from './CreateEnvelope';
 
 
 
@@ -29,7 +30,7 @@ const Navbar = (props) => {
           </div>
           <Switch>
             <Route exact path="/">
-              {props.user ? <Home/> : <LoginSignup/>}
+              <Home/>
             </Route>
             <Route exact path="/Samples">
               {props.user ? <Samples/> : <LoginSignup/>}
@@ -44,8 +45,11 @@ const Navbar = (props) => {
             <Route path='/retrieve_auth_code'>
               <RetrieveAuthCode />
             </Route>
-            <Route path='/Get-Token'>
-              <RetrieveAuthToken />
+            <Route path='/user-info'>
+              <RetrieveUserInfo/>
+            </Route>
+            <Route path='/create_envelope'>
+              <CreateEnvelope/>
             </Route>
           </Switch>
       </Router> 
