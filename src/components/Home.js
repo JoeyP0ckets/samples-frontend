@@ -35,7 +35,7 @@ const Home = props => {
       <Row>
         <Col className="user-samples-main">
           <h3>Click on a past sample for tracking information</h3>
-          {props.user ? <UserSample/> : "No First Doses"}
+          {props.user.samples ? <UserSample/> : "No First Doses"}
         </Col>
         <Col className="user-info-main">
           <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>

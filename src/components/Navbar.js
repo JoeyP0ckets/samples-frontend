@@ -13,6 +13,7 @@ import LoginSignup from '../containers/LoginSignup';
 import RetrieveAuthCode from './RetrieveAuthCode';
 import RetrieveUserInfo from './RetrieveUserInfo';
 import CreateEnvelope from './CreateEnvelope';
+import LogoutButton from './Logout';
 
 
 
@@ -27,6 +28,7 @@ const Navbar = (props) => {
           {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
           {props.user ? <Link to="/Profile">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <LogoutButton/> : null}
           </div>
           <Switch>
             <Route exact path="/">
