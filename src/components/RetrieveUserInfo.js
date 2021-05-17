@@ -23,8 +23,8 @@ const RetrieveUserInfo = () => {
     }
 
     fetch(`http://localhost:3000/api/v1/docusign/retrieve_user_info`, fetchObj)
-    // .then(resp => resp.json())
-    // .then(resp => console.log(resp))
+    .then(resp => resp.json())
+    .then(resp => console.log(resp))
   }, [])
 
    React.useEffect(fetchUser, [])
