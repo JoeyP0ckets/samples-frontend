@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
 import LoginSignup from '../containers/LoginSignup'
+import CheckStatusButton from './CheckStatusButton'
 
 
 
@@ -39,6 +40,7 @@ const Home = props => {
         </Col>
         <Col className="user-info-main">
           <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
+          <CheckStatusButton/>
         </Col>
       </Row>
     </div>
