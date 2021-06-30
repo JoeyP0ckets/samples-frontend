@@ -1,8 +1,8 @@
 import React from "react"
 import { useHistory } from 'react-router-dom'
 
-const RetrieveUserInfo = () => {
 
+const RetrieveUserInfo = () => {
   const history = useHistory();
   const access_token = localStorage.getItem('docusign_access_token')
 
@@ -32,5 +32,6 @@ const RetrieveUserInfo = () => {
       history.push("/");
       return null;
     }
+
 
 export default RetrieveUserInfo

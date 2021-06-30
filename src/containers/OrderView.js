@@ -26,40 +26,43 @@ const OrderView = (props) => {
     //   quantity: `${props.quantity}`
     //   }, "user_Ypmj33LBBAihNfVMLDVYj");
     //   alert("Your order has been sent")
-      createDoctorSample();
-      props.resetQuantity()
+      createDoctorOrder();
+      // createEnvelope();
+      props.resetQuantity();
+      
   }
 
-  
+  // const createEnvelope = () => {
+  //   history.push('/Docusign-Auth')
+  // }
 
-  const createDoctorSample = () => {
+  const createDoctorOrder = () => {
+      // change this when db is changed, all relevent info should be here to make order in the backend 
     
-  history.push('/Docusign-Auth')
-    // fetch ('http://localhost:3000/api/v1/docusign/create_session') 
-    //   .then(resp => resp.json())
-    //   .then(data => console.log(data))
+    let accessToken = localStorage.getItem('docusign_access_token')
+    let token = localStorage.getItem('auth_token')
+    const doctor_order= {
+      quantity: props.quantity,
+      sample_id: props.selectedSample.id,
+      token: accessToken
+    }
+    
+    fetch (`http://localhost:3000/api/v1/doctor_orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+         Accept: "application/json",
+         'Auth-Token': token
+      },
+      body: JSON.stringify(
+        doctor_order
+      )
+    })
+      // .then(resp => resp.json())
+      // .then((newOrder) => {
+      //   console.log(newOrder)
+      // })
       
-    // const doctor_sample = {
-    //   quantity: props.quantity,
-    //   doctor_id: props.user.id,
-    //   sample_id: props.selectedSample.id,
-    //   signature_status_success: false
-    // }
-    // fetch (`http://localhost:3000/api/v1/doctor_samples`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //      Accept: "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     doctor_sample
-    //   })
-    // })
-    //   .then(resp => resp.json())
-    //   .then((newSample) => {
-    //     console.log(newSample)
-    //     props.renderNewSample(newSample)
-    //   })
   }
 
   const handleSelect = e => {
