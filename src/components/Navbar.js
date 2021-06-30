@@ -18,7 +18,10 @@ import LogoutButton from './Logout';
 
 
 const Navbar = (props) => {
-  
+  let access_token = localStorage.getItem('docusign_access_token')
+  if (props.user && !access_token) {
+    window.location.href = 'nunya'
+  }
   return (
     <div>
       <Router>
@@ -40,10 +43,6 @@ const Navbar = (props) => {
             <Route exact path="/Profile">
               {props.user ? <Profile/> : <LoginSignup/>}
             </Route>
-            {/* <Route path='/Docusign-Auth' component={() => { 
-              window.location.href = 
-              return null;
-            }}/> */}
             <Route path='/retrieve_auth_code'>
               <RetrieveAuthCode />
             </Route>
