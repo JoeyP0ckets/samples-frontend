@@ -7,6 +7,7 @@ const LogoutButton = (props) => {
   const HandleLogout = () => {
     props.logoutUser();
     localStorage.removeItem('auth_token')
+    localStorage.removeItem('docusign_access_token')
   }
   
   return(

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import emailjs from 'emailjs-com';
 import {connect} from 'react-redux';
 import {Button, Modal, } from 'react-bootstrap';
 
@@ -10,35 +9,12 @@ const OrderView = (props) => {
   const [lgShow, setLgShow] = useState(false);
   
   const orderClick = () => {
-    // emailjs.send("service_c25ldbm","template_4c4r0yu", {
-    //   from_name: `${props.user.name}`,
-    //   to_name: "First Dose Ordering",
-    //   sample_name: `${props.selectedSample.sample_name}`,
-    //   user_name: `${props.user.name}`,
-    //   address_1: `${props.user.address_1}`,
-    //   address_2: `${props.user.address_2}`,
-    //   city: `${props.user.city}`,
-    //   state: `${props.user.state}`,
-    //   zipcode: `${props.user.zipcode}`,
-    //   phone_number: `${props.user.phone_number}`,
-    //   license_id: `${props.user.license_id}`,
-    //   professional_title: `${props.user.professional_title}`,
-    //   quantity: `${props.quantity}`
-    //   }, "user_Ypmj33LBBAihNfVMLDVYj");
-    //   alert("Your order has been sent")
       createDoctorOrder();
-      // createEnvelope();
       props.resetQuantity();
-      
-  }
+      alert("Your order has been sent.  Please check the email associated with this account to sign for your order.")
+    }
 
-  // const createEnvelope = () => {
-  //   history.push('/Docusign-Auth')
-  // }
-
-  const createDoctorOrder = () => {
-      // change this when db is changed, all relevent info should be here to make order in the backend 
-    
+  const createDoctorOrder = () => {    
     let accessToken = localStorage.getItem('docusign_access_token')
     let token = localStorage.getItem('auth_token')
     const doctor_order= {
@@ -62,8 +38,7 @@ const OrderView = (props) => {
       // .then((newOrder) => {
       //   console.log(newOrder)
       // })
-      
-  }
+    }
 
   const handleSelect = e => {
     let value = e.target.value
@@ -112,9 +87,6 @@ const OrderView = (props) => {
       <Button onClick={() => orderClick()} disabled={!props.quantity}>Order Sample</Button>
         </Modal.Body>
       </Modal>
-      
-    {/* reinsert into onClick AFTER DOCUSIGN API TESTING IS DONE
-     orderClick(props.selectedSample) */}
   </div>
   )
 }
