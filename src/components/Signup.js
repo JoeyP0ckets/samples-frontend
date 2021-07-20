@@ -6,7 +6,9 @@ const Signup = (props) => {
 
   const handleSignupSubmit = e => {
     e.preventDefault()
+    
     const doctor = {
+      doctor: {
       name: e.target.name.value,
       password: e.target.password.value,
       email: e.target.email.value,
@@ -19,6 +21,7 @@ const Signup = (props) => {
       signature: e.target.signature.value,
       professional_title: e.target.professional_title.value,
       phone_number: e.target.phone_number.value
+      }
     }
     console.log(doctor)
     fetch (`http://localhost:3000/api/v1/doctors`, {
@@ -27,9 +30,9 @@ const Signup = (props) => {
         "Content-Type": "application/json",
          Accept: "application/json"
       },
-      body: JSON.stringify({
+      body: JSON.stringify(
         doctor
-      })
+      )
     })
       .then(resp => resp.json())
       .then((user) => {
@@ -43,7 +46,7 @@ const Signup = (props) => {
     <Form onSubmit={e => handleSignupSubmit(e)}>
        <Form.Group>
          General Information
-        <Form.Control type="text" placeholder="Profesional Title" name="professional_title"/>
+        <Form.Control type="text" placeholder="Profesional Title e.g. Doctor" name="professional_title"/>
         <Form.Control type="text" placeholder="Name" name="name"/>  
         <Form.Control type="text" placeholder="Email" name="email"/>
         <Form.Control type="text" placeholder="Password" name="password"/>
