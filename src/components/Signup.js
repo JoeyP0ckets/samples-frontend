@@ -1,14 +1,14 @@
-import React from "react"
+import React, {useState} from "react"
 import { Form, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 const Signup = (props) => {
 
+  const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
   const handleSignupSubmit = e => {
     e.preventDefault()
     
     const doctor = {
-      doctor: {
       name: e.target.name.value,
       password: e.target.password.value,
       email: e.target.email.value,
@@ -21,7 +21,6 @@ const Signup = (props) => {
       signature: e.target.signature.value,
       professional_title: e.target.professional_title.value,
       phone_number: e.target.phone_number.value
-      }
     }
     console.log(doctor)
     fetch (`http://localhost:3000/api/v1/doctors`, {
@@ -30,13 +29,25 @@ const Signup = (props) => {
         "Content-Type": "application/json",
          Accept: "application/json"
       },
-      body: JSON.stringify(
+      body: JSON.stringify({
         doctor
-      )
+      })
     })
       .then(resp => resp.json())
-      .then((user) => {
-        props.loginUser(user)
+      .then((data) => {
+        console.log(data.doctor)
+        if (data.token) {
+          localStorage.setItem('auth_token', data.token)
+          props.loginUser(data.doctor)
+          setLoginErrorMessage(undefined)
+        } else {
+          localStorage.removeItem('auth_token')
+          setLoginErrorMessage(data.message)
+        }
+      })
+      .catch(() => {
+        localStorage.removeItem('auth_token')
+        setLoginErrorMessage('Something went wrong')
       })
       e.target.reset()
   }
