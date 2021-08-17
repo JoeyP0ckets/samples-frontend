@@ -2,7 +2,7 @@ import React from "react"
 
 const CheckStatusButton = () => {
 
-  const CheckStatusClick = () => {
+  const checkStatusClick = () => {
     const access_token = localStorage.getItem('docusign_access_token')
     const token = localStorage.getItem('auth_token')
 
@@ -26,7 +26,7 @@ const CheckStatusButton = () => {
   }
 
   return(
-    <button onClick={() => CheckStatusClick()}>Click Me For Envelope Status Testing</button>
+    <button onClick={() => checkStatusClick()}>Click Me For Envelope Status Testing</button>
   )
 }
 

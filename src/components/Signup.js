@@ -1,11 +1,13 @@
-import React from "react"
+import React, {useState} from "react"
 import { Form, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 const Signup = (props) => {
 
+  const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
   const handleSignupSubmit = e => {
     e.preventDefault()
+    
     const doctor = {
       name: e.target.name.value,
       password: e.target.password.value,
@@ -32,8 +34,20 @@ const Signup = (props) => {
       })
     })
       .then(resp => resp.json())
-      .then((user) => {
-        props.loginUser(user)
+      .then((data) => {
+        console.log(data.doctor)
+        if (data.token) {
+          localStorage.setItem('auth_token', data.token)
+          props.loginUser(data.doctor)
+          setLoginErrorMessage(undefined)
+        } else {
+          localStorage.removeItem('auth_token')
+          setLoginErrorMessage(data.message)
+        }
+      })
+      .catch(() => {
+        localStorage.removeItem('auth_token')
+        setLoginErrorMessage('Something went wrong')
       })
       e.target.reset()
   }
@@ -43,7 +57,7 @@ const Signup = (props) => {
     <Form onSubmit={e => handleSignupSubmit(e)}>
        <Form.Group>
          General Information
-        <Form.Control type="text" placeholder="Profesional Title" name="professional_title"/>
+        <Form.Control type="text" placeholder="Profesional Title e.g. Doctor" name="professional_title"/>
         <Form.Control type="text" placeholder="Name" name="name"/>  
         <Form.Control type="text" placeholder="Email" name="email"/>
         <Form.Control type="text" placeholder="Password" name="password"/>
