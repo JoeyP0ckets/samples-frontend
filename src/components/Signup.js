@@ -18,7 +18,6 @@ const Signup = (props) => {
       state: e.target.state.value,
       zipcode: e.target.zipcode.value,
       license_id: e.target.license_id.value,
-      signature: e.target.signature.value,
       professional_title: e.target.professional_title.value,
       phone_number: e.target.phone_number.value
     }
@@ -72,8 +71,6 @@ const Signup = (props) => {
         <br></br>
           Licensing Information
         <Form.Control type="text" placeholder="License ID" name="license_id"/>
-          Signature
-        <Form.Control type="text" placeholder="Signature" name="signature"/>
         <br></br>   
         <Button type="submit">Signup</Button>
        </Form.Group>
