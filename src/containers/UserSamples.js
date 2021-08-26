@@ -2,11 +2,11 @@ import React from "react"
 import { connect } from "react-redux"
  
 const UserSample = (props) => {
-  console.log(props.user)
   const renderUserSamples = () => {
+
     return props.user.samples.map((sample, index) =>
       <li key={index}> 
-         {sample.sample_name}
+         {sample.sample_name} - 
       </li>
     )
   }
