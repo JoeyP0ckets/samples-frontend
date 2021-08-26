@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 
 const Signup = (props) => {
 
-  const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
+  const [signupErrorMessage, setSignupErrorMessage] = useState(undefined)
+  
   const handleSignupSubmit = e => {
     e.preventDefault()
     
@@ -21,7 +22,6 @@ const Signup = (props) => {
       professional_title: e.target.professional_title.value,
       phone_number: e.target.phone_number.value
     }
-    console.log(doctor)
     fetch (`http://localhost:3000/api/v1/doctors`, {
       method: "POST",
       headers: {
@@ -34,21 +34,29 @@ const Signup = (props) => {
     })
       .then(resp => resp.json())
       .then((data) => {
-        console.log(data.doctor)
         if (data.token) {
           localStorage.setItem('auth_token', data.token)
           props.loginUser(data.doctor)
-          setLoginErrorMessage(undefined)
+          setSignupErrorMessage(undefined)
         } else {
           localStorage.removeItem('auth_token')
-          setLoginErrorMessage(data.message)
+          setSignupErrorMessage(data.errors)
         }
       })
       .catch(() => {
         localStorage.removeItem('auth_token')
-        setLoginErrorMessage('Something went wrong')
+        setSignupErrorMessage('Something went wrong')
       })
       e.target.reset()
+  }
+
+  const displayErrorMessages = () => {
+    return (
+      <ul>
+        {signupErrorMessage.map((error, index) => (
+        <li key={index}>{error}</li>
+        ))}
+      </ul>)
   }
   
 
@@ -71,7 +79,12 @@ const Signup = (props) => {
         <br></br>
           Licensing Information
         <Form.Control type="text" placeholder="License ID" name="license_id"/>
-        <br></br>   
+        <br></br>
+        <div className="signup-error-container">
+          {/* {signupErrorMessage && <p style={{color: 'red'}}>{signupErrorMessage}</p>} */}
+          {signupErrorMessage ? displayErrorMessages() : null}
+        </div>
+        <br></br>
         <Button type="submit">Signup</Button>
        </Form.Group>
     </Form>

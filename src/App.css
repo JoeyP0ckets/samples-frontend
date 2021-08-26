@@ -103,3 +103,7 @@
   padding-top: 10px;
 }
 
+.signup-error-container li {
+  color: red;
+}
+
