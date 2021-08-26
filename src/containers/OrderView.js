@@ -12,6 +12,7 @@ const OrderView = (props) => {
       createDoctorOrder();
       props.resetQuantity();
       alert("Your order has been sent.  Please check the email associated with this account to sign for your order.")
+      history.push("/");
     }
 
   const createDoctorOrder = () => {    
@@ -34,10 +35,10 @@ const OrderView = (props) => {
         doctor_order
       )
     })
-      // .then(resp => resp.json())
-      // .then((newOrder) => {
-      //   console.log(newOrder)
-      // })
+      .then(resp => resp.json())
+      .then((newOrder) => {
+        props.renderNewSample(newOrder)
+      })
     }
 
   const handleSelect = e => {
@@ -83,7 +84,6 @@ const OrderView = (props) => {
           </select>
           </div>
       <br></br>
-      {/* call Ruby backend to initiate status//alert user that an order is pending docusign check their email//modal.close() */}
       <Button onClick={() => orderClick()} disabled={!props.quantity}>Order Sample</Button>
         </Modal.Body>
       </Modal>

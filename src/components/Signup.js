@@ -65,14 +65,14 @@ const Signup = (props) => {
        <Form.Group>
          General Information
         <Form.Control type="text" placeholder="Profesional Title e.g. Doctor" name="professional_title"/>
-        <Form.Control type="text" placeholder="Name" name="name"/>  
+        <Form.Control type="text" placeholder="First and Last Name" name="name"/>  
         <Form.Control type="text" placeholder="Email" name="email"/>
-        <Form.Control type="text" placeholder="Password" name="password"/>
+        <Form.Control type="password" placeholder="Password" name="password"/>
         <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>
         <br></br>
           Address Information
         <Form.Control type="text" placeholder="Address 1" name="address_1"/>
-        <Form.Control type="text" placeholder="Address 2" name="address_2"/>
+        <Form.Control type="text" placeholder="Address 2 (Optional)" name="address_2"/>
         <Form.Control type="text" placeholder="City" name="city"/>
         <Form.Control type="text" placeholder="State" name="state"/>
         <Form.Control type="text" placeholder="Zipcode" name="zipcode"/>
@@ -81,7 +81,6 @@ const Signup = (props) => {
         <Form.Control type="text" placeholder="License ID" name="license_id"/>
         <br></br>
         <div className="signup-error-container">
-          {/* {signupErrorMessage && <p style={{color: 'red'}}>{signupErrorMessage}</p>} */}
           {signupErrorMessage ? displayErrorMessages() : null}
         </div>
         <br></br>
