@@ -37,7 +37,7 @@ const OrderView = (props) => {
     })
       .then(resp => resp.json())
       .then((newOrder) => {
-        props.renderNewSample(newOrder)
+        props.renderNewDocOrder(newOrder)
       })
     }
 
@@ -100,7 +100,7 @@ const msp = state => {
 }
 const mdp = dispatch => {
   return {
-    renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample}),
+    renderNewDocOrder: (newOrder) => dispatch({type:"RENDER_NEW_DOCTOR_ORDER", newOrder:newOrder}),
     selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value}),
     resetQuantity: () => dispatch({type:"RESET_QUANTITY"})
   }
