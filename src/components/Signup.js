@@ -56,7 +56,8 @@ const Signup = (props) => {
         {signupErrorMessage.map((error, index) => (
         <li key={index}>{error}</li>
         ))}
-      </ul>)
+      </ul>
+    )
   }
   
 
