@@ -14,13 +14,16 @@ import RetrieveAuthCode from './RetrieveAuthCode';
 import RetrieveUserInfo from './RetrieveUserInfo';
 import CreateEnvelope from './CreateEnvelope';
 import LogoutButton from './Logout';
+import DocusignAuth from './DocusignAuth';
 
 
 
 const Navbar = (props) => {
+  
   let access_token = localStorage.getItem('docusign_access_token')
+
   if (props.user && !access_token) {
-    
+    // 
   }
   return (
     <div>
