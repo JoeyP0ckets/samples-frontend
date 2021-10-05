@@ -24,15 +24,8 @@ const CheckStatusInterval = () => {
       return () => clearInterval(interval)
     }, []);
 
-    
-  
-  
-
-  
-
   return(
     null
-    // <button onClick={() => checkStatusClick()}>Click Me For Envelope Status Testing</button>
   )
 }
 

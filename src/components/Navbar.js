@@ -23,7 +23,6 @@ const Navbar = (props) => {
   let access_token = localStorage.getItem('docusign_access_token')
 
   if (props.user && !access_token) {
-    // 
   }
   return (
     <div>
