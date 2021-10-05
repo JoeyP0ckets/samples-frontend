@@ -4,7 +4,7 @@ import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
 import LoginSignup from '../containers/LoginSignup'
 import CheckStatusInterval from './CheckStatusInterval'
-import TestOrdersButton from './TestOrdersButton'
+import SendOrdersInterval from './SendOrdersInterval'
 // import DeleteDocusignToken from './DeleteDocusignToken'
 import AdminHome from '../auth/AdminHome'
 
@@ -44,7 +44,7 @@ const Home = props => {
         <Col className="user-info-main">
           <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
           <CheckStatusInterval/>
-          <TestOrdersButton/>
+          <SendOrdersInterval/>
         </Col>
       </Row>
     </div>
