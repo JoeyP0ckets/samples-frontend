@@ -5,9 +5,10 @@ import { connect } from "react-redux"
 const LogoutButton = (props) => {
 
   const HandleLogout = () => {
-    props.logoutUser();
     localStorage.removeItem('auth_token')
+    localStorage.removeItem('auth-token-set-time')
     localStorage.removeItem('docusign_access_token')
+    props.logoutUser();
   }
   
   return(
