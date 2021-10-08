@@ -26,7 +26,6 @@ const Login = (props) => {
         console.log(data.doctor)
         if (data.token) {
           setAuthToken(data.token)
-          // localStorage.setItem('auth_token', data.token)
           props.loginUser(data.doctor)
           setLoginErrorMessage(undefined)
         } else {
