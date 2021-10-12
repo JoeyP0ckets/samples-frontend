@@ -1,5 +1,5 @@
 const INTERVAL = 1000; 
-const TIMEOUT = 600000; 
+const TIMEOUT = 60000; 
 
 function checkTime() {
   if (localStorage.getItem('auth_token')) {

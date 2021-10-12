@@ -23,7 +23,6 @@ const Login = (props) => {
     })
       .then(resp => resp.json())
       .then((data) => {
-        console.log(data.doctor)
         if (data.token) {
           setAuthToken(data.token)
           props.loginUser(data.doctor)

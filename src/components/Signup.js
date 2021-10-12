@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { Form, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { setAuthToken } from '../auth/AuthTokenTimeout'
 
 const Signup = (props) => {
 
@@ -35,7 +36,7 @@ const Signup = (props) => {
       .then(resp => resp.json())
       .then((data) => {
         if (data.token) {
-          localStorage.setItem('auth_token', data.token)
+          setAuthToken(data.token)
           props.loginUser(data.doctor)
           setSignupErrorMessage(undefined)
         } else {
