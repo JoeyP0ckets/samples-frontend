@@ -40,10 +40,10 @@ const Navbar = (props) => {
               <Home/>
             </Route>
             <Route exact path="/Samples">
-              {props.user ? <Samples/> : <LoginSignup/>}
+              {props.user ? <Samples/> : null }
             </Route>
             <Route exact path="/Profile">
-              {props.user ? <Profile/> : <LoginSignup/>}
+              {props.user ? <Profile/> : null }
             </Route>
             <Route path='/retrieve_auth_code'>
               <RetrieveAuthCode />

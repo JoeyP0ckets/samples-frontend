@@ -5,12 +5,12 @@ import {Row, Col} from 'react-bootstrap'
 import LoginSignup from '../containers/LoginSignup'
 import CheckStatusInterval from './CheckStatusInterval'
 import SendOrdersInterval from './SendOrdersInterval'
-// import DeleteDocusignToken from './DeleteDocusignToken'
 
 
 
 
-const Home = props => {
+
+const Home = (props) => {
   useEffect(() => fetchUser(), []);
 
   const fetchUser = () => {
@@ -50,7 +50,7 @@ const Home = props => {
     </div>
   ) :
   (
-    <LoginSignup />
+    <LoginSignup/>
   )
 }
 

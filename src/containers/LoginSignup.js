@@ -3,7 +3,7 @@ import Login from '../components/Login'
 import Signup from '../components/Signup'
 import { Row, Col } from 'react-bootstrap'
 
-const LoginSignup = () => {
+const LoginSignup = (props) => {
   return (
     <div className="login-container">
       <Row>
