@@ -1,42 +1,18 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { AuthContext }from '../context/AuthProvider'
 import { Form, Button } from "react-bootstrap"
-import { connect } from "react-redux"
-import { setAuthToken } from '../auth/AuthTokenTimeout'
 
-const Login = (props) => {
+
+const Login = () => {
+  
   const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
+  const { loginUser, logoutUser} = useContext(AuthContext);
 
   const handleLoginSubmit = e => {
     e.preventDefault()
-    const doctor = {
-      doctor: {
-        name: e.target.name.value,
-        password: e.target.password.value
-      }
-    }
-    fetch (`http://localhost:3000/api/v1/sessions`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(doctor)
-    })
-      .then(resp => resp.json())
-      .then((data) => {
-        if (data.token) {
-          setAuthToken(data.token)
-          props.loginUser(data.doctor)
-          setLoginErrorMessage(undefined)
-        } else {
-          localStorage.removeItem('auth_token')
-          setLoginErrorMessage(data.message)
-        }
-      })
-      .catch(() => {
-        localStorage.removeItem('auth_token')
-        setLoginErrorMessage('Something went wrong')
-      })
-      e.target.reset()
+    const errorMessage = loginUser(e.target.name.value, e.target.password.value);
+    errorMessage ? setLoginErrorMessage(errorMessage) : setLoginErrorMessage('');
+    e.target.reset();
   }
   
     return(
@@ -52,10 +28,30 @@ const Login = (props) => {
   )
 }
 
-const mdp = dispatch => {
-  return {
-    loginUser: (doctor) => dispatch({type:"LOGIN_USER", user:doctor})
-  }
-}
+export default Login
 
-export default connect(null,mdp)(Login)
+// fetch (`http://localhost:3000/api/v1/sessions`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(doctor)
+//     })
+//       .then(resp => resp.json())
+//       .then((data) => {
+        // if (data.token) {
+        //   setAuthToken(data.token)
+        //   props.loginUser(data.doctor)
+        //   setLoginErrorMessage(undefined)
+        // } else {
+        //   localStorage.removeItem('auth_token')
+        //   setLoginErrorMessage(data.message)
+        // }
+      //   props.loginUser();
+      // })
+      // .catch(() => {
+        // localStorage.removeItem('auth_token')
+        // setLoginErrorMessage('Something went wrong')
+      //   props.logouUser();
+      // })
+      // e.target.reset()

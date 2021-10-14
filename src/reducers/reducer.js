@@ -25,8 +25,6 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, quantity: action.value}
     case "RESET_QUANTITY":
       return {...prevState, quantity: null}
-    // case "POP_UP":
-    //   return {...prevState, seen: !prevState.seen}
       default:
       return prevState
   }
