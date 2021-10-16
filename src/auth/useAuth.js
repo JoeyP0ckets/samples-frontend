@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSnackbar } from 'notistack';
+
 
 const TIMEOUT = 5000;
 let authIntervalTimer = null;
@@ -7,13 +9,9 @@ let authIntervalTimer = null;
 export const useAuth = () => {
   const [authTime, setAuthTime] = useState(null);
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
       
-  
-  
-  
-  
       const loginUser = useCallback((name, password) => {
-        console.log("I'm in the loginUser Function")
         const doctor = {
           doctor: {
             name,
@@ -39,17 +37,15 @@ export const useAuth = () => {
               setAuthTime(new Date(data.doctor.last_logged_in).getTime());
               dispatch({ type: 'LOGIN_USER', user: data.doctor })
             }
+            else if (data.message) {
+              enqueueSnackbar(data.message, { variant: 'error' });
+            }
             else {
-              localStorage.removeItem('auth_token');
-              dispatch({ type: 'LOGIN_USER', user: {} })
-              alert(data.message);
+              enqueueSnackbar('Sorry there was an error with the request', { variant: 'error' });
             }
           })
-          .catch(() => {
-            localStorage.removeItem('auth_token');
-            alert('Something went wrong');
-          });
-      }, [dispatch]);
+          .catch(err => enqueueSnackbar(`Sorry there was an error with that request: ${err}`, { variant: 'error' }));
+      }, [dispatch, enqueueSnackbar]);
 
   const logoutUser = useCallback(() => {
     console.log("I'm logging out the user")

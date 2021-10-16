@@ -1,14 +1,15 @@
 import React from "react"
 import { Button } from "react-bootstrap"
-import { connect } from "react-redux"
+import { useDispatch } from "react-redux"
 
 const LogoutButton = (props) => {
+  const dispatch = useDispatch();
 
   const HandleLogout = () => {
     localStorage.removeItem('auth_token')
     localStorage.removeItem('auth-token-set-time')
     localStorage.removeItem('docusign_access_token')
-    props.logoutUser();
+    dispatch({ type: "LOGOUT_USER"})
   }
   
   return(
@@ -18,10 +19,6 @@ const LogoutButton = (props) => {
   )
 }
 
-const mdp = dispatch => {
-  return {
-    logoutUser: () => dispatch({type:"LOGOUT_USER"})
-  }
-}
 
-export default connect(null,mdp)(LogoutButton)
+
+export default LogoutButton
