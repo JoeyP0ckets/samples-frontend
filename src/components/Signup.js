@@ -1,68 +1,42 @@
-import React, {useState, useDispatch } from "react"
+import React, {useState, useDispatch, useContext } from "react"
 import { Form, Button} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { AuthContext }from '../context/AuthProvider'
 
 
-const Signup = (props) => {
+const Signup = () => {
   
   const [signupErrorMessage, setSignupErrorMessage] = useState(undefined)
+  const { signupUser } = useContext(AuthContext);
   
   const handleSignupSubmit = e => {
-    e.preventDefault()
-    
-    const doctor = {
-      name: e.target.name.value,
-      password: e.target.password.value,
-      email: e.target.email.value,
-      address_1: e.target.address_1.value,
-      address_2: e.target.address_2.value,
-      city: e.target.city.value,
-      state: e.target.state.value,
-      zipcode: e.target.zipcode.value,
-      license_id: e.target.license_id.value,
-      professional_title: e.target.professional_title.value,
-      phone_number: e.target.phone_number.value
-    }
-    fetch (`http://localhost:3000/api/v1/doctors`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-         Accept: "application/json"
-      },
-      body: JSON.stringify({
-        doctor
-      })
-    })
-      .then(resp => resp.json())
-      .then((data) => {
-        if (data.token) {
-          // setAuthToken(data.token)
-          // props.loginUser(data.doctor)
-          // setSignupErrorMessage(undefined)
-          props.loginUser();
-        } else {
-          // localStorage.removeItem('auth_token')
-          // setSignupErrorMessage(data.errors)
-          props.logoutUser();
-        }
-      })
-      .catch(() => {
-        localStorage.removeItem('auth_token')
-        setSignupErrorMessage('Something went wrong')
-      })
-      e.target.reset()
+    e.preventDefault();
+    const errorMessage = signupUser(
+      e.target.name.value, 
+      e.target.password.value,
+      e.target.email.value,
+      e.target.address_1.value,
+      e.target.address_2.value,
+      e.target.city.value,
+      e.target.state.value,
+      e.target.zipcode.value,
+      e.target.license_id.value,
+      e.target.professional_title.value,
+      e.target.phone_number.value
+    );
+    errorMessage ? setSignupErrorMessage(errorMessage) : setSignupErrorMessage('');
+    e.target.reset();
   }
 
-  const displayErrorMessages = () => {
-    return (
-      <ul>
-        {signupErrorMessage.map((error, index) => (
-        <li key={index}>{error}</li>
-        ))}
-      </ul>
-    )
-  }
+  // const displayErrorMessages = () => {
+  //   return (
+  //     <ul>
+  //       {signupErrorMessage.map((error, index) => (
+  //       <li key={index}>{error}</li>
+  //       ))}
+  //     </ul>
+  //   )
+  // }
   
 
   return (
@@ -86,7 +60,6 @@ const Signup = (props) => {
         <Form.Control type="text" placeholder="License ID" name="license_id"/>
         <br></br>
         <div className="signup-error-container">
-          {signupErrorMessage ? displayErrorMessages() : null}
         </div>
         <br></br>
         <Button type="submit">Signup</Button>
@@ -95,10 +68,4 @@ const Signup = (props) => {
   )
 }
 
-const mdp = dispatch => {
-  return{
-    loginUser: (user) => dispatch({type:"LOGIN_USER", user:user})
-  }
-}
-
-export default connect(null,mdp)(Signup)
+export default Signup
