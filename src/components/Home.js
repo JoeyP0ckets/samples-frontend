@@ -8,8 +8,6 @@ import SendOrdersInterval from './SendOrdersInterval'
 
 
 
-
-
 const Home = (props) => {
   useEffect(() => fetchUser(), []);
 
