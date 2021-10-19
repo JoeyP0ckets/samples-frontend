@@ -105,6 +105,7 @@ export const useAuth = () => {
   }, [])
 
   useEffect(() => {
+    console.log("I'm in the useEffect for authtime")
     if (authIntervalTimer) {
       clearInterval(authIntervalTimer);
     }
