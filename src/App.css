@@ -4,6 +4,7 @@
   /* text-align: center; */
 }
 
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,6 +24,17 @@
   font-family: 'Lora', serif;
 }
 
+.main-nav {
+  color: black 
+}
+.main-nav:hover {
+  color: tomato !important;
+}
+
+.main-nav-active {
+  color: tomato;
+}
+
 .navbar-container {
   border-bottom: double black;
   background-color: lightgray;
@@ -30,7 +42,27 @@
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
   background-repeat: no-repeat;
   background-size: 100px;
+} */
+
+.login-container {
+  width: 100%;
+  text-align: center;
+  display: center;
 }
+
+.login-form {
+  display: block;
+  text-align: center;
+}
+
+.form-width {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+ 
 
 .samples-container {
   text-align: center;
@@ -74,6 +106,9 @@
 }
 
 .user-info-main {
+  background-image: url(https://assets.turbologo.com/blog/en/2019/12/19084817/Fedex-logo.png);
+  background-repeat: no-repeat;
+  background-size: 100px;
   border-radius: 25px;
   border: 2px solid red;
   background-color: gray;
@@ -98,5 +133,9 @@
 
 .modal-quantity-select {
   padding-top: 10px;
+}
+
+.signup-error-container li {
+  color: red;
 }
 

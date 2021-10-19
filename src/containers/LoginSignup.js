@@ -6,7 +6,9 @@ import { Row, Col } from 'react-bootstrap'
 const LoginSignup = () => {
   return (
     <div className="login-container">
-      <Row>
+      Login
+      <Login/>
+      {/* <Row>
         <Col xs={6} md={6}>
         <h3 className="review-text" style={{ textAlign: "center"}}>Login</h3>
         <Login/>
@@ -15,10 +17,9 @@ const LoginSignup = () => {
         <h3 className="review-text" style={{ textAlign: "center"}}>Signup</h3>
         <Signup/>
         </Col>
-      </Row>
-
-    </div>
+      </Row> */}
+   </div>
   )
-}
+} 
 
 export default LoginSignup

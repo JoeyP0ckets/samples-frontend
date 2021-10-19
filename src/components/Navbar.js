@@ -3,38 +3,54 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink, 
 } from "react-router-dom";
 import { connect } from "react-redux"
 import Samples from './Samples';
 import Home from './Home'
 import Profile from './Profile'
-import LoginSignup from '../containers/LoginSignup';
+import RetrieveAuthCode from './RetrieveAuthCode';
+import RetrieveUserInfo from './RetrieveUserInfo';
+import CreateEnvelope from './CreateEnvelope';
+import LogoutButton from './Logout';
+
 
 
 
 const Navbar = (props) => {
   
+  let access_token = localStorage.getItem('docusign_access_token')
+
+  if (props.user && !access_token) {
+  }
   return (
     <div>
       <Router>
           <div className="navbar-container">
           <h1 className="navbar-logo">First Dose Fulfillment</h1>
-          {props.user ? null : <Link to="/Login">Login/Signup</Link>}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Link to="/">Home</Link> : null}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Link to="/Samples">Samples List</Link> : null}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Link to="/Profile">Profile</Link> : null}&nbsp;&nbsp;&nbsp;
-          {props.user ? <Link to="/Logout">Logout</Link> : null}
+          {props.user ? <NavLink exact to="/" className="main-nav" activeClassName="main-nav-active">Home</NavLink> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <NavLink exact to="/Samples" className="main-nav" activeClassName="main-nav-active">Samples List</NavLink> : null}&nbsp;&nbsp;&nbsp;
+          {props.user ? <NavLink exact to="/Profile" className="main-nav" activeClassName="main-nav-active">Profile</NavLink> : null}&nbsp;&nbsp;&nbsp;
+          {/* {props.user ? <LogoutButton/> : null} */}
           </div>
           <Switch>
             <Route exact path="/">
-              {props.user ? <Home/> : <LoginSignup/>}
+              <Home/>
             </Route>
             <Route exact path="/Samples">
-              {props.user ? <Samples/> : <LoginSignup/>}
+              {props.user ? <Samples/> : null }
             </Route>
             <Route exact path="/Profile">
-              {props.user ? <Profile/> : <LoginSignup/>}
+              {props.user ? <Profile/> : null }
+            </Route>
+            <Route path='/retrieve_auth_code'>
+              <RetrieveAuthCode />
+            </Route>
+            <Route path='/user-info'>
+              <RetrieveUserInfo/>
+            </Route>
+            <Route path='/create_envelope'>
+              <CreateEnvelope/>
             </Route>
           </Switch>
       </Router> 

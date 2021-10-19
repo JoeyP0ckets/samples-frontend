@@ -1,63 +1,45 @@
 import React, { useState } from "react";
-import emailjs from 'emailjs-com';
+import { useHistory } from "react-router-dom";
 import {connect} from 'react-redux';
 import {Button, Modal, } from 'react-bootstrap';
 
 
 const OrderView = (props) => {
-
+  const history = useHistory();
   const [lgShow, setLgShow] = useState(false);
   
   const orderClick = () => {
-    // emailjs.send("service_c25ldbm","template_4c4r0yu", {
-    //   from_name: `${props.user.name}`,
-    //   to_name: "First Dose Ordering",
-    //   sample_name: `${props.selectedSample.sample_name}`,
-    //   user_name: `${props.user.name}`,
-    //   address_1: `${props.user.address_1}`,
-    //   address_2: `${props.user.address_2}`,
-    //   city: `${props.user.city}`,
-    //   state: `${props.user.state}`,
-    //   zipcode: `${props.user.zipcode}`,
-    //   phone_number: `${props.user.phone_number}`,
-    //   license_id: `${props.user.license_id}`,
-    //   professional_title: `${props.user.professional_title}`,
-    //   quantity: `${props.quantity}`
-    //   }, "user_Ypmj33LBBAihNfVMLDVYj");
-    //   alert("Your order has been sent")
-      createDoctorSample();
-      props.resetQuantity()
-  }
-
-  
-
-  const createDoctorSample = () => {
-    // fetch ('http://localhost:3000/api/v1/docusign/create_session') 
-    //   .then(resp => resp.json())
-    //   .then(data => console.log(data))
-      
-    const doctor_sample = {
-      quantity: props.quantity,
-      doctor_id: props.user.id,
-      sample_id: props.selectedSample.id,
-      signature_status_success: false
+      createDoctorOrder();
+      props.resetQuantity();
+      alert("Your order has been sent.  Please check the email associated with this account to sign for your order.")
+      history.push("/");
     }
-    fetch (`http://localhost:3000/api/v1/doctor_samples`, {
+
+  const createDoctorOrder = () => {    
+    let accessToken = localStorage.getItem('docusign_access_token')
+    let token = localStorage.getItem('auth_token')
+    const doctor_order= {
+      quantity: props.quantity,
+      sample_id: props.selectedSample.id,
+      token: accessToken
+    }
+    
+    fetch (`http://localhost:3000/api/v1/doctor_orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-         Accept: "application/json"
+         Accept: "application/json",
+         'Auth-Token': token
       },
-      body: JSON.stringify({
-        doctor_sample
-      })
+      body: JSON.stringify(
+        doctor_order
+      )
     })
       .then(resp => resp.json())
-      .then((newSample) => {
-        console.log(newSample)
-        props.renderNewSample(newSample)
+      .then((newOrder) => {
+        props.renderNewDocOrder(newOrder)
       })
-  }
+    }
 
   const handleSelect = e => {
     let value = e.target.value
@@ -102,13 +84,9 @@ const OrderView = (props) => {
           </select>
           </div>
       <br></br>
-      {/* call Ruby backend to initiate status//alert user that an order is pending docusign check their email//modal.close() */}
       <Button onClick={() => orderClick()} disabled={!props.quantity}>Order Sample</Button>
         </Modal.Body>
       </Modal>
-      
-    {/* reinsert into onClick AFTER DOCUSIGN API TESTING IS DONE
-     orderClick(props.selectedSample) */}
   </div>
   )
 }
@@ -122,7 +100,7 @@ const msp = state => {
 }
 const mdp = dispatch => {
   return {
-    renderNewSample: (newSample) => dispatch({type:"RENDER_NEW_SAMPLE", newSample:newSample}),
+    renderNewDocOrder: (newOrder) => dispatch({type:"RENDER_NEW_DOCTOR_ORDER", newOrder:newOrder}),
     selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value}),
     resetQuantity: () => dispatch({type:"RESET_QUANTITY"})
   }

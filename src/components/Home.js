@@ -2,9 +2,13 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
 import {Row, Col} from 'react-bootstrap'
+import LoginSignup from '../containers/LoginSignup'
+import CheckStatusInterval from './CheckStatusInterval'
+import SendOrdersInterval from './SendOrdersInterval'
 
 
-const Home = props => {
+
+const Home = (props) => {
   useEffect(() => fetchUser(), []);
 
   const fetchUser = () => {
@@ -27,20 +31,24 @@ const Home = props => {
     .then(user => props.loginUser(user))
   }
   
-  return(
+  return props.user ? (
     <div className="home-main">
       <h2>Welcome, Dr. {props.user ? props.user.name : null}</h2>
       <Row>
         <Col className="user-samples-main">
           <h3>Click on a past sample for tracking information</h3>
-          {props.user ? <UserSample/> : "No First Doses"}
+          {props.user.samples ? <UserSample/> : "No First Doses"}
         </Col>
         <Col className="user-info-main">
-          I'm the second column foolish human.
+          <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
+          <CheckStatusInterval/>
+          <SendOrdersInterval/>
         </Col>
       </Row>
     </div>
-    
+  ) :
+  (
+    <LoginSignup/>
   )
 }
 
