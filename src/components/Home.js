@@ -38,14 +38,11 @@ const Home = (props) => {
     <div className="home-main">
        <CheckStatusInterval/>
        <SendOrdersInterval/>
-      <h2 style={{paddingTop: "20px"}}>Welcome, Dr. {props.user ? props.user.name : null}</h2>
-      
+      <h3 style={{paddingTop: "20px", paddingLeft: "75px", fontFamily: "Cinzel", textAlign: "left", color: "whitesmoke"}}>Welcome, Dr. {props.user ? props.user.name : null}</h3>
         <div className="user-samples-main">
-          <h3>Click on a past sample for tracking information</h3>
-          {props.user.samples ? <UserSample/> : "No First Doses"}
-        
-        
-      </div>
+          <h3 style={{textAlign: "center", paddingTop: "10px", fontFamily: "Cinzel", borderBottom: "double black"}}>Track your samples</h3>
+            {props.user.samples ? <UserSample/> : "No First Doses"}
+        </div>
     </div>
   ) :
   (
@@ -67,6 +64,3 @@ const mdp = (dispatch) => {
 
 export default connect(msp, mdp)(Home)
 
-{/* <Col className="user-info-main">
-          <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
-        </Col> */}
