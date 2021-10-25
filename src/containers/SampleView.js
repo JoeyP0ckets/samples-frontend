@@ -9,11 +9,11 @@ const SampleView = (props) => {
 
   return (
     <div className="sample-info-view">
-      <h1>{sample_name}</h1>
+      <h1 style={{paddingTop: "20px", color: "whitesmoke", fontFamily: "Cinzel", fontWeight: "bold"}}>{sample_name}</h1>
       <img src={image_url} alt={sample_name}/>
       <div className="sample-info-container">
-        <h4>{description}</h4>
-        <h4>Sample Size: {sample_size}</h4>
+        <h4 style={{fontFamily: "Cinzel"}}>{description}</h4>
+        <h4 style={{fontFamily: "Cinzel"}}>Sample Size: {sample_size}</h4>
       </div>
       <OrderView/>
     </div>

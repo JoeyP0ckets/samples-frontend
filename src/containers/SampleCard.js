@@ -14,8 +14,8 @@ const SampleCard = (props) => {
     <Card style={{ width: '18rem' }}>
     <Card.Img variant="top" src={image_url} alt={sample_name} />
     <Card.Body>
-      <Card.Title>{sample_name}</Card.Title>
-      <Card.Text>
+      <Card.Title style={{fontFamily: "Cinzel", fontWeight: "bold"}}>{sample_name}</Card.Title>
+      <Card.Text style={{fontFamily: "Cinzel"}}>
         Click for details and ordering
       </Card.Text>
       <Button variant="primary" onClick={() => sampleClick(props.sample)}>Place Order</Button>

@@ -33,7 +33,7 @@ const Samples = (props) =>  {
         </Col>
         <Col className="sample-column">
           <div className="sample-view">          
-            {props.selectedSample ? <SampleView/> : <h1>Please Select a Sample</h1>}
+            {props.selectedSample ? <SampleView/> : <h1 style={{paddingTop: "30px"}}>Please Select a Sample</h1>}
           </div>
         </Col>
       </Row>

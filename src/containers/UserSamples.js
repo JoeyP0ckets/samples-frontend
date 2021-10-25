@@ -1,5 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
+import dateFormat from 'dateformat'
+import { ListGroup } from "react-bootstrap"
 
  
 const UserSample = (props) => {
@@ -22,14 +24,16 @@ const UserSample = (props) => {
     const fetchUserOrders = () => {
       fetch ('http://localhost:3000/api/v1/doctor_orders/return_doctors_orders', fetchObj)
       .then(resp => resp.json())
-      .then((doc_orders) => props.renderDocOrders(doc_orders))
+      .then((doc_orders) => {
+        console.log(doc_orders)
+        props.renderDocOrders(doc_orders)})
     }
 
     const displayOrders = () => {
       return (
         <ul>
           {props.doctorOrders.map((order, index) => (
-          <li key={index}>{order.sample.sample_name}, {order.status}</li>
+          <li key={index} style={{fontFamily: "Cinzel"}}>{order.quantity} orders of {order.sample.sample_name} {order.status == "sent" ? `awaiting signature` : "signed for"}.  Ordered on {dateFormat(order.status_datetime, "mmmm dS, yyyy")}</li>
           ))}
         </ul>
       )
