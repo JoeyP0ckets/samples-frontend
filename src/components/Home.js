@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
-import {Row, Col} from 'react-bootstrap'
 import LoginSignup from '../containers/LoginSignup'
 import CheckStatusInterval from './CheckStatusInterval'
 import SendOrdersInterval from './SendOrdersInterval'
+import { AuthContext }from '../context/AuthProvider'
 
 
 
@@ -28,23 +28,24 @@ const Home = (props) => {
 
     fetch(`http://localhost:3000/api/v1/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
-    .then(user => props.loginUser(user))
+    .then(user => {
+      console.log(user)
+      props.loginUser(user)
+    })
   }
   
   return props.user ? (
     <div className="home-main">
-      <h2>Welcome, Dr. {props.user ? props.user.name : null}</h2>
-      <Row>
-        <Col className="user-samples-main">
+       <CheckStatusInterval/>
+       <SendOrdersInterval/>
+      <h2 style={{paddingTop: "20px"}}>Welcome, Dr. {props.user ? props.user.name : null}</h2>
+      
+        <div className="user-samples-main">
           <h3>Click on a past sample for tracking information</h3>
           {props.user.samples ? <UserSample/> : "No First Doses"}
-        </Col>
-        <Col className="user-info-main">
-          <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
-          <CheckStatusInterval/>
-          <SendOrdersInterval/>
-        </Col>
-      </Row>
+        
+        
+      </div>
     </div>
   ) :
   (
@@ -65,3 +66,7 @@ const mdp = (dispatch) => {
 }
 
 export default connect(msp, mdp)(Home)
+
+{/* <Col className="user-info-main">
+          <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
+        </Col> */}

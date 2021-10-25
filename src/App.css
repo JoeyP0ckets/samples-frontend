@@ -21,28 +21,58 @@
 }
 
 .navbar-logo {
+  float: left;
   font-family: 'Lora', serif;
+  padding: 5px;
 }
 
 .main-nav {
-  color: black 
+  color: black;
+  margin-left: 70px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 .main-nav:hover {
   color: tomato !important;
+  opacity: 1;
 }
+
+/* .main-nav::before{
+  content: '';
+  display: block;
+  height: 5px;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+} */
 
 .main-nav-active {
   color: tomato;
 }
 
 .navbar-container {
+  width: 100%;
   border-bottom: double black;
   background-color: lightgray;
-  text-align: center;
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
+  
+  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
   background-repeat: no-repeat;
-  background-size: 100px;
-} */
+  background-size: 100px; */
+} 
+
+.navbar-container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.nav-links {
+  float: right;
+  padding-right: 70px;
+  padding-top: 25px;
+  position: relative;
+  
+}
 
 .login-container {
   width: 100%;
@@ -51,6 +81,11 @@
 }
 
 .login-form {
+  display: block;
+  text-align: center;
+}
+
+.signup-form {
   display: block;
   text-align: center;
 }

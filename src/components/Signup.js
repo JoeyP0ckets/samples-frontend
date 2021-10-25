@@ -1,5 +1,6 @@
 import React, {useState, useDispatch, useContext } from "react"
 import { Form, Button} from 'react-bootstrap'
+import { NavLink } from "react-router-dom"
 import { AuthContext }from '../context/AuthProvider'
 
 
@@ -39,31 +40,31 @@ const Signup = () => {
   
 
   return (
-    <Form onSubmit={e => handleSignupSubmit(e)}>
-       <Form.Group>
-         General Information
-        <Form.Control type="text" placeholder="Profesional Title e.g. Doctor" name="professional_title"/>
-        <Form.Control type="text" placeholder="First and Last Name" name="name"/>  
-        <Form.Control type="text" placeholder="Email" name="email"/>
-        <Form.Control type="password" placeholder="Password" name="password"/>
-        <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>
-        <br></br>
-          Address Information
-        <Form.Control type="text" placeholder="Address 1" name="address_1"/>
-        <Form.Control type="text" placeholder="Address 2 (Optional)" name="address_2"/>
-        <Form.Control type="text" placeholder="City" name="city"/>
-        <Form.Control type="text" placeholder="State" name="state"/>
-        <Form.Control type="text" placeholder="Zipcode" name="zipcode"/>
-        <br></br>
-          Licensing Information
-        <Form.Control type="text" placeholder="License ID" name="license_id"/>
-        <br></br>
-        <div className="signup-error-container">
-        </div>
-        <br></br>
-        <Button type="submit">Signup</Button>
-       </Form.Group>
-    </Form>
+    <div className="signup-form">
+      <Form onSubmit={e => handleSignupSubmit(e)} className="form-width">
+        <Form.Group>
+          General Information
+          <Form.Control type="text" placeholder="Profesional Title e.g. Doctor" name="professional_title"/>
+          <Form.Control type="text" placeholder="First and Last Name" name="name"/>  
+          <Form.Control type="text" placeholder="Email" name="email"/>
+          <Form.Control type="password" placeholder="Password" name="password"/>
+          <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>
+          <br></br>
+            Address Information
+          <Form.Control type="text" placeholder="Address 1" name="address_1"/>
+          <Form.Control type="text" placeholder="Address 2 (Optional)" name="address_2"/>
+          <Form.Control type="text" placeholder="City" name="city"/>
+          <Form.Control type="text" placeholder="State" name="state"/>
+          <Form.Control type="text" placeholder="Zipcode" name="zipcode"/>
+          <br></br>
+            Licensing Information
+          <Form.Control type="text" placeholder="License ID" name="license_id"/>
+          <br></br>
+          <Button type="submit">Signup</Button>
+        </Form.Group>
+      </Form>
+      Already a User? <NavLink to="/">Login</NavLink>
+    </div>
   )
 }
 
