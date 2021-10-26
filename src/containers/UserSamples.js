@@ -33,7 +33,7 @@ const UserSample = (props) => {
       return (
         <ul>
           {props.doctorOrders.map((order, index) => (
-          <li key={index} style={{fontFamily: "Cinzel"}}>{order.quantity} orders of {order.sample.sample_name} {order.status == "sent" ? `awaiting signature` : "signed for"}.  Ordered on {dateFormat(order.status_datetime, "mmmm dS, yyyy")}</li>
+          <li key={index} style={{fontFamily: "Cinzel"}}>{order.quantity} orders of {order.sample.sample_name} {order.status === "sent" ? `awaiting signature` : "signed for"}.  Ordered on {dateFormat(order.status_datetime, "mmmm dS, yyyy")}</li>
           ))}
         </ul>
       )
