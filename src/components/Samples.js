@@ -25,15 +25,15 @@ const Samples = (props) =>  {
   }
   
     return(
-      <Row>
-        <Col className="card-column" md="auto">
+      <Row style={{height: "100vh"}}>
+        <Col className="card-column" md="auto" style={{height: "100%", overflowY: "scroll"}}>
           <div className="samples-container">
             {props.allSamples ? renderAllSamples() : "samples deleted from state"}
           </div>
         </Col>
         <Col className="sample-column">
           <div className="sample-view">          
-            {props.selectedSample ? <SampleView/> : <h1 style={{paddingTop: "30px"}}>Please Select a Sample</h1>}
+            {props.selectedSample ? <SampleView/> : <h1 style={{paddingTop: "30px", fontFamily: "Cinzel", fontWeight: "bold", color: "white"}}>Please Select a Sample</h1>}
           </div>
         </Col>
       </Row>

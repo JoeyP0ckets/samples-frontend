@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Pacifico&display=swap');
 
 .App {
   /* text-align: center; */
@@ -23,7 +23,8 @@
 .navbar-logo {
   float: left;
   font-family: 'Cinzel', serif;
-  padding: 5px;
+  padding-top: 5px;
+  padding-left: 75px;
 }
 
 .main-nav {
@@ -38,14 +39,6 @@
   opacity: 1;
 }
 
-/* .main-nav::before{
-  content: '';
-  display: block;
-  height: 5px;
-  width: 100%;
-  background-color: black;
-  position: absolute;
-} */
 
 .main-nav-active {
   color: tomato;
@@ -55,10 +48,6 @@
   width: 100%;
   border-bottom: double black;
   background-color: lightgray;
-  
-  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
-  background-repeat: no-repeat;
-  background-size: 100px; */
 } 
 
 .navbar-container::after {
@@ -79,11 +68,13 @@
   width: 100%;
   text-align: center;
   display: center;
+  float: left;
 }
 
 .login-form {
   display: block;
   text-align: center;
+  
 }
 
 .signup-form {
@@ -103,7 +94,6 @@
 .samples-container {
   text-align: center;
   display: inline-block;
-  
 }
 
 .home-main {
@@ -118,7 +108,6 @@
 
 .sample-view {
   text-align: center;
-  
 }
 
 .sample-info-view {
