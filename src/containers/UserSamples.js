@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import dateFormat from 'dateformat'
-import { ListGroup } from "react-bootstrap"
+import { Table } from "react-bootstrap"
 
  
 const UserSample = (props) => {
@@ -25,27 +25,36 @@ const UserSample = (props) => {
       fetch ('http://localhost:3000/api/v1/doctor_orders/return_doctors_orders', fetchObj)
       .then(resp => resp.json())
       .then((doc_orders) => {
-        console.log(doc_orders)
         props.renderDocOrders(doc_orders)})
     }
 
-    const displayOrders = () => {
-      return (
-        <ul>
-          {props.doctorOrders.map((order, index) => (
-          <li key={index} style={{fontFamily: "Cinzel"}}>{order.quantity} orders of {order.sample.sample_name} {order.status === "sent" ? `awaiting signature` : "signed for"}.  Ordered on {dateFormat(order.status_datetime, "mmmm dS, yyyy")}</li>
-          ))}
-        </ul>
-      )
-    }
-    
-
   return (
-    <div className="user-samples-container">
-      {props.doctorOrders ? displayOrders() : "No orders to show"}
-    </div>
+    <Table striped bordered hover variant="dark">
+      <thead>
+        <tr>
+          <th>Quantity</th>
+          <th>Sample Name</th>
+          <th>Status</th>
+          <th>Date Ordered</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          props.doctorOrders && props.doctorOrders.map((order) => (
+            <tr key={order.id}>
+            <td>{order.quantity} {order.quantity === 1 ? "order" : "orders"}</td>
+            <td>{order.sample.sample_name}</td>
+            <td>{order.status === "sent" ? `awaiting signature` : "signed for"}</td>
+            <td>{dateFormat(order.status_datetime, "mmmm dS, yyyy")}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+      
+    </Table>
   )
 }
+  
 
 const msp = state => {
   return {
