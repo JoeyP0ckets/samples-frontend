@@ -24,7 +24,7 @@
   float: left;
   font-family: 'Cinzel', serif;
   padding-top: 5px;
-  padding-left: 75px;
+  padding-left: 80px;
 }
 
 .main-nav {
@@ -75,6 +75,14 @@
   display: block;
   text-align: center;
   
+}
+
+.login-image {
+  height: 70vh;
+  background-image: url(https://www.stockvault.net/data/2018/09/01/254142/preview16.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 900px 570px;
 }
 
 .signup-form {
