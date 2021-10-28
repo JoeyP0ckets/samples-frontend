@@ -50,7 +50,6 @@ const UserSample = (props) => {
           ))
         }
       </tbody>
-      
     </Table>
   )
 }

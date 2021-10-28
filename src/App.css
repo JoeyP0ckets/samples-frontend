@@ -131,14 +131,15 @@
 }
 
 .user-samples-main {
-  border-radius: 25px;
-  border: 2px solid red;
-  text-align: left;
-  background-color: white;
+  border: 2px solid black;
+  background-color:  lightgray;
   margin-top: 10px;
   margin-left: 70px;
   margin-right: 70px;
+  height: 300px;
+  overflow-y: auto;
 }
+
 
 .user-info-main {
   background-image: url(https://assets.turbologo.com/blog/en/2019/12/19084817/Fedex-logo.png);
