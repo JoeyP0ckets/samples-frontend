@@ -122,7 +122,7 @@ export const useAuth = () => {
             if (data.token) {
               localStorage.setItem('auth_token', data.token);
               setAuthTime(new Date(data.doctor.last_logged_in).getTime());
-              dispatch({ type: 'LOGIN_USER', user: data.doctor })
+              dispatch({ type: 'LOGIN_USER', user: data.doctor });
             }
             else if (data.message) {
               enqueueSnackbar(data.message, { variant: 'error' });

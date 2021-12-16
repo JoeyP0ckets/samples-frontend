@@ -7,8 +7,7 @@ import SampleView from '../containers/SampleView'
 const Samples = (props) =>  {
   
   useEffect(() => fetchSamples(), []);
-
-
+  
   const fetchSamples = () => {
     fetch ('http://localhost:3000/api/v1/samples')
     .then(resp => resp.json())
@@ -43,7 +42,8 @@ const Samples = (props) =>  {
 const msp = state => {
   return {
     allSamples: state.allSamples,
-    selectedSample: state.selectedSample
+    selectedSample: state.selectedSample,
+    user: state.user
   }
 }
 
