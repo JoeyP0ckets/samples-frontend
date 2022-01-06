@@ -24,7 +24,7 @@ const Navbar = (props) => {
   let access_token = localStorage.getItem('docusign_access_token')
 
   if (props.user && !access_token) {
-    window.location.href = 'https://account-d.docusign.com/oauth/auth?response_type=token&client_id=95849d5d-a7e9-4572-bb38-d1efdd1d1a38&redirect_uri=http://localhost:3001/retrieve_auth_code/&scope=signature'
+    console.log("I don't have an access tokenß")
   }
   return (
     <div>
@@ -32,10 +32,10 @@ const Navbar = (props) => {
           <div className="navbar-container">
             <h1 className="navbar-logo">First Dose Fulfillment</h1>
               <div className="nav-links">
-                {props.user ? <NavLink exact to="/" className="main-nav" activeClassName="main-nav-active">Home</NavLink> : null}&nbsp;&nbsp;&nbsp;
-                {props.user ? <NavLink exact to="/Samples" className="main-nav" activeClassName="main-nav-active">FirstDoses</NavLink> : null}&nbsp;&nbsp;&nbsp;
-                {props.user ? <NavLink exact to="/Profile" className="main-nav" activeClassName="main-nav-active">Profile</NavLink> : null}&nbsp;&nbsp;&nbsp;
-                {props.user ? <LogoutButton/> : null}
+                {props.user && <NavLink exact to="/" className="main-nav" activeClassName="main-nav-active">Home</NavLink>}
+                {props.user && <NavLink exact to="/Samples" className="main-nav" activeClassName="main-nav-active">FirstDoses</NavLink>}
+                {props.user && <NavLink exact to="/Profile" className="main-nav" activeClassName="main-nav-active">Profile</NavLink>}
+                {props.user && <LogoutButton/>}
               </div>
           </div>
 
@@ -45,10 +45,10 @@ const Navbar = (props) => {
               <Home/>
             </Route>
             <Route exact path="/Samples">
-              {props.user ? <Samples/> : null}
+              {props.user && <Samples/>}
             </Route>
             <Route exact path="/Profile">
-              {props.user ? <Profile/> : null }
+              {props.user && <Profile/>}
             </Route>
             <Route exact path="/Signup">
               <Signup/>
