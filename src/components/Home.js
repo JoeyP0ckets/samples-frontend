@@ -4,7 +4,8 @@ import UserSample from '../containers/UserSamples'
 import LoginSignup from '../containers/LoginSignup'
 import CheckStatusInterval from './CheckStatusInterval'
 import SendOrdersInterval from './SendOrdersInterval'
-import { AuthContext }from '../context/AuthProvider'
+import { API_ROOT } from '../apiRoot'
+
 
 
 
@@ -26,10 +27,9 @@ const Home = (props) => {
       },
     }
 
-    fetch(`http://localhost:3000/api/v1/doctors/showdoctor`, fetchObj)
+    fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
     .then(user => {
-      console.log(user)
       props.loginUser(user)
     })
   }
@@ -38,14 +38,15 @@ const Home = (props) => {
     <div className="home-main">
        <CheckStatusInterval/>
        <SendOrdersInterval/>
-      <h2 style={{paddingTop: "20px"}}>Welcome, Dr. {props.user ? props.user.name : null}</h2>
-      
+      <h3 style={{paddingTop: "20px", paddingLeft: "75px", fontFamily: "Cinzel", textAlign: "left", color: "whitesmoke"}}>Welcome, Dr. {props.user ? props.user.name : null}</h3>
         <div className="user-samples-main">
-          <h3>Click on a past sample for tracking information</h3>
+          <div className="user-samples-header" style={{position: "sticky", top: "0", backgroundColor: "lightgrey"}}>
+            <h3 style={{textAlign: "center", paddingTop: "10px", fontFamily: "Cinzel"}}>Your Doses</h3>
+        </div>
+        <div>
           {props.user.samples ? <UserSample/> : "No First Doses"}
-        
-        
-      </div>
+        </div>
+        </div> 
     </div>
   ) :
   (
@@ -67,6 +68,3 @@ const mdp = (dispatch) => {
 
 export default connect(msp, mdp)(Home)
 
-{/* <Col className="user-info-main">
-          <a href="https://local.fedex.com/en-us/track/">Click here to track package</a>
-        </Col> */}

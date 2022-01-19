@@ -1,5 +1,6 @@
 import React from "react"
 import { useHistory } from 'react-router-dom'
+import { API_ROOT } from "../apiRoot";
 
 
 const RetrieveUserInfo = () => {
@@ -22,7 +23,7 @@ const RetrieveUserInfo = () => {
       body: JSON.stringify({access_token: access_token })
     }
 
-    fetch(`http://localhost:3000/api/v1/docusign/retrieve_user_info`, fetchObj)
+    fetch(`${API_ROOT}/docusign/retrieve_user_info`, fetchObj)
     .then(resp => resp.json())
     .then(resp => console.log(resp))
   }, [])

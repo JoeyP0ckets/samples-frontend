@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
+import { API_ROOT } from '../apiRoot';
 
 
 const TIMEOUT = 30000;
@@ -77,7 +78,7 @@ export const useAuth = () => {
       })
     }
 
-    fetch(`http://localhost:3000/api/v1/doctors`, fetchObj)
+    fetch(`${API_ROOT}/doctors`, fetchObj)
       .then(res => res.json())
       .then(data => {
         if (data.token) {
@@ -95,10 +96,6 @@ export const useAuth = () => {
       .catch(err => enqueueSnackbar(`Sorry there was an error with that request: ${err}`, { variant: 'error' }));
   }, [dispatch, enqueueSnackbar]);
       
-      
-      
-      
-
       //Login Function
       const loginUser = useCallback((name, password) => {
         const doctor = {
@@ -116,13 +113,13 @@ export const useAuth = () => {
           body: JSON.stringify(doctor)
         }
         
-        fetch(`http://localhost:3000/api/v1/sessions`, fetchObj)
+        fetch(`${API_ROOT}/sessions`, fetchObj)
           .then(res => res.json())
           .then(data => {
             if (data.token) {
               localStorage.setItem('auth_token', data.token);
               setAuthTime(new Date(data.doctor.last_logged_in).getTime());
-              dispatch({ type: 'LOGIN_USER', user: data.doctor })
+              dispatch({ type: 'LOGIN_USER', user: data.doctor });
             }
             else if (data.message) {
               enqueueSnackbar(data.message, { variant: 'error' });
@@ -136,22 +133,17 @@ export const useAuth = () => {
   
   //Logout Function
   const logoutUser = useCallback(() => {
-    console.log("I'm logging out the user")
     localStorage.clear('auth_token');
     dispatch({ type: 'LOGOUT_USER' });
   }, [])
 
   useEffect(() => {
-    console.log("I'm in the useEffect for authtime")
     if (authIntervalTimer) {
-      console.log("I'm about to clear the auth interval Timer")
       clearInterval(authIntervalTimer);
     }
 
     authIntervalTimer = setInterval(() => {
-      console.log("I am in the setInteval")
       if (authTime && (Date.now() > authTime + TIMEOUT)) {
-        console.log("I should be in this every 5 seconds")
         setAuthTime(null);
         logoutUser();
       }

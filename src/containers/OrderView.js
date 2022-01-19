@@ -1,30 +1,35 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {connect} from 'react-redux';
-import {Button, Modal, } from 'react-bootstrap';
+import {connect, useDispatch} from 'react-redux';
+import {Button, Modal } from 'react-bootstrap';
+import { API_ROOT} from '../apiRoot'
 
 
 const OrderView = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [lgShow, setLgShow] = useState(false);
+  const [successShow, setSuccessShow] = useState(false)
   
   const orderClick = () => {
       createDoctorOrder();
+      alert("Your order has been sent.  Please check the registered email for this account to finish Docusign signature");
+      dispatch({ type: 'SELECT_SAMPLE', selectedSample: null })
       props.resetQuantity();
-      alert("Your order has been sent.  Please check the email associated with this account to sign for your order.")
       history.push("/");
     }
 
   const createDoctorOrder = () => {    
     let accessToken = localStorage.getItem('docusign_access_token')
     let token = localStorage.getItem('auth_token')
+    
     const doctor_order= {
       quantity: props.quantity,
       sample_id: props.selectedSample.id,
       token: accessToken
     }
     
-    fetch (`http://localhost:3000/api/v1/doctor_orders`, {
+    fetch (`${API_ROOT}/doctor_orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,9 +42,9 @@ const OrderView = (props) => {
     })
       .then(resp => resp.json())
       .then((newOrder) => {
-        props.renderNewDocOrder(newOrder)
+        props.renderNewDocOrder(newOrder);
       })
-    }
+  }
 
   const handleSelect = e => {
     let value = e.target.value
@@ -78,13 +83,13 @@ const OrderView = (props) => {
             <option value="none" > 
               Select Quantity
             </option> 
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1">1 order of {props.selectedSample.sample_size} sample</option>
+            <option value="2">2 orders of {props.selectedSample.sample_size} sample</option>
+            <option value="3">3 orders of {props.selectedSample.sample_size} sample</option>
           </select>
           </div>
       <br></br>
-      <Button onClick={() => orderClick()} disabled={!props.quantity}>Order Sample</Button>
+      <Button onClick={() => orderClick()} disabled={!props.quantity}>Submit Order</Button>
         </Modal.Body>
       </Modal>
   </div>
@@ -102,7 +107,7 @@ const mdp = dispatch => {
   return {
     renderNewDocOrder: (newOrder) => dispatch({type:"RENDER_NEW_DOCTOR_ORDER", newOrder:newOrder}),
     selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value}),
-    resetQuantity: () => dispatch({type:"RESET_QUANTITY"})
+    resetQuantity: () => dispatch({type:"RESET_QUANTITY"}),
   }
 }
 

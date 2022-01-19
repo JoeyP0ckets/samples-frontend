@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { API_ROOT } from "../apiRoot";
 
 const SendOrdersInterval = () => {
   
@@ -14,7 +15,7 @@ const SendOrdersInterval = () => {
         }
       }
   
-      fetch(`http://localhost:3000/api/v1/doctor_orders/send_warehouse_emails`, fetchObj)
+      fetch(`${API_ROOT}/doctor_orders/send_warehouse_emails`, fetchObj)
       return null;
     }, 60000);
     return () => clearInterval(interval)
