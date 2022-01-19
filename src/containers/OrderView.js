@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {connect, useDispatch} from 'react-redux';
-import {Button, Modal, Alert} from 'react-bootstrap';
+import {Button, Modal } from 'react-bootstrap';
+import { API_ROOT} from '../apiRoot'
 
 
 const OrderView = (props) => {
@@ -28,7 +29,7 @@ const OrderView = (props) => {
       token: accessToken
     }
     
-    fetch (`http://localhost:3000/api/v1/doctor_orders`, {
+    fetch (`${API_ROOT}/doctor_orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
