@@ -7,7 +7,7 @@ const RetrieveAuthCode = () => {
   const { access_token } = queryString.parse(hash);
 
   localStorage.setItem('docusign_access_token', access_token);
-  history.push('https://first-dose-fill.herokuapp.com/');
+  history.push('/');
   return null;
 };
 
