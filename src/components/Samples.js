@@ -3,13 +3,14 @@ import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
 import { Row, Col } from 'react-bootstrap'
 import SampleView from '../containers/SampleView'
+import { API_ROOT} from '../apiRoot'
 
 const Samples = (props) =>  {
   
   useEffect(() => fetchSamples(), []);
   
   const fetchSamples = () => {
-    fetch ('http://localhost:3000/api/v1/samples')
+    fetch (`${API_ROOT}/samples`)
     .then(resp => resp.json())
     .then(allSamples => props.renderSamples(allSamples))
   }
@@ -27,7 +28,7 @@ const Samples = (props) =>  {
       <Row style={{height: "100vh"}}>
         <Col className="card-column" md="auto" style={{height: "100%", overflowY: "scroll"}}>
           <div className="samples-container">
-            {props.allSamples ? renderAllSamples() : "samples deleted from state"}
+            {props.allSamples ? renderAllSamples() : "No Samples to Load"}
           </div>
         </Col>
         <Col className="sample-column">

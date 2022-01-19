@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import dateFormat from 'dateformat'
 import { Table } from "react-bootstrap"
+import { API_ROOT } from '../apiRoot'
 
  
 const UserSample = (props) => {
@@ -22,7 +23,7 @@ const UserSample = (props) => {
 
 
     const fetchUserOrders = () => {
-      fetch ('http://localhost:3000/api/v1/doctor_orders/return_doctors_orders', fetchObj)
+      fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
       .then(resp => resp.json())
       .then((doc_orders) => {
         props.renderDocOrders(doc_orders)})

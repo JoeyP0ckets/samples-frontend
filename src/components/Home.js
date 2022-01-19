@@ -4,6 +4,7 @@ import UserSample from '../containers/UserSamples'
 import LoginSignup from '../containers/LoginSignup'
 import CheckStatusInterval from './CheckStatusInterval'
 import SendOrdersInterval from './SendOrdersInterval'
+import { API_ROOT } from '../apiRoot'
 
 
 
@@ -26,7 +27,7 @@ const Home = (props) => {
       },
     }
 
-    fetch(`http://localhost:3000/api/v1/doctors/showdoctor`, fetchObj)
+    fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
     .then(user => {
       props.loginUser(user)
