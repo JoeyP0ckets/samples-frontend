@@ -6,29 +6,30 @@ import { API_ROOT } from '../apiRoot'
 
  
 const UserSample = (props) => {
-    // useEffect(() => fetchUserOrders(), []);
-    // const token = localStorage.getItem('auth_token')
+    useEffect(() => fetchUserOrders(), []);
+    const token = localStorage.getItem('auth_token')
 
-    // if(!token) {
-    //   return
-    // }
+    if(!token) {
+      return
+    }
 
-    // const fetchObj = {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Auth-Token': token
-    //   },
-    // }
+    const fetchObj = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Auth-Token': token
+      },
+    }
 
 
-    // const fetchUserOrders = () => {
-    //   console.log("I'm in the fetchUserOrders function")
-    //   fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
-    //   .then(resp => resp.json())
-    //   .then((doc_orders) => {
-    //     props.renderDocOrders(doc_orders)})
-    // }
+    const fetchUserOrders = () => {
+      console.log("I'm in the fetchUserOrders function")
+      fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
+      .then(resp => resp.json())
+      .then((doctorOrders) => {
+        console.log(doctorOrders)
+        props.renderDocOrders(doctorOrders)})
+    }
 
   return (
     <Table striped bordered hover variant="dark">
