@@ -16,7 +16,6 @@ const reducer = (prevState=intitialState, action) => {
     case "GET_ALL_SAMPLES":
       return {...prevState, allSamples: action.allSamples}
     case "GET_DOCTOR_ORDERS":
-      debugger
       return {...prevState, doctorOrders: action.doctorOrders}
     case "SELECT_SAMPLE":
       return {...prevState, selectedSample: action.selectedSample}
