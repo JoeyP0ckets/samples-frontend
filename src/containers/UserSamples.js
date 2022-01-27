@@ -24,7 +24,7 @@ const UserSample = (props) => {
 
     const fetchUserOrders = () => {
       console.log("I'm in the fetchUserOrders function")
-      fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
+      fetch (`${API_ROOT}/doctor_orders`, fetchObj)
       .then(resp => resp.json())
       .then((doctorOrders) => {
         console.log(doctorOrders)
