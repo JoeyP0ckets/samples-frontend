@@ -30,14 +30,15 @@ const Home = (props) => {
     fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
     .then(user => {
+      console.log(user)
       props.loginUser(user)
     })
   }
   
   return props.user ? (
     <div className="home-main">
-       <CheckStatusInterval/>
-       <SendOrdersInterval/>
+       {/* <CheckStatusInterval/>
+       <SendOrdersInterval/> */}
       <h3 style={{paddingTop: "20px", paddingLeft: "75px", fontFamily: "Cinzel", textAlign: "left", color: "whitesmoke"}}>Welcome, Dr. {props.user ? props.user.name : null}</h3>
         <div className="user-samples-main">
           <div className="user-samples-header" style={{position: "sticky", top: "0", backgroundColor: "lightgrey"}}>
