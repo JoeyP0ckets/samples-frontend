@@ -10,29 +10,29 @@ import { API_ROOT } from '../apiRoot'
 
 
 const Home = (props) => {
-  // useEffect(() => fetchUser(), []);
+  useEffect(() => fetchUser(), []);
 
-  // const fetchUser = () => {
-  //   const token = localStorage.getItem('auth_token')
+  const fetchUser = () => {
+    const token = localStorage.getItem('auth_token')
 
-  //   if(!token) {
-  //     return
-  //   }
+    if(!token) {
+      return
+    }
 
-  //   const fetchObj = {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Auth-Token': token
-  //     },
-  //   }
+    const fetchObj = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Auth-Token': token
+      },
+    }
 
-  //   fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
-  //   .then(resp => resp.json())
-  //   .then(user => {
-  //     props.loginUser(user)
-  //   })
-  // }
+    fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
+    .then(resp => resp.json())
+    .then(user => {
+      props.loginUser(user)
+    })
+  }
   
   return props.user ? (
     <div className="home-main">
