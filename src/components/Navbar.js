@@ -24,7 +24,7 @@ const Navbar = (props) => {
   let access_token = localStorage.getItem('docusign_access_token')
 
   if (props.user && !access_token) {
-    window.location.href = 'https://account-d.docusign.com/oauth/auth?response_type=token&client_id=95849d5d-a7e9-4572-bb38-d1efdd1d1a38&redirect_uri=https://first-dose-fill.herokuapp.com/retrieve_auth_code/retrieve_auth_code/&scope=signature'
+    window.location.href = 'https://account-d.docusign.com/oauth/auth?response_type=token&client_id=95849d5d-a7e9-4572-bb38-d1efdd1d1a38&redirect_uri=https://first-dose-fill.herokuapp.com/retrieve_auth_code/&scope=signature'
   }
   return (
     <div>
