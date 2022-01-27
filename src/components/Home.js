@@ -44,7 +44,7 @@ const Home = (props) => {
             <h3 style={{textAlign: "center", paddingTop: "10px", fontFamily: "Cinzel"}}>Your Doses</h3>
         </div>
         <div>
-          {props.doctorOrders ? <UserSample/> : "No First Doses"}
+          {props.user.doctorOrders ? <UserSample/> : "No First Doses"}
         </div>
         </div> 
     </div>
