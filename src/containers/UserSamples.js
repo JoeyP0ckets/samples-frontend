@@ -27,7 +27,6 @@ const UserSample = (props) => {
       fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
       .then(resp => resp.json())
       .then((doc_orders) => {
-        console.log(doc_orders)
         props.renderDocOrders(doc_orders)})
     }
 
