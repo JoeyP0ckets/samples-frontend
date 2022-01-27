@@ -10,34 +10,34 @@ import { API_ROOT } from '../apiRoot'
 
 
 const Home = (props) => {
-  useEffect(() => fetchUser(), []);
+  // useEffect(() => fetchUser(), []);
 
-  const fetchUser = () => {
-    const token = localStorage.getItem('auth_token')
+  // const fetchUser = () => {
+  //   const token = localStorage.getItem('auth_token')
 
-    if(!token) {
-      return
-    }
+  //   if(!token) {
+  //     return
+  //   }
 
-    const fetchObj = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Auth-Token': token
-      },
-    }
+  //   const fetchObj = {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Auth-Token': token
+  //     },
+  //   }
 
-    fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
-    .then(resp => resp.json())
-    .then(user => {
-      props.loginUser(user)
-    })
-  }
+  //   fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
+  //   .then(resp => resp.json())
+  //   .then(user => {
+  //     props.loginUser(user)
+  //   })
+  // }
   
   return props.user ? (
     <div className="home-main">
-       <CheckStatusInterval/>
-       <SendOrdersInterval/>
+       {/* <CheckStatusInterval/>
+       <SendOrdersInterval/> */}
       <h3 style={{paddingTop: "20px", paddingLeft: "75px", fontFamily: "Cinzel", textAlign: "left", color: "whitesmoke"}}>Welcome, Dr. {props.user ? props.user.name : null}</h3>
         <div className="user-samples-main">
           <div className="user-samples-header" style={{position: "sticky", top: "0", backgroundColor: "lightgrey"}}>
