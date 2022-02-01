@@ -63,7 +63,8 @@ const msp = (state) => {
 
 const mdp = (dispatch) => {
   return {
-    loginUser: (user) => dispatch({type:"LOGIN_USER", user:user})
+    loginUser: (user) => dispatch({type:"LOGIN_USER", user:user}),
+    renderDocOrders: (doctorOrders) => dispatch({type:"GET_DOCTOR_ORDERS", doctorOrders:doctorOrders})
   }
 }
 
