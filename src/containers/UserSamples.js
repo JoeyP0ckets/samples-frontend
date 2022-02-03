@@ -36,7 +36,7 @@ const UserSample = (props) => {
       <thead>
         <tr>
           <th>Quantity</th>
-          {/* <th>Sample Name</th> */}
+          <th>Sample Name</th>
           <th>Status</th>
           <th>Date Ordered</th>
         </tr>
@@ -46,7 +46,7 @@ const UserSample = (props) => {
           props.user.doctor_orders && props.user.doctor_orders.map((order) => (
             <tr key={order.id}>
             <td>{order.quantity} {order.quantity === 1 ? "order" : "orders"}</td>
-            {/* <td>{order.sample.sample_name}</td> */}
+            <td>{order.sample.sample_name}</td>
             <td>{order.status === "sent" ? `awaiting signature` : "signed for"}</td>
             <td>{dateFormat(order.status_datetime, "mmmm dS, yyyy")}</td>
             </tr>
