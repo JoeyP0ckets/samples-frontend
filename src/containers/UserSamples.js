@@ -27,7 +27,6 @@ const UserSample = (props) => {
       fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
       .then(resp => resp.json())
       .then((doctorOrders) => {
-        console.log(doctorOrders)
         props.renderDocOrders(doctorOrders)})
     }
 
@@ -43,7 +42,7 @@ const UserSample = (props) => {
       </thead>
       <tbody>
         {
-          props.user.doctor_orders && props.user.doctor_orders.map((order) => (
+          props.doctorOrders && props.doctorOrders.map((order) => (
             <tr key={order.id}>
             <td>{order.quantity} {order.quantity === 1 ? "order" : "orders"}</td>
             <td>{order.sample.sample_name}</td>
@@ -51,7 +50,7 @@ const UserSample = (props) => {
             <td>{dateFormat(order.status_datetime, "mmmm dS, yyyy")}</td>
             </tr>
           ))
-        }
+        } 
       </tbody>
     </Table>
   )
