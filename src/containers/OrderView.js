@@ -42,6 +42,7 @@ const OrderView = (props) => {
     })
       .then(resp => resp.json())
       .then((newOrder) => {
+        console.log(newOrder)
         props.renderNewDocOrder(newOrder);
       })
   }
