@@ -20,13 +20,13 @@ const OrderView = (props) => {
     }
 
   const createDoctorOrder = () => {    
-    let accessToken = localStorage.getItem('docusign_access_token')
+    // let accessToken = localStorage.getItem('docusign_access_token')
     let token = localStorage.getItem('auth_token')
     
     const doctor_order= {
       quantity: props.quantity,
       sample_id: props.selectedSample.id,
-      token: accessToken
+      // token: accessToken
     }
     
     fetch (`${API_ROOT}/doctor_orders`, {
