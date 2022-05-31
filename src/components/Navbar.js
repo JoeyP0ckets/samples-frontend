@@ -21,12 +21,12 @@ import LogoutButton from './Logout';
 
 const Navbar = (props) => {
   
-  let access_token = localStorage.getItem('docusign_access_token')
+  // let access_token = localStorage.getItem('docusign_access_token')
 
-  if (props.user && !access_token) {
-    console.log("I'm in the thingy")
-    window.location.href = 'https://account-d.docusign.com/oauth/auth?response_type=token&client_id=95849d5d-a7e9-4572-bb38-d1efdd1d1a38&redirect_uri=http://localhost:3001/retrieve_auth_code/&scope=signature'
-  }
+  // if (props.user && !access_token) {
+  //   console.log("I'm in the thingy")
+  //   window.location.href = 'https://account-d.docusign.com/oauth/auth?response_type=token&client_id=95849d5d-a7e9-4572-bb38-d1efdd1d1a38&redirect_uri=http://localhost:3001/retrieve_auth_code/&scope=signature'
+  // }
   return (
     <div>
       <Router>
