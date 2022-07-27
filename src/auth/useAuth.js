@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack';
 import { API_ROOT } from '../apiRoot';
 
 
-const TIMEOUT = 30000;
+const TIMEOUT = 900000;
 let authIntervalTimer = null;
 
 export const useAuth = () => {

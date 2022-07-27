@@ -1,7 +1,8 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, Switch, Route } from "react-router-dom"
 import Login from '../components/Login'
 import { Row, Col } from "react-bootstrap"
+import Signup from "../components/Signup"
 
 const LoginSignup = () => {
   return (
@@ -14,7 +15,7 @@ const LoginSignup = () => {
       <Col style={{height: "100vh", padding: "1px"}}>
         <h3 style={{paddingTop: "200px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Login</h3>
         <Login/>
-        <h6 style={{textAlign: "center"}}>Need to setup an account? <NavLink to="/Signup">Signup</NavLink></h6>
+        <h6 style={{textAlign: "center"}}>Need to setup an account? <NavLink to="/Signup" exact>Signup</NavLink></h6>
       </Col>
     </Row>
   )

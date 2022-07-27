@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {connect, useDispatch} from 'react-redux';
-import {Button, Modal } from 'react-bootstrap';
+import {Button, Modal, Alert } from 'react-bootstrap';
 import { API_ROOT} from '../apiRoot'
+
 
 
 const OrderView = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [lgShow, setLgShow] = useState(false);
-  const [successShow, setSuccessShow] = useState(false)
+
   
   const orderClick = () => {
       createDoctorOrder();
@@ -20,13 +21,11 @@ const OrderView = (props) => {
     }
 
   const createDoctorOrder = () => {    
-    // let accessToken = localStorage.getItem('docusign_access_token')
     let token = localStorage.getItem('auth_token')
     
     const doctor_order= {
       quantity: props.quantity,
       sample_id: props.selectedSample.id,
-      // token: accessToken
     }
     
     fetch (`${API_ROOT}/doctor_orders`, {
@@ -44,6 +43,7 @@ const OrderView = (props) => {
       .then((newOrder) => {
         console.log(newOrder)
         props.renderNewDocOrder(newOrder);
+        
       })
   }
 
@@ -93,6 +93,20 @@ const OrderView = (props) => {
       <Button onClick={() => orderClick()} disabled={!props.quantity}>Submit Order</Button>
         </Modal.Body>
       </Modal>
+      {/* <Alert
+        show={showDangerAlert}
+        variant="danger"
+        className="w-25 mt-3 ml-3"
+      >
+       Order Failed to Create
+      </Alert>
+      <Alert
+        show={showSuccessAlert}
+        variant="success"
+        className="w-25 mt-3 ml-3 "
+      >
+        Successfully Ordered!  Please check your email to continue signing
+      </Alert> */}
   </div>
   )
 }

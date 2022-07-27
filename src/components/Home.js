@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import UserSample from '../containers/UserSamples'
-import LoginSignup from '../containers/LoginSignup'
-import CheckStatusInterval from './CheckStatusInterval'
-import SendOrdersInterval from './SendOrdersInterval'
 import { API_ROOT } from '../apiRoot'
+import { Container, Row, Col} from 'react-bootstrap'
+import HomeContainer from '../containers/HomeContainer'
 
 
 
@@ -16,6 +14,7 @@ const Home = (props) => {
     const token = localStorage.getItem('auth_token')
 
     if(!token) {
+      console.log("I don't have a login token")
       return
     }
 
@@ -33,38 +32,38 @@ const Home = (props) => {
       props.loginUser(user)
     })
   }
+
+  // const testClick = (token) => {
+    
+  //   const fetchObj = {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Auth-Token': token
+  //     },
+  //   }
+
+  //   fetch(`${API_ROOT}/hellosign/check_envelope_status`, fetchObj)
+
+  // }
   
-  return props.user ? (
-    <div className="home-main">
-       {/* <CheckStatusInterval/>
-       <SendOrdersInterval/> */}
-      <h3 style={{paddingTop: "20px", paddingLeft: "75px", fontFamily: "Cinzel", textAlign: "left", color: "whitesmoke"}}>Welcome, Dr. {props.user ? props.user.name : null}</h3>
-        <div className="user-samples-main">
-          <div className="user-samples-header" style={{position: "sticky", top: "0", backgroundColor: "lightgrey"}}>
-            <h3 style={{textAlign: "center", paddingTop: "10px", fontFamily: "Cinzel"}}>Your Doses</h3>
-        </div>
-        <div>
-          {props.user.doctor_orders ? <UserSample/> : "No First Doses"}
-        </div>
-        </div> 
+  return (
+    <div className="home-component">
+      <HomeContainer/>
     </div>
-  ) :
-  (
-    <LoginSignup/>
-  )
+  ) 
 }
 
 const msp = (state) => {
   return {
     user: state.user,
-    doctorOrders: state.doctorOrders
   }
 }
 
 const mdp = (dispatch) => {
   return {
     loginUser: (user) => dispatch({type:"LOGIN_USER", user:user}),
-    renderDocOrders: (doctorOrders) => dispatch({type:"GET_DOCTOR_ORDERS", doctorOrders:doctorOrders})
+    // renderDocOrders: (doctorOrders) => dispatch({type:"GET_DOCTOR_ORDERS", doctorOrders:doctorOrders})
   }
 }
 

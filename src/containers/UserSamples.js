@@ -10,6 +10,7 @@ const UserSample = (props) => {
     const token = localStorage.getItem('auth_token')
 
     if(!token) {
+      console.log("I'm being returned from the USERSAMPLE")
       return
     }
 
@@ -46,7 +47,7 @@ const UserSample = (props) => {
             <tr key={order.id}>
             <td>{order.quantity} {order.quantity === 1 ? "order" : "orders"}</td>
             <td>{order.sample.sample_name}</td>
-            <td>{order.status === "sent" ? `awaiting signature` : "signed for"}</td>
+            <td>{order.status}</td>
             <td>{dateFormat(order.status_datetime, "mmmm dS, yyyy")}</td>
             </tr>
           ))
