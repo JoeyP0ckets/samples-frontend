@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from "react-redux"
 import OrderView from '../containers/OrderView'
 
-
 const SampleView = (props) => {
   
   const {sample_name, image_url, description, sample_size} = props.selectedSample  
