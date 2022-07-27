@@ -1,17 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Pacifico&display=swap');
+
 .App {
   /* text-align: center; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -28,19 +20,88 @@
   color: #61dafb;
 }
 
+.navbar-logo {
+  float: left;
+  font-family: 'Cinzel', serif;
+  padding-top: 5px;
+  padding-left: 80px;
+}
+
+.main-nav {
+  color: black;
+  font-family: "Cinzel";
+  margin-left: 70px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.main-nav:hover {
+  color: tomato !important;
+  opacity: 1;
+}
+
+
+.main-nav-active {
+  color: tomato;
+}
+
 .navbar-container {
+  width: 100%;
   border-bottom: double black;
   background-color: lightgray;
-  text-align: center;
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToYCNmkqsutMQnysOvr-ZwhxgP7iTxkAWyCQ&usqp=CAU);
-  background-repeat: no-repeat;
-  background-size: 100px;
+} 
+
+.navbar-container::after {
+  content: '';
+  display: table;
+  clear: both;
 }
+
+.nav-links {
+  float: right;
+  padding-right: 70px;
+  padding-top: 25px;
+  position: relative;
+  
+}
+
+.login-container {
+  width: 100%;
+  text-align: center;
+  display: center;
+  float: left;
+}
+
+.login-form {
+  display: block;
+  text-align: center;
+  
+}
+
+.login-image {
+  height: 70vh;
+  background-image: url(https://www.stockvault.net/data/2018/09/01/254142/preview16.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 900px 570px;
+}
+
+.signup-form {
+  display: block;
+  text-align: center;
+}
+
+.form-width {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+ 
 
 .samples-container {
   text-align: center;
   display: inline-block;
-  
 }
 
 .home-main {
@@ -55,39 +116,62 @@
 
 .sample-view {
   text-align: center;
-  
 }
 
 .sample-info-view {
-  text-align: center
+  text-align: center;
+}
+
+.sample-info-container {
+  text-align: center;
+  background-color: white;
+  margin-left: 30px;
+  margin-right: 30px;
+  border: 2px solid red;
 }
 
 .user-samples-main {
-  border-radius: 25px;
-  border: 2px solid red;
-  text-align: left;
-  background-image: linear-gradient(to right, white , grey);
-  margin: 10px;
+  border: 2px solid black;
+  background-color:  lightgray;
+  margin-top: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
+  height: 300px;
+  overflow-y: auto;
 }
 
+
 .user-info-main {
+  background-image: url(https://assets.turbologo.com/blog/en/2019/12/19084817/Fedex-logo.png);
+  background-repeat: no-repeat;
+  background-size: 100px;
   border-radius: 25px;
   border: 2px solid red;
   background-color: gray;
   margin: 10px;
 }
 
-.user-samples-container {
-  
-}
-
 .sample-column {
   text-align: center;
   min-height:100vh; 
   width:100%;
-  background-image: url(https://cutewallpaper.org/21/medicine-wallpapers/42-Medical-Doctor-Wallpaper-on-WallpaperSafari.jpg);
+  background-image: url(https://c0.wallpaperflare.com/preview/598/254/377/floor-gray-grey-mobile-wallpaper.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
+}
+
+.profile-container {
+  text-align: center;
+  border: 2px solid black;
+  margin: 50px;
+}
+
+.modal-quantity-select {
+  padding-top: 10px;
+}
+
+.signup-error-container li {
+  color: red;
 }
 

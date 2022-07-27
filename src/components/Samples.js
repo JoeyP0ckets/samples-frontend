@@ -1,23 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
 import { Row, Col } from 'react-bootstrap'
 import SampleView from '../containers/SampleView'
+import { API_ROOT} from '../apiRoot'
 
-class Samples extends React.Component {
+const Samples = (props) =>  {
   
-  componentDidMount() {
-    this.fetchSamples();
-  }
-
-  fetchSamples = () => {
-    fetch ('http://localhost:3000/api/v1/samples')
+  useEffect(() => fetchSamples(), []);
+  
+  const fetchSamples = () => {
+    fetch (`${API_ROOT}/samples`)
     .then(resp => resp.json())
-    .then(allSamples => this.props.renderSamples(allSamples))
+    .then(allSamples => props.renderSamples(allSamples))
   }
 
-  renderAllSamples = () => {
-    return this.props.allSamples.map((sample, index) =>
+  const renderAllSamples = () => {
+    return props.allSamples.map((sample, index) =>
       <SampleCard
         key={index}
         sample={sample}
@@ -25,28 +24,27 @@ class Samples extends React.Component {
     )
   }
   
-  render() {
     return(
-      <Row>
-        <Col className="card-column" md="auto">
+      <Row style={{height: "100vh"}}>
+        <Col className="card-column" md="auto" style={{height: "100%", overflowY: "scroll"}}>
           <div className="samples-container">
-            {this.props.allSamples ? this.renderAllSamples() : "samples deleted from state"}
+            {props.allSamples ? renderAllSamples() : "No Samples to Load"}
           </div>
         </Col>
         <Col className="sample-column">
           <div className="sample-view">          
-            {this.props.selectedSample ? <SampleView/> : <h1>Please Select a Sample</h1>}
+            {props.selectedSample ? <SampleView/> : <h1 style={{paddingTop: "30px", fontFamily: "Cinzel", fontWeight: "bold", color: "white"}}>Please Select a Sample</h1>}
           </div>
         </Col>
       </Row>
     )
-  }
 }
 
 const msp = state => {
   return {
     allSamples: state.allSamples,
-    selectedSample: state.selectedSample
+    selectedSample: state.selectedSample,
+    user: state.user
   }
 }
 

@@ -1,51 +1,72 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import UserSample from '../containers/UserSamples'
-import {Row, Col} from 'react-bootstrap'
+import LoginSignup from '../containers/LoginSignup'
+import CheckStatusInterval from './CheckStatusInterval'
+import SendOrdersInterval from './SendOrdersInterval'
+import { API_ROOT } from '../apiRoot'
 
 
-class Home extends React.Component {
 
-  componentDidMount() {
-    this.fetchUser()
-  }
 
-  fetchUser = () => {
-    fetch(`http://localhost:3000/api/v1/doctors/${this.props.user.id}`)
+const Home = (props) => {
+  useEffect(() => fetchUser(), []);
+
+  const fetchUser = () => {
+    const token = localStorage.getItem('auth_token')
+
+    if(!token) {
+      return
+    }
+
+    const fetchObj = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Auth-Token': token
+      },
+    }
+
+    fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
-    .then(user => this.props.loginUser(user))
+    .then(user => {
+      props.loginUser(user)
+    })
   }
   
-  
-  render () {
-    return(
-      <div className="home-main">
-        <h2>Welcome, Dr. {this.props.user ? this.props.user.name : null}</h2>
-        <Row>
-          <Col className="user-samples-main">
-            <h3>Click on a past sample for tracking information</h3>
-            {this.props.user ? <UserSample/> : "Loading Your Samples"}
-          </Col>
-          <Col className="user-info-main">
-            I'm the second column foolish human.
-          </Col>
-        </Row>
-      </div>
-      
-    )
-  }
+  return props.user ? (
+    <div className="home-main">
+       {/* <CheckStatusInterval/>
+       <SendOrdersInterval/> */}
+      <h3 style={{paddingTop: "20px", paddingLeft: "75px", fontFamily: "Cinzel", textAlign: "left", color: "whitesmoke"}}>Welcome, Dr. {props.user ? props.user.name : null}</h3>
+        <div className="user-samples-main">
+          <div className="user-samples-header" style={{position: "sticky", top: "0", backgroundColor: "lightgrey"}}>
+            <h3 style={{textAlign: "center", paddingTop: "10px", fontFamily: "Cinzel"}}>Your Doses</h3>
+        </div>
+        <div>
+          {props.user.doctor_orders ? <UserSample/> : "No First Doses"}
+        </div>
+        </div> 
+    </div>
+  ) :
+  (
+    <LoginSignup/>
+  )
 }
 
 const msp = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    doctorOrders: state.doctorOrders
   }
 }
 
 const mdp = (dispatch) => {
   return {
-    loginUser: (user) => dispatch({type:"LOGIN_USER", user:user})
+    loginUser: (user) => dispatch({type:"LOGIN_USER", user:user}),
+    renderDocOrders: (doctorOrders) => dispatch({type:"GET_DOCTOR_ORDERS", doctorOrders:doctorOrders})
   }
 }
 
 export default connect(msp, mdp)(Home)
+

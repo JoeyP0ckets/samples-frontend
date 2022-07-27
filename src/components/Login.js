@@ -1,47 +1,33 @@
-import React from "react"
+import React, { useContext, useState } from "react"
+import { AuthContext }from '../context/AuthProvider'
 import { Form, Button } from "react-bootstrap"
-import { connect } from "react-redux"
 
-const Login = (props) => {
+
+const Login = () => {
+  
+  const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
+  const { loginUser, logoutUser} = useContext(AuthContext);
 
   const handleLoginSubmit = e => {
     e.preventDefault()
-    const doctor = {
-      doctor: {
-        name: e.target.name.value,
-        password: e.target.password.value
-      }
-    }
-    fetch (`http://localhost:3000/api/v1/doctors/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(doctor)
-    })
-      .then(resp => resp.json())
-      .then((user) => {
-        props.loginUser(user)
-      })
-      e.target.reset()
+    const errorMessage = loginUser(e.target.name.value, e.target.password.value);
+    errorMessage ? setLoginErrorMessage(errorMessage) : setLoginErrorMessage('');
+    e.target.reset();
   }
   
     return(
-    <Form onSubmit={e => handleLoginSubmit(e)}>
-    <Form.Group>
-     <Form.Control type="text" placeholder="Name" name="name"/>  
-     <Form.Control type="password" placeholder="Password" name="password"/>   
-     <br></br>
-     <Button type="submit">Login</Button>
-    </Form.Group>
- </Form>
+      <div className="login-form">
+      <Form onSubmit={e => handleLoginSubmit(e)} className="form-width">
+        <Form.Group>
+          <Form.Control type="text" placeholder="Name" name="name"/>  
+          <Form.Control type="password" placeholder="Password" name="password"/>
+          <br></br>
+          <Button type="submit">Login</Button>
+        </Form.Group>
+      </Form>
+      </div>
   )
 }
 
-const mdp = dispatch => {
-  return {
-    loginUser: (user) => dispatch({type:"LOGIN_USER", user:user})
-  }
-}
+export default Login
 
-export default connect(null,mdp)(Login)

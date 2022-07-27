@@ -8,12 +8,14 @@ const SampleCard = (props) => {
    props.selectSample(selectedSample)
   }
 
+  const {sample_name, image_url, } = props.sample;
+
   return (
     <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={props.sample.image_url} alt={props.sample.sample_name} />
+    <Card.Img variant="top" src={image_url} alt={sample_name} />
     <Card.Body>
-      <Card.Title>{props.sample.sample_name}</Card.Title>
-      <Card.Text>
+      <Card.Title style={{fontFamily: "Cinzel", fontWeight: "bold"}}>{sample_name}</Card.Title>
+      <Card.Text style={{fontFamily: "Cinzel"}}>
         Click for details and ordering
       </Card.Text>
       <Button variant="primary" onClick={() => sampleClick(props.sample)}>Place Order</Button>
