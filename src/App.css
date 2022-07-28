@@ -36,13 +36,13 @@
 }
 
 .main-nav:hover {
-  color: tomato !important;
+  color: rgb(71, 74, 255) !important;
   opacity: 1;
 }
 
 
 .main-nav-active {
-  color: tomato;
+  color: rgb(71, 74, 255);
 }
 
 .navbar-container {
@@ -71,36 +71,40 @@
   background-image: url(https://wallpaperaccess.com/full/740142.jpg);
   background-position: center;
   min-height: 25vh;
-  padding-top: 10%;
-  padding-bottom: 5%;
+  padding-top: 18%;
+  padding-bottom: 15%;
+  padding-right: 12%;
   text-align: center;
   margin: 0px;
   display: flex;
-  justify-content: center;
+  justify-content: right;
+}
+
+#about-header {
+  font-size: 2.4rem;
+  text-shadow: #282c34;
+  text-decoration: solid;
 }
 
 #about-text {
   background-color: #282c34;
   background-color: rgb(0, 57, 163);
+  /* color: cornflowerblue; */
   color: white;
   opacity: 85%;
-  padding-bottom: 1%;
+  padding: 3%;
+  padding-bottom: 8%;
   width: 400px;
-  height: 175px;
-  }
-
-
-#about-header {
-
+  height: 250px;
+  font-style: italic;
+  text-shadow: #282c34;
+  text-decoration: solid;
 }
 
 #about-statement {
-  /* padding: 25%; */
-  /* display: flex; */
-  /* max-width: 75%; */
-  margin: 50px;
-  text-shadow: #61dafb;
-  opacity: 1 !important;
+  margin: 10px;
+  color: #CCCCCC;
+  font-size: 1.75rem;
 }
 
 #your-row {
@@ -112,6 +116,11 @@
   border: black;
   border-width: 2px;
   border-right-style: double;
+  color: navy;
+}
+
+.col-nav {
+  font-size: large;
 }
 
 #column-right {
@@ -121,28 +130,42 @@
 .textBox {
   padding: 5%;
   margin: 5%;
+  color: black;
+  text-shadow: #282c34;
+  text-decoration: solid;
+
 }
 
 .contact-container {
-  /* margin: 50px; */
-  background-image: url(https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1LzM0MC1wYWkyNTg1NTM0NDQ1NDMtY29weS1yb2ItcGFpLmpwZw.jpghttps://media.istockphoto.com/photos/smiling-black-female-doctor-in-white-coat-posing-with-folded-arms-picture-id1201657177?k=20&m=1201657177&s=612x612&w=0&h=TI-1JOqHQ_U-qMSO7NpWZB5hsFxMTjGEtoBucW_a-hk=);
+  background-image: url(https://media.istockphoto.com/photos/smiling-black-female-doctor-in-white-coat-posing-with-folded-arms-picture-id1201657177?k=20&m=1201657177&s=612x612&w=0&h=TI-1JOqHQ_U-qMSO7NpWZB5hsFxMTjGEtoBucW_a-hk=);
+  background-position: right;
+  background-repeat: no-repeat;
   padding-bottom: 1px;
-  background-position: center;
-  background-repeat: space;
-  background-size: auto;
+  background-color: #282c34;
+  /* find higher resolution image */
 }
 
-#contact-text {
-
-}
 
 #contact-header {
   padding-top: 3%;
+  padding-left: 3%;
+  font-size: 2.5rem;
+}
+
+#contact-text {
+  font-size: 1.25rem;
+  color: white;
+  align-items: left;
+  text-align: left;
+  width: 500px;
 }
 
 #contact-info {
-  /* padding: 5%; */
   margin: 5%;
+  padding-left: 5%;
+  align-items: left;
+  text-align: left;
+  align-self: left;
 }
 
 /* -------END HOME STYLING -------- */

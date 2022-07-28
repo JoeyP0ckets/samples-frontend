@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { API_ROOT } from '../apiRoot'
-import { Container, Row, Col} from 'react-bootstrap'
 import HomeContainer from '../containers/HomeContainer'
 
 
