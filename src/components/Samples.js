@@ -24,30 +24,18 @@ const Samples = (props) =>  {
     )
   }
   
-    return(
-      <div className="first-doses-page">
+  return(
+    <div className="first-doses-page">
       <div id="theatre">
-      <div className="sample-view-container">
+        <div className="sample-view-container">
           {props.selectedSample ? <SampleView selectedSample={props.selectedSample}/> : <h3 id="please_select">Please select a medication below.</h3>}
         </div>
       </div>
       <div className="samples-container">
         {props.allSamples ? renderAllSamples() : null}
       </div>
-    </div>
-      // <Row style={{height: "100vh"}}>
-      //   <Col className="card-column" md="auto" style={{height: "100%", overflowY: "scroll"}}>
-      //     <div className="samples-container">
-      //       {props.allSamples ? renderAllSamples() : "No Samples to Load"}
-      //     </div>
-      //   </Col>
-      //   <Col className="sample-column">
-      //     <div className="sample-view">          
-      //       {props.selectedSample ? <SampleView/> : <h1 style={{paddingTop: "30px", fontFamily: "Cinzel", fontWeight: "bold", color: "white"}}>Please Select a Sample</h1>}
-      //     </div>
-      //   </Col>
-      // </Row>
-    )
+    </div>  
+  )
 }
 
 const msp = state => {

@@ -49,6 +49,9 @@
   width: 100%;
   border-bottom: double black;
   background-color: lightgray;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 } 
 
 .navbar-container::after {
