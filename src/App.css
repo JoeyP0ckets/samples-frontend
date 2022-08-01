@@ -168,7 +168,7 @@
   align-self: left;
 }
 
-/* -------END HOME STYLING -------- */
+/* -------Login/Signup -------- */
 
 .login-container {
   width: 100%;
@@ -204,29 +204,132 @@
   width: 50%;
 }
  
+/* ------First Doses------- */
 
-.samples-container {
-  text-align: center;
-  display: inline-block;
+.first-doses-page {
+  background: white;
 }
 
+.sample-view-container {
+  background: rgb(7, 7, 8);
+  background: radial-gradient(circle, rgba(7, 7, 8, 0.63) 0%, rgba(97, 97, 97, 0.7791491596638656) 48%, rgba(9, 9, 9, 0.762) 100%);
 
-
-.sample-view {
-  text-align: center;
+  border: #282c34;
+  border-style: inset;
+  border-width: 1px;
+  background-color: gray;
+  color: white;
+  height: fit-content;
+  max-height: 75%;
+  min-height: 500px;
+  margin: 25px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: larger;
+  justify-content: center;
 }
 
-.sample-info-view {
-  text-align: center;
+#theatre {
+  background: rgb(245, 245, 245);
+  background: radial-gradient(circle, rgba(245, 245, 245, 1) 0%, rgba(11, 59, 112, 0.68531162464986) 25%, rgba(0, 0, 128, 1) 85%);
+  border: gray;
+  border-style: groove;
+  border-width: 1px;
+  justify-self: center;
+  margin: auto;
+  padding: 25px;
+  /* width: 1500px; */
+  /* height: 750px; */
+}
+
+#sample-view-window {}
+
+#selected_sample_image {
+  min-height: 320px;
+  max-height: 320px;
+  max-width: 50%;
+  margin: 10px;
+  padding: 10px;
 }
 
 .sample-info-container {
+  padding-left: 50px;
+  padding-right: 50px;
+
   text-align: center;
-  background-color: white;
-  margin-left: 30px;
-  margin-right: 30px;
-  border: 2px solid red;
 }
+
+#scroll-container {
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  height: 100px;
+  overflow: hidden;
+}
+
+#scroll-text {
+  /* animation properties */
+  -moz-transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+
+  -moz-animation: my-animation 15s linear infinite;
+  -webkit-animation: my-animation 15s linear infinite;
+  animation: my-animation 15s linear infinite;
+
+
+  /* for Firefox */
+  @-moz-keyframes my-animation {
+    from {
+      -moz-transform: translateY(100%);
+    }
+
+    to {
+      -moz-transform: translateY(-100%);
+    }
+  }
+}
+
+/* for Chrome */
+@-webkit-keyframes my-animation {
+  from {
+    -webkit-transform: translateY(100%);
+  }
+
+  to {
+    -webkit-transform: translateY(-100%);
+  }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+
+  to {
+    -moz-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+.samples-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+#please_select {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-large;
+  padding-top: 33%;
+}
+
 
 .user-samples-main {
   border: 2px solid black;
@@ -249,21 +352,6 @@
   margin: 10px;
 }
 
-.sample-column {
-  text-align: center;
-  min-height:100vh; 
-  width:100%;
-  background-image: url(https://c0.wallpaperflare.com/preview/598/254/377/floor-gray-grey-mobile-wallpaper.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-}
-
-.profile-container {
-  text-align: center;
-  border: 2px solid black;
-  margin: 50px;
-}
 
 .modal-quantity-select {
   padding-top: 10px;
