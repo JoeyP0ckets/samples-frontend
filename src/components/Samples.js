@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
-import { Row, Col } from 'react-bootstrap'
 import SampleView from '../containers/SampleView'
 import { API_ROOT} from '../apiRoot'
 

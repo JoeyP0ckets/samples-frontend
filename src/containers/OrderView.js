@@ -17,7 +17,7 @@ const OrderView = (props) => {
       alert("Your order has been sent.  Please check the registered email for this account to finish Docusign signature");
       dispatch({ type: 'SELECT_SAMPLE', selectedSample: null })
       props.resetQuantity();
-      history.push("/");
+      history.push("/YourDoses");
     }
 
   const createDoctorOrder = () => {    

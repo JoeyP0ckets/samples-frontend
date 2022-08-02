@@ -38,9 +38,6 @@ const Navbar = () => {
             <Route exact path="/YourDoses">
               <YourDoses/>
             </Route>
-            <Route exact path="/Signup">
-              <Signup/>
-            </Route>
           </Switch> 
     </div>
   )

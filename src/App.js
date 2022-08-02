@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import Navbar from '../src/components/Navbar'
 import LoginSignup from '../src/containers/LoginSignup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom"
+// import Switch from 'react-bootstrap/esm/Switch';
 
 
 
