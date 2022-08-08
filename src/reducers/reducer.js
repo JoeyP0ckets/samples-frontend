@@ -3,6 +3,7 @@ const intitialState = {
   doctorOrders: [],
   allSamples: [],
   selectedSample: null,
+  selectedOrder: null,
   quantity: null,
   seen: false
 }
@@ -25,8 +26,10 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, quantity: action.value}
     case "RESET_QUANTITY":
       return {...prevState, quantity: null}
-      default:
-      return prevState
+    case "SELECT_ORDER":
+      return {...prevState, selectedOrder: action.selectedOrder}
+     default:
+    return prevState
   }
 }
 

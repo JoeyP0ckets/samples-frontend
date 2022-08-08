@@ -7,7 +7,7 @@ import { API_ROOT } from '../apiRoot'
 import { connect } from 'react-redux'
 
 const LoginSignup = (props) => {
-
+  
   useEffect(() => fetchUser(), []);
 
   const fetchUser = () => {
@@ -33,21 +33,18 @@ const LoginSignup = (props) => {
     })
   }
   return (
-    <Row>
-      <Col style={{height: "100vh", backgroundColor: "darkblue", padding: "0px"}}>
-          <h1 style={{fontFamily: "Pacifico", color: "palegoldenrod", textAlign: "center", paddingTop: "75px"}}>Your First Choice in FirstDose</h1>
-          <div className="login-image">
+    <Row id="login-row">
+      <Col id="login-left-col" style={{height: "100vh"}}>
+          <h1 id="login-page-header" className="header-fade-in" style={{fontFamily: "Cinzel", textAlign: "center"}}>First Dose Fulfillment™</h1>
+          <div className="login-image fade-in-image">
+            
           </div>
       </Col>
-      <Col style={{height: "100vh", padding: "1px"}}>
-      <Switch>
-          <Route exact path="/Signup">
-              <Signup/>
-            </Route>
-        </Switch>
+      <Col id="login-right-col" style={{height: "100vh"}}>
         <h3 style={{paddingTop: "200px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Login</h3>
         <Login/>
         <h6 style={{textAlign: "center"}}>Need to setup an account? <NavLink to="/Signup" exact>Signup</NavLink></h6>
+
       </Col>
     </Row>
   )

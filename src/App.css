@@ -4,14 +4,10 @@
   text-align: center;
 }
 
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  /* display: flex; */
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -20,39 +16,64 @@
   color: #61dafb;
 }
 
+/* --------Navbar--------- */
+
 .navbar-logo {
+  background-image: url("../src/img/first_dose_WHITE_periodic_final2.png");
+  background-position: center;
+  background-size: contain;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
   float: left;
-  font-family: 'Cinzel', serif;
-  padding-top: 5px;
-  padding-left: 80px;
+  margin-left: 15px;
+}
+
+.navbar-bg {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  background-image: url(https://thumbs.gfycat.com/TidyLimitedDragon-max-1mb.gif);
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat;
+  opacity: 75%;
+  visibility: hidden;
+}
+
+.navbar-logo img {
+  width: 25px;
+  height: 25px;
 }
 
 .main-nav {
-  color: black;
-  font-family: "Cinzel";
+  /* color: black; */
+  color: white;
+  /* font-family: "Cinzel"; */
+  font-size: 1.3rem;
   margin-left: 70px;
-  text-transform: uppercase;
   text-decoration: none;
-}
-
-.main-nav:hover {
-  color: rgb(71, 74, 255) !important;
-  opacity: 1;
-}
-
-
-.main-nav-active {
-  color: rgb(71, 74, 255);
+  letter-spacing: 3px;
+  /* text-shadow: 1px 1px 1px navy; */
 }
 
 .navbar-container {
-  width: 100%;
   border-bottom: double black;
-  background-color: lightgray;
-  position: sticky;
+  background-color: rgba(1, 0, 3, 0.75);
+  border-bottom: double rgb(33, 33, 33);
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat;
+  padding-top: 1%;
+  padding-bottom: 1%;
   top: 0;
   z-index: 100;
-} 
+  position: sticky;
+  opacity: 95%;
+  /* visibility: hidden; */
+}
 
 .navbar-container::after {
   content: '';
@@ -65,10 +86,90 @@
   padding-right: 70px;
   padding-top: 25px;
   position: relative;
-  
+  color: white;
 }
 
-/* -------HOME STYLING------- */
+.doc-nav-container {
+  justify-content: center;
+}
+
+.main-nav:hover {
+  opacity: 1;
+  /* font-weight: bold; */
+  color: navy;
+  /* text-shadow: 0 0 1px teal, 0 0 5px teal,
+           0 0 10px teal, 0 0 12px teal,
+           0 0 15px teal; */
+
+  text-decoration: underline;
+}
+
+
+/* --------Login--------*/
+
+#login-row {
+  max-width: 100%;
+}
+
+#login-left-col {
+  /* Blue radial: */
+  background: radial-gradient(circle, rgb(2, 0, 65) 0%, rgba(11, 59, 112, 0.68531162464986) 25%,rgb(4, 0, 53) 85%);
+  animation: fadeBackground 3s;
+  animation-fill-mode: forwards;
+}
+
+#login-left-col h1 {
+  margin-top: 75px;
+  padding: 1%;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  text-shadow: 10px 10px 3px black;
+  font-size: 64px;
+  font-weight: 600;
+  /* font-variant: small-caps; */
+}
+
+#login-right-col {
+  width: 100%;
+}
+
+.header-fade-in { animation: fadeIn 3s; }
+
+.login-image {
+  background-image: url("../src/img/first_dose_WHITE_periodic_final2.png");
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  padding: 35%;
+  margin-top: 50px;
+}
+
+/* Logo fade-in effect: */
+
+.fade-in-image { animation: fadeIn 3s; }
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeBackground {
+  from { background-color: black; }
+  to { background-color: radial-gradient(circle, rgb(2, 0, 65) 0%, rgba(11, 59, 112, 0.68531162464986) 25%,rgb(4, 0, 53) 85%); }
+}
+
+.form-control {
+  align-items: center;
+}
+
+/* --------Home-------- */
+
+.home-container {
+  display: block;
+}
 
 .about-container {
   background-image: url(https://wallpaperaccess.com/full/740142.jpg);
@@ -76,82 +177,99 @@
   min-height: 25vh;
   padding-top: 18%;
   padding-bottom: 15%;
-  padding-right: 12%;
+  /* padding-right: 20%; */
   text-align: center;
-  margin: 0px;
   display: flex;
   justify-content: right;
 }
 
 #about-header {
   font-size: 2.4rem;
-  text-shadow: #282c34;
+  /* text-shadow: 1px 1px 8px #CCCCCC; */
   text-decoration: solid;
+  padding-top: 20px;
 }
 
 #about-text {
-  background-color: #282c34;
-  background-color: rgb(0, 57, 163);
-  /* color: cornflowerblue; */
+  /* Navy background: */
+  /* background: rgb(5, 0, 77); */
+  
+  /* FF7 boxes: */ 
+   background: linear-gradient(315deg, rgba(5, 0, 77, 1) 0%, rgba(4, 0, 53, 1) 59%, rgb(136, 132, 175) 100%);
+  
+  /* Gray radial: */
+  /* background: linear-gradient(315deg, rgba(5, 0, 77, 1) 0%, rgba(4, 0, 53, 1) 59%, rgb(136, 132, 175) 100%); */
+
+  /* Blue radial: */
+  /* background: radial-gradient(circle, rgb(2, 0, 65) 0%, rgba(11, 59, 112, 0.68531162464986) 25%,rgb(4, 0, 53) 85%); */
+  
   color: white;
-  opacity: 85%;
-  padding: 3%;
-  padding-bottom: 8%;
-  width: 400px;
-  height: 250px;
   font-style: italic;
-  text-shadow: #282c34;
   text-decoration: solid;
+  margin-right: 6%;
+  border-style: ridge;
+  border-radius: 15px;
+  opacity: 95%;
 }
 
 #about-statement {
-  margin: 10px;
-  color: #CCCCCC;
+  margin: 50px;
+  color: aqua;
   font-size: 1.75rem;
 }
 
-#your-row {
-  padding-top: 5%;
-  padding-bottom: 5%;
+#greeting-text {
+  margin-bottom: 20px;
 }
 
-.column {
+.column-home {
   border: black;
   border-width: 2px;
-  border-right-style: double;
-  color: navy;
+  border-style: double;
+  border-left-style: hidden;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
 }
 
-.col-nav {
-  font-size: large;
+.column-home a {
+  align-items: center;
+  font-size: larger;
 }
 
-#column-right {
+#home-column-right {
   border-right-style: hidden;
 }
 
 .textBox {
-  padding: 5%;
-  margin: 5%;
-  color: black;
-  text-shadow: #282c34;
-  text-decoration: solid;
-
+  padding: 3%;
+  margin: 3%;
+  color: navy;
+  font-size: x-large;
 }
 
 .contact-container {
-  background-image: url(https://media.istockphoto.com/photos/smiling-black-female-doctor-in-white-coat-posing-with-folded-arms-picture-id1201657177?k=20&m=1201657177&s=612x612&w=0&h=TI-1JOqHQ_U-qMSO7NpWZB5hsFxMTjGEtoBucW_a-hk=);
-  background-position: right;
-  background-repeat: no-repeat;
+  /* background-image: url(https://media.istockphoto.com/photos/smiling-black-female-doctor-in-white-coat-posing-with-folded-arms-picture-id1201657177?k=20&m=1201657177&s=612x612&w=0&h=TI-1JOqHQ_U-qMSO7NpWZB5hsFxMTjGEtoBucW_a-hk=); */
+  /* background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat; */
   padding-bottom: 1px;
-  background-color: #282c34;
-  /* find higher resolution image */
+  margin-top: 10px;
+  /* background-color: #282c34;e */
+  border-bottom: double black;
+  background-color: rgba(1, 0, 3, 0.75);
+  opacity: 95%;
+  border-radius: 25px;
+  width: 100%;
+  height: fit-content;
+  opacity: 65%;
+  text-align: center;
+  align-content: center;
+  position: relative;
 }
-
 
 #contact-header {
   padding-top: 3%;
-  padding-left: 3%;
+  padding-left: 10%;
   font-size: 2.5rem;
 }
 
@@ -159,55 +277,21 @@
   font-size: 1.25rem;
   color: white;
   align-items: left;
-  text-align: left;
-  width: 500px;
+  /* text-align: left; */
+  width: 100%;
+}
+
+#contact-text:after {
+  content: "Having trouble? Contact us at: jpatterson@southal.swamp"
 }
 
 #contact-info {
-  margin: 5%;
-  padding-left: 5%;
-  align-items: left;
-  text-align: left;
-  align-self: left;
+  padding-left: 10%;
+  padding-bottom: 5%;
 }
 
-/* -------Login/Signup -------- */
 
-.login-container {
-  width: 100%;
-  text-align: center;
-  display: center;
-  float: left;
-}
-
-.login-form {
-  display: block;
-  text-align: center;
-  
-}
-
-.login-image {
-  height: 70vh;
-  background-image: url(https://www.stockvault.net/data/2018/09/01/254142/preview16.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 900px 570px;
-}
-
-.signup-form {
-  display: block;
-  text-align: center;
-}
-
-.form-width {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: 50%;
-}
- 
-/* ------First Doses------- */
+/* --------First Doses Page--------- */
 
 .first-doses-page {
   background: white;
@@ -216,6 +300,8 @@
 .sample-view-container {
   background: rgb(7, 7, 8);
   background: radial-gradient(circle, rgba(7, 7, 8, 0.63) 0%, rgba(97, 97, 97, 0.7791491596638656) 48%, rgba(9, 9, 9, 0.762) 100%);
+  animation: fadeBackground 3s;
+  animation-fill-mode: forwards;
 
   border: #282c34;
   border-style: inset;
@@ -224,48 +310,73 @@
   color: white;
   height: fit-content;
   max-height: 75%;
-  min-height: 500px;
+  /* max-height: 700px; */
+  min-height: 600px;
   margin: 25px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  /* max-width: 50%; */
+  /* margin-left: 25%;
+  margin-right: 25%; */
   font-size: larger;
   justify-content: center;
+  border-radius: 25px;
 }
 
 #theatre {
   background: rgb(245, 245, 245);
-  background: radial-gradient(circle, rgba(245, 245, 245, 1) 0%, rgba(11, 59, 112, 0.68531162464986) 25%, rgba(0, 0, 128, 1) 85%);
+  background: radial-gradient(circle, rgba(245, 245, 245, 1) 0%, rgba(11, 59, 112, 0.68531162464986) 25%, rgb(4, 0, 53) 85%);
+  animation: fadeBackground 3s;
+  animation-fill-mode: forwards;
   border: gray;
   border-style: groove;
   border-width: 1px;
   justify-self: center;
   margin: auto;
   padding: 25px;
+  margin-bottom: 10px;
   /* width: 1500px; */
   /* height: 750px; */
 }
 
-#sample-view-window {}
+#please_select {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-large;
+  padding-top: 300px;
+  margin: 145px;
+
+  background-image: url("../src/img/first_dose_WHITE_periodic_final2.png");
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#sample-view-window {
+  max-height: 700px;
+  /* margin-bottom: 100px; */
+  /* max-height: 75%; */
+}
 
 #selected_sample_image {
-  min-height: 320px;
-  max-height: 320px;
   max-width: 50%;
+  max-height: 300px;
   margin: 10px;
   padding: 10px;
+  padding-top: 50px;
 }
 
 .sample-info-container {
-  padding-left: 50px;
-  padding-right: 50px;
-
   text-align: center;
 }
 
 #scroll-container {
   /* border: 1px solid black; */
   border-radius: 5px;
-  height: 100px;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 175px;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -320,47 +431,223 @@
 .samples-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  max-width: 75%;
+  margin: auto;
+  max-height: 450px;
+}
+
+.card {
+  display: flex;
+  /* flex-direction: column-reverse !important; */
+  flex-direction: column !important;
+  align-items: center;
+  /* background-color: gray !important;
+  color: white; */
+  /* padding: 10px; */
+  /* padding-top: 25px; */
+  /* min-height: 220px; */
+  /* max-height: 280px; */
+  margin: auto;
+  max-width: 33%;
+  border-radius: 25px !important;
+  font-size: xx-large;
+}
+
+.card-img-top {
+  /* min-height: 275px; */
+  height: auto;
+  /* max-height: 200px; */
+  /* max-width: 65%; */
+  padding: 5%;
+  border-radius: 25px !important;
+}
+
+.card-body {
+  height: fit-content;
+}
+
+.card-title {
+  font-size: x-large !important;
+}
+
+.card-text {
+  font-style: italic;
+}
+
+.btn-primary {
+  margin-bottom: 10px;
+  font-size: large;
+  background-color: rgb(4, 0, 53) !important;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  background-color: rgb(8, 0, 99) !important;
+}
+
+#place-order-button {
+  margin-top: 5px;
+}
+
+/* ----------- Your Doses -------- */
+
+.your-doses-page {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.yourdose-contract-frame,
+.yourdose-shipping-frame {
   margin: 1%;
-  margin-left: 5%;
-  margin-right: 5%;
-  width: 90%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border: #282c34;
+  border-style: solid;
+  border-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
 }
 
-#please_select {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: x-large;
-  padding-top: 33%;
+.yourdose-contract-frame {
+  border-top-width: 0px;
 }
 
+.yourdose-shipping-frame {
+  border-bottom-width: 1px;
+}
 
-.user-samples-main {
-  border: 2px solid black;
-  background-color:  lightgray;
+.yourdose-explain-container,
+.shipping-explain-container {
+  font-size: large;
+  font-weight: 100;
+  color: whitesmoke;
+  background-color: rgb(4, 0, 53);
+  background: rgb(5, 0, 77);
+  /* background: linear-gradient(315deg, rgba(5,0,77,1) 0%, rgba(4,0,53,1) 59%, rgba(245,245,245,1) 100%); */
+  /* background: radial-gradient(circle, rgb(5, 2, 110) 0%, rgb(6, 2, 130) 25%, rgb(4, 0, 53) 85%); */
+  min-height: 22%;
+  min-height: fit-content;
+  min-width: 500px;
+  /* max-width: 600px; */
   margin-top: 10px;
-  margin-left: 70px;
-  margin-right: 70px;
-  height: 300px;
+  margin-bottom: 1%;
+  border-style: ridge;
+  border-width: 5px;
+  border-radius: 25px;
+  text-align: left;
+  opacity: 95%;
+}
+
+#yourdose-explain-header,
+#shipping-explain-header {
+  /* margin: 1%; */
+  /* padding: 1%; */
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: -10px;
+
+  float: left;
+  font-size: 55px;
+  font-weight: 300;
+}
+
+#yourdose-explain-firstline,
+#shipping-explain-firstline {
+  color: aqua;
+  font-size: x-large;
+  font-weight: 400;
+  font-style: italic;
+  padding-top: 50px;
+}
+
+#yourdose-explain-body,
+#shipping-explain-body {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  font-weight: 400;
+  clear: both;
+}
+
+#contract-table,
+#shipping-table {
+  margin-bottom: 2%;
+  font-size: larger;
+}
+
+.contracts-table-scrollable-container,
+.shipping-table-scrollable-container {
+  height: 215px;
+  overflow-y: auto;
+  border-radius: 25px;
+}
+
+.shipping-table-scrollable-container {
+  /* height: 50%; */
+  /* margin-bottom: 10px; */
+}
+
+.column-shipping {
+  height: 100%;
+}
+
+.shipping-info-data {
+  /* width: 600px; */
+  /* width: 100%; */
+}
+
+#shipping-col-left {
+  /* background: #000; */
+}
+
+#shipping-col-right {
+  /* background: teal; */
+}
+
+#shipping-text-container {
+  float: right;
+  height: 440px;
+  /* background-color: #282c34; */
+  background: rgb(143,143,143);
+  background: radial-gradient(circle, rgba(143,143,143,1) 0%, rgba(69,68,68,1) 17%, rgba(0,0,0,1) 85%);
+  color: white;
+  /* margin-bottom: 10px; */
+  /* padding: 15%; */
+  width: 100%;
+  /* height: 95%; */
+
+  border-style: ridge;
+  border-width: 5px;
+  border-radius: 25px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 25px;
+  text-align: left;
   overflow-y: auto;
 }
 
-
-.user-info-main {
-  background-image: url(https://assets.turbologo.com/blog/en/2019/12/19084817/Fedex-logo.png);
-  background-repeat: no-repeat;
-  background-size: 100px;
-  border-radius: 25px;
-  border: 2px solid red;
-  background-color: gray;
-  margin: 10px;
+.shipping-label-text {
+  margin: 0;
+  padding: 5px;
+  font-size: x-large;
 }
 
-
-.modal-quantity-select {
-  padding-top: 10px;
+.shipping-label-bold-text {
+  color: teal;
+  text-align: left;
+  padding-right: 10px;
+  
 }
 
-.signup-error-container li {
-  color: red;
+.shipping-label-address-text {
+  text-align: left;
+  padding-left: 150px;
+  margin-top: -50px;
 }
 
+/* .shipping-info-data {
+  visibility: hidden;
+} */

@@ -31,15 +31,10 @@ const HomeContainer = () => {
       </Row>
     </div>
     <div className="contact-container">
-    <div id="contact-text">
-          <h1 id="contact-header">Contact Info</h1>
-          <div id="contact-info">
-            Wellness Pharma<br>
-            </br>784 N. Tailwater Road<br>
-            </br>Norwich, CT 06360
-          </div>
-        </div>
+     <div id="contact-text">
+          
       </div>
+     </div>
   </div>
  )
 }

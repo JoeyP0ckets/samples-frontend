@@ -5,13 +5,13 @@ import { Form, Button } from "react-bootstrap"
 
 const Login = () => {
   
-  const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
-  const { loginUser, logoutUser} = useContext(AuthContext);
+  // const [loginErrorMessage, setLoginErrorMessage] = useState(undefined)
+  const { loginUser } = useContext(AuthContext);
 
   const handleLoginSubmit = e => {
     e.preventDefault()
-    const errorMessage = loginUser(e.target.name.value, e.target.password.value);
-    errorMessage ? setLoginErrorMessage(errorMessage) : setLoginErrorMessage('');
+    loginUser(e.target.name.value, e.target.password.value);
+    // errorMessage ? setLoginErrorMessage(loginErrorMessage) : setLoginErrorMessage('');
     e.target.reset();
   }
   

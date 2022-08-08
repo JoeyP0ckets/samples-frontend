@@ -136,14 +136,18 @@ export const useAuth = () => {
     localStorage.clear('auth_token');
     dispatch({ type: 'LOGOUT_USER' });
   }, [])
-
+ //This useEffect starts running as soon as an authTime variable is created by setAuthTime useState during Login
+// or Signup
   useEffect(() => {
     if (authIntervalTimer) {
       clearInterval(authIntervalTimer);
     }
+  //this assigns setInterval to check whether state of authtime plus current time is greater than state of authtime plus 
+  //Timeout variable set on line 7 as the authIntervalTimer
 
     authIntervalTimer = setInterval(() => {
       if (authTime && (Date.now() > authTime + TIMEOUT)) {
+        //if it does then clear authTime variable in state and run logout user on 135
         setAuthTime(null);
         logoutUser();
       }

@@ -6,31 +6,7 @@ import { API_ROOT } from '../apiRoot'
 
  
 const UserSample = (props) => {
-    useEffect(() => fetchUserOrders(), []);
-    const token = localStorage.getItem('auth_token')
-
-    if(!token) {
-      console.log("I'm being returned from the USERSAMPLE")
-      return
-    }
-
-    const fetchObj = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Auth-Token': token
-      },
-    }
-
-
-    const fetchUserOrders = () => {
-      console.log("I'm in the fetchUserOrders function")
-      fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
-      .then(resp => resp.json())
-      .then((doctorOrders) => {
-        props.renderDocOrders(doctorOrders)})
-    }
-
+    
   return (
     <Table striped bordered hover variant="dark">
       <thead>
