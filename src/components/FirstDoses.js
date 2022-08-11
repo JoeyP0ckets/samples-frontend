@@ -8,6 +8,7 @@ import ContactFooter from '../containers/ContactFooter'
 
 
 const FirstDoses = (props) =>  {
+ 
   const fetchSamples = () => {
     fetch (`${API_ROOT}/samples`)
     .then(resp => resp.json())
