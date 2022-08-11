@@ -4,7 +4,7 @@ import {
   Route,
   NavLink, 
 } from "react-router-dom";
-import Samples from './Samples';
+import FirstDoses from './FirstDoses';
 import Home from './Home'
 import YourDoses from './YourDoses'
 import LogoutButton from './Logout';
@@ -21,7 +21,7 @@ const Navbar = () => {
             <div className="navbar-bg"></div>
               <div className="nav-links">
                 <NavLink exact to="/" className="main-nav" activeClassName="main-nav-active">Home</NavLink>
-                <NavLink exact to="/Samples" className="main-nav" activeClassName="main-nav-active">FirstDoses</NavLink>
+                <NavLink exact to="/FirstDoses" className="main-nav" activeClassName="main-nav-active">FirstDoses</NavLink>
                 <NavLink exact to="/YourDoses" className="main-nav" activeClassName="main-nav-active">YourDoses</NavLink>
                 <LogoutButton/>
               </div>
@@ -32,8 +32,8 @@ const Navbar = () => {
             <Route exact path="/">
               <Home/>
             </Route>
-            <Route exact path="/Samples">
-              <Samples/>
+            <Route exact path="/FirstDoses">
+              <FirstDoses/>
             </Route>
             <Route exact path="/YourDoses">
               <YourDoses/>

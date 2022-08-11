@@ -1,16 +1,16 @@
 import {React, useEffect } from "react"
 import { connect } from "react-redux"
-import { Table} from 'react-bootstrap'
 import ShippingLabel from '../containers/ShippingLabel';
 import ShippingTracker from '../containers/ShippingTracker';
 import { Row, Col } from 'react-bootstrap'
 import { API_ROOT } from '../apiRoot'
-
+import ContractsTable from "./ContractsTable";
+import ContactFooter from "../containers/ContactFooter"
 
 const YourDoses = (props) => {
   
   useEffect(() => fetchUserOrders(), []);
-
+  //Change to check for use in props
   const token = localStorage.getItem('auth_token')
 
     if(!token) {
@@ -28,7 +28,6 @@ const YourDoses = (props) => {
 
 
     const fetchUserOrders = () => {
-      console.log("I'm in the fetchUserOrders function")
       fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
       .then(resp => resp.json())
       .then((doctorOrders) => {
@@ -39,7 +38,7 @@ const YourDoses = (props) => {
     <div className="your-doses-page">
       <div className="yourdose-contract-frame">
         <div className="yourdose-explain-container">
-          <div id="yourdose-explain-header">
+          <div id="yourdose-explain-header" className="grow-text aura-pulse">
             Check
           </div>
           <div id="yourdose-explain-firstline">
@@ -50,36 +49,15 @@ const YourDoses = (props) => {
           </div>
         </div>
         <div className='contracts-table-scrollable-container'>
-          <Table striped bordered hover variant="light" id="contract-table">
-            <thead style={{ position: "sticky", top: "0" }}>
-              <tr>
-                <th>Quantity</th>
-                <th>Sample Name</th>
-                <th>Status</th>
-                <th>Date Ordered</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                props.doctorOrders.map((dose) => (
-                  <tr key={dose.id}>
-                    <td>{dose.quantity} {dose.quantity === 1 ? "dose" : "orders"}</td>
-                    <td>{dose.sample.sample_name}</td>
-                    <td>{dose.status}</td>
-                    <td>{dose.status_datetime}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </Table>
+          <ContractsTable/>
         </div>
         <br></br>
       </div>
       <div className="yourdose-shipping-frame">
-        <Row id style={{ display: "flex", textAlign: "cen ter" }}>
+        <Row id style={{ display: "flex", textAlign: "center" }}>
           <Col className="column-shipping" id="shipping-col-left">
             <div className="shipping-explain-container">
-              <div id="shipping-explain-header">
+              <div id="shipping-explain-header" className="grow-text aura-pulse">
                 Track
               </div>
               <div id="shipping-explain-firstline">
@@ -95,19 +73,14 @@ const YourDoses = (props) => {
           </Col>
           <Col className="column-shipping" id="shipping-col-right">
             <div id="shipping-text-container">
-              {props.selectedOrder ? <ShippingLabel/> : "Please Seclect an Order"}
+              {props.selectedOrder ? <ShippingLabel/> : <div id="please-select-shipping-order" className="grow-text">Please Select a Shipping Order</div>}
             </div>
           </Col>
         </Row>
         <br></br>
       </div>
       <br></br>
-
-      <div className="contact-container">
-     <div id="contact-text">
-          
-      </div>
-     </div>
+      <ContactFooter/>
     </div>
   )
 }

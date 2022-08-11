@@ -1,14 +1,14 @@
-import React from "react"
-import { useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom";
+import React, {useContext} from "react"
+import { AuthContext } from '../context/AuthProvider'
+import { useHistory } from 'react-router-dom'
 
 const LogoutButton = () => {
+  
+  const { logoutUser } = useContext(AuthContext);
   const history = useHistory();
-  const dispatch = useDispatch();
-
+  
   const HandleLogout = () => {
-    localStorage.removeItem('auth_token')
-    dispatch({ type: "LOGOUT_USER"})
+    logoutUser();
     history.push("/")
   }
   

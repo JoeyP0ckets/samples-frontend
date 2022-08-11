@@ -1,41 +1,43 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom'
+import ContactFooter from './ContactFooter'
+import {Container} from 'react-bootstrap'
 
 const HomeContainer = () => {
  return(
-  <div className="home-container">
-      <div className="about-container">
-          <div id="about-text">
-            <h1 id="about-header">First Dose Fulfillment</h1>
-            <div id="about-statement">
-              Help Your Patients Breathe a Little Easier
-            </div>
+  <Container className="home-container container-fluid">
+      <Container className="about-container container-fluid box-fade">
+        <div id="about-text" className="box-fade">
+          <h1 id="about-header" className="grow-text">First Dose Fulfillment</h1>
+          <div id="about-statement">
+            Helping your patients breathe easier.
           </div>
         </div>
-      <div className="doc-nav-container">
-        <h1 style={{paddingTop: 50}}>Greetings, Doctor</h1>
-      <Row id="your-row">
-        <Col className="column"><h2>First Doses</h2>
-          <div class="textBox">
-            Shop from our selection of anti-bronchial medications. First Doses can be ordered and sent right to your office. 
-          </div>
-          <NavLink exact to="/Samples" className="col-nav">First Doses</NavLink>
-        </Col>
-        <Col className="column" id="column-right"><h2>Your Doses</h2>
-          <div class="textBox">
-            Keep track of your orders.  View information on your past orders as well as check the status of your current ones.
-          </div>
-          <NavLink exact to="/YourDoses" className="col-nav">Your Doses</NavLink>
-        </Col>
-      </Row>
-    </div>
-    <div className="contact-container">
-     <div id="contact-text">
-          
+      </Container>
+
+      <div style={{ textAlign: "center", paddingTop: "10px" }}>
+        <h1 id="greeting-text">Greetings, Doctor!</h1>
       </div>
-     </div>
-  </div>
+
+      <Container fluid className="doc-nav-container">
+        <Row style={{ display: "flex", textAlign: "center" }}>
+          <Col className="column-home" id="home-column-left"><h2>First Doses</h2>
+            <div className="home-textbox">
+              Shop from our selection of anti-bronchial medications. First Doses can be ordered and sent right to your office.
+            </div>
+            <NavLink exact to="/FirstDoses">First Doses</NavLink>
+          </Col>
+          <Col className="column-home" id="home-column-right"><h2>Your Doses</h2>
+            <div className="home-textbox">
+              Keep track of your orders.  View information on your past orders as well as check the status of your current ones.
+            </div>
+            <NavLink exact to="/YourDoses">Your Doses</NavLink>
+          </Col>
+        </Row>
+      </Container>
+      <ContactFooter/>
+    </Container >
  )
 }
 

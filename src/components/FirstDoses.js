@@ -3,10 +3,11 @@ import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
 import SampleView from '../containers/SampleView'
 import { API_ROOT} from '../apiRoot'
+import ContactFooter from '../containers/ContactFooter'
 
 
 
-const Samples = (props) =>  {
+const FirstDoses = (props) =>  {
   const fetchSamples = () => {
     fetch (`${API_ROOT}/samples`)
     .then(resp => resp.json())
@@ -32,14 +33,11 @@ const Samples = (props) =>  {
           {props.selectedSample ? <SampleView selectedSample={props.selectedSample}/> : <h3 id="please_select"> </h3>}
         </div>
       </div>
+      <div id="please-select-sample-header">Please select a medication below.</div>
       <div className="samples-container">
-        {props.allSamples ? renderAllSamples() : null}
+        {renderAllSamples()}
       </div>
-      <div className="contact-container">
-     <div id="contact-text">
-          
-      </div>
-     </div>
+      <ContactFooter/>
     </div>  
   )
 }
@@ -58,4 +56,4 @@ const mdp = dispatch => {
   }
 }
 
-export default connect(msp,mdp)(Samples)
+export default connect(msp,mdp)(FirstDoses);

@@ -11,13 +11,9 @@ const SampleCard = (props) => {
   const {sample_name, image_url, } = props.sample;
 
   return (
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src={image_url} alt={sample_name} />
-    <Card.Body>
-      <Card.Title style={{fontWeight: "bold"}}>{sample_name}</Card.Title>
-      <Button variant="primary" onClick={() => sampleClick(props.sample)}>View Details</Button>
-    </Card.Body>
-  </Card>
+    <Card style={{ width: '18rem' }} onClick={() => sampleClick(props.sample)}>
+      <Card.Img variant="top" src={image_url} alt={sample_name} />
+    </Card>
   )
 }
 

@@ -18,6 +18,8 @@ const reducer = (prevState=intitialState, action) => {
       return {...prevState, allSamples: action.allSamples}
     case "GET_DOCTOR_ORDERS":
       return {...prevState, doctorOrders: action.doctorOrders}
+    case "CLEAR_DOCTOR_ORDERS":
+      return {...prevState, doctorOrders: []}
     case "SELECT_SAMPLE":
       return {...prevState, selectedSample: action.selectedSample}
     case "RENDER_NEW_DOCTOR_ORDER":

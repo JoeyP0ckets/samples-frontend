@@ -56,8 +56,7 @@ const OrderView = (props) => {
 
   return (
   <div className="order-form-container">
-      <br></br>
-     <Button onClick={() => setLgShow(true)}>Order Sample</Button>
+      <Button variant="primary" className="btn-primary" id="place-order-button" onClick={() => setLgShow(true)}>Place Order</Button>
      <Modal
         size="lg"
         show={lgShow}
