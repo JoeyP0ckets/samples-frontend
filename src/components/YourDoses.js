@@ -13,11 +13,6 @@ const YourDoses = (props) => {
   //Change to check for use in props
   const token = localStorage.getItem('auth_token')
 
-    if(!token) {
-      console.log("I'm being returned from the USERSAMPLE")
-      return
-    }
-
     const fetchObj = {
       method: 'GET',
       headers: {

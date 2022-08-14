@@ -1,4 +1,4 @@
-const intitialState = {
+const initialState = {
   user: null,
   doctorOrders: [],
   allSamples: [],
@@ -7,8 +7,8 @@ const intitialState = {
   quantity: null,
   seen: false
 }
-
-const reducer = (prevState=intitialState, action) => {
+//create a reducer combiner that looks if there is a user, if there isn't a user, reset all state values to prevState 
+const reducer = (prevState=initialState, action) => {
   switch(action.type) {
     case "LOGIN_USER":
       return {...prevState, user: action.user}

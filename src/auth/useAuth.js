@@ -135,7 +135,7 @@ export const useAuth = () => {
   const logoutUser = useCallback(() => {
     localStorage.clear('auth_token');
     dispatch({ type: 'LOGOUT_USER' });
-    dispatch({ type: 'CLEAR_DOCTOR_ORDERS'});
+    // dispatch({ type: 'CLEAR_DOCTOR_ORDERS'});
   }, [])
  //This useEffect starts running as soon as an authTime variable is created by setAuthTime useState during Login
 // or Signup
