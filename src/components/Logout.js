@@ -13,7 +13,7 @@ const LogoutButton = () => {
   }
   
   return(
-     <a onClick={() => HandleLogout()} className="main-nav">Logout</a>
+     <button style={{outline: "none", background: "transparent", border: "1px solid transparent"}} onClick={() => HandleLogout()} className="main-nav">Logout</button>
   )
 }
 
