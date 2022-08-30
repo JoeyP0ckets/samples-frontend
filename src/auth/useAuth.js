@@ -15,7 +15,6 @@ export const useAuth = () => {
 //Fetch User Function
 
   const getUser = useCallback(() => {
-    console.log("I'm in the getUser Function")
     const token = localStorage.getItem('auth_token')
 
     if(!token) {

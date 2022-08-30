@@ -49,7 +49,7 @@ const YourDoses = (props) => {
         <br></br>
       </div>
       <div className="yourdose-shipping-frame">
-        <Row id style={{ display: "flex", textAlign: "center" }}>
+        <Row style={{ display: "flex", textAlign: "center" }}>
           <Col className="column-shipping" id="shipping-col-left">
             <div className="shipping-explain-container">
               <div id="shipping-explain-header" className="grow-text aura-pulse">

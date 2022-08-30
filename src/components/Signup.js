@@ -1,17 +1,16 @@
-import React, {useState, useContext } from "react"
+import React, { useContext } from "react"
 import { Form, Button} from 'react-bootstrap'
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 import { AuthContext }from '../context/AuthProvider'
 
 
 const Signup = () => {
-  
-  const [signupErrorMessage, setSignupErrorMessage] = useState(undefined)
+  let history = useHistory();
   const { signupUser } = useContext(AuthContext);
   
   const handleSignupSubmit = e => {
     e.preventDefault();
-    const errorMessage = signupUser(
+    signupUser(
       e.target.name.value, 
       e.target.password.value,
       e.target.email.value,
@@ -24,8 +23,8 @@ const Signup = () => {
       e.target.professional_title.value,
       e.target.phone_number.value
     );
-    errorMessage ? setSignupErrorMessage(errorMessage) : setSignupErrorMessage('');
     e.target.reset();
+    history.push("/")
   }
 
   return (

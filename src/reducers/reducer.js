@@ -26,8 +26,6 @@ const reducer = (prevState=initialState, action) => {
       return {...prevState, doctorOrders: [...prevState.doctorOrders, action.newOrder]} 
     case "SELECT_QUANTITY":
       return {...prevState, quantity: action.value}
-    case "RESET_QUANTITY":
-      return {...prevState, quantity: null}
     case "SELECT_ORDER":
       return {...prevState, selectedOrder: action.selectedOrder}
      default:

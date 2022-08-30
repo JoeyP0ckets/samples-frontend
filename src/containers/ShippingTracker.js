@@ -4,7 +4,6 @@ import { Table } from "react-bootstrap"
 import dateFormat from "dateformat"
 
 const ShippingTracker = (props) => {
-    
     let signedOrders = props.doctorOrders.filter(order => {
       return order.order_sent === true;
     });
@@ -12,7 +11,6 @@ const ShippingTracker = (props) => {
     let sortedSignedOrders = signedOrders.sort((a, b) => b.status_datetime.localeCompare(a.status_datetime)) 
 
   const handleOrderClick = (selectedOrder) => {
-    console.log(selectedOrder)
     props.selectOrder(selectedOrder);
   }
 

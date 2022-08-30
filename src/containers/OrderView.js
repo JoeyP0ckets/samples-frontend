@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {connect, useDispatch} from 'react-redux';
-import {Button, Modal, Alert } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { API_ROOT} from '../apiRoot'
+import { useSnackbar } from 'notistack';
 
 
 
@@ -10,13 +11,13 @@ const OrderView = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [lgShow, setLgShow] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   
   const orderClick = () => {
       createDoctorOrder();
-      alert("Your order has been sent.  Please check the registered email for this account to finish Docusign signature");
       dispatch({ type: 'SELECT_SAMPLE', selectedSample: null })
-      props.resetQuantity();
+      dispatch({ type: 'SELECT_QUANTITY', value: null })
       history.push("/YourDoses");
     }
 
@@ -40,10 +41,18 @@ const OrderView = (props) => {
       )
     })
       .then(resp => resp.json())
-      .then((newOrder) => {
-        console.log(newOrder)
-        props.renderNewDocOrder(newOrder);
-        
+      .then((data) => {
+        if (data.doctor_order) {
+          dispatch({ type: "RENDER_NEW_DOCTOR_ORDER", newOrder: data.doctor_order});
+          enqueueSnackbar(data.success_message, { variant: 'success' });
+    
+        }
+        else if (data.message) {
+          enqueueSnackbar(data.message, { variant: 'error' });
+        }
+        else {
+          enqueueSnackbar('Sorry there was an error with the request', { variant: 'error' });
+        }
       })
   }
 
@@ -92,20 +101,6 @@ const OrderView = (props) => {
       <Button onClick={() => orderClick()} disabled={!props.quantity}>Submit Order</Button>
         </Modal.Body>
       </Modal>
-      {/* <Alert
-        show={showDangerAlert}
-        variant="danger"
-        className="w-25 mt-3 ml-3"
-      >
-       Order Failed to Create
-      </Alert>
-      <Alert
-        show={showSuccessAlert}
-        variant="success"
-        className="w-25 mt-3 ml-3 "
-      >
-        Successfully Ordered!  Please check your email to continue signing
-      </Alert> */}
   </div>
   )
 }
