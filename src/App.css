@@ -39,7 +39,7 @@
   background-position: center;
   background-size: contain;
   background-repeat: repeat;
-  opacity: 75%;
+  opacity: 0.75;
   visibility: hidden;
 }
 
@@ -71,7 +71,7 @@
   top: 0;
   z-index: 100;
   position: sticky;
-  opacity: 95% !important;
+  opacity: 0.95;
   /* visibility: hidden; */
 }
 
@@ -207,7 +207,7 @@
   margin-right: 6%;
   border-style: ridge;
   border-radius: 15px;
-  opacity: 95%;
+  opacity: 0.95;
 }
 
 #about-statement {
@@ -255,12 +255,12 @@
   /* background-color: #282c34;e */
   border-bottom: double black;
   background-color: rgba(1, 0, 3, 0.75);
-  opacity: 95%;
+  opacity: 0.95;
   border-radius: 25px;
   margin-left: 100px;
   margin-right: 100px;
   height: fit-content;
-  opacity: 65%;
+  opacity: 0.65;
   text-align: center;
   align-content: center;
   position: sticky;
@@ -551,7 +551,7 @@
   border-width: 5px;
   border-radius: 25px;
   text-align: left;
-  opacity: 95%;
+  opacity: 0.95;
 }
 
 #yourdose-explain-header,
