@@ -42,6 +42,7 @@ const OrderView = (props) => {
     })
       .then(resp => resp.json())
       .then((data) => {
+        console.log(data)
         if (data.doctor_order) {
           dispatch({ type: "RENDER_NEW_DOCTOR_ORDER", newOrder: data.doctor_order});
           enqueueSnackbar(data.success_message, { variant: 'success' });
