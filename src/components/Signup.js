@@ -29,6 +29,7 @@ const Signup = () => {
 
   return (
     <div className="signup-form">
+      <h3 style={{paddingTop: "25px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Signup</h3>
       <Form onSubmit={e => handleSignupSubmit(e)} className="form-width">
         <Form.Group>
           <h3 style={{paddingTop: "20px", fontFamily: "Cinzel"}}>General Information</h3>
@@ -49,7 +50,6 @@ const Signup = () => {
           <Button type="submit">Signup</Button>
         </Form.Group>
       </Form>
-      <h6>Already a User? <NavLink to="/">Login</NavLink></h6>
     </div>
   )
 }

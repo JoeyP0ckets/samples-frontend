@@ -15,6 +15,7 @@ const Login = () => {
   
     return(
       <div className="login-form">
+      <h3 style={{paddingTop: "200px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Login</h3>
       <Form onSubmit={e => handleLoginSubmit(e)} className="form-width">
         <Form.Group>
           <Form.Control type="text" placeholder="Name" name="name"/>  

@@ -1,12 +1,11 @@
-import { React } from "react"
-import { NavLink, Switch, Route} from "react-router-dom"
+import { React, useState } from "react"
 import Login from '../components/Login'
 import { Row, Col } from "react-bootstrap"
 import Signup from "../components/Signup"
 
 
 const LoginSignup = () => {
-  
+  const [isClicked, setClicked] = useState(false);
   
   return (
     <Row id="login-row">
@@ -17,14 +16,13 @@ const LoginSignup = () => {
           </div>
       </Col>
       <Col id="login-right-col" style={{height: "100vh"}}>
-        <Switch>
-          <Route exact path="/Signup">
-            <Signup/>
-          </Route>
-        </Switch>
-        <h3 style={{paddingTop: "200px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Login</h3>
-        <Login/>
-          <h6 style={{textAlign: "center"}}>Need to setup an account? <NavLink to="/Signup" exact>Signup</NavLink></h6>
+        {isClicked === false ? <Login/> : <Signup/>}
+        {isClicked === false ? 
+          <h6 style={{textAlign: "center"}} onClick={() => setClicked(!isClicked)}> Need to setup an account? Signup</h6> 
+          : 
+          <h6 style={{textAlign: "center"}} onClick={() => setClicked(!isClicked)}> Already have an account? Login</h6> 
+
+        }
         </Col>
     </Row>
   )
