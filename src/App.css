@@ -148,6 +148,13 @@
   align-items: center;
 }
 
+#link {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+
 .login-image {
   background-image: url("../src/img/first_dose_WHITE_periodic_final2.png");
 

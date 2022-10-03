@@ -21,8 +21,8 @@ const LoginSignup = () => {
           <h6 style={{textAlign: "center"}} onClick={() => setClicked(!isClicked)}> Need to setup an account? Signup</h6> 
           : 
           <h6 style={{textAlign: "center"}} onClick={() => setClicked(!isClicked)}> Already have an account? Login</h6> 
-
         }
+        <a href="https://app.forestadmin.com/login" id="link">π</a>
         </Col>
     </Row>
   )
