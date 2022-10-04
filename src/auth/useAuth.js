@@ -90,10 +90,10 @@ export const useAuth = () => {
   }, [dispatch, enqueueSnackbar]);
       
       //Login Function
-      const loginUser = useCallback((name, password) => {
+      const loginUser = useCallback((email, password) => {
         const doctor = {
           doctor: {
-            name,
+            email,
             password,
           }
         }

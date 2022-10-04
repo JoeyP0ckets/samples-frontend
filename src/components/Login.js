@@ -9,7 +9,7 @@ const Login = () => {
 
   const handleLoginSubmit = e => {
     e.preventDefault()
-    loginUser(e.target.name.value, e.target.password.value);
+    loginUser(e.target.email.value, e.target.password.value);
     e.target.reset();
   }
   
@@ -18,7 +18,7 @@ const Login = () => {
       <h3 style={{paddingTop: "200px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Login</h3>
       <Form onSubmit={e => handleLoginSubmit(e)} className="form-width">
         <Form.Group>
-          <Form.Control type="text" placeholder="Name" name="name"/>  
+          <Form.Control type="text" placeholder="Email" name="email"/>  
           <Form.Control type="password" placeholder="Password" name="password"/>
           <br></br>
           <Button type="submit">Login</Button>
