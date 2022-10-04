@@ -11,7 +11,8 @@ const Signup = () => {
   const handleSignupSubmit = e => {
     e.preventDefault();
     signupUser(
-      e.target.name.value, 
+      e.target.first_name.value, 
+      e.target.last_name.value,
       e.target.password.value,
       e.target.email.value,
       e.target.address_1.value,
@@ -34,7 +35,8 @@ const Signup = () => {
         <Form.Group>
           <h3 style={{paddingTop: "20px", fontFamily: "Cinzel"}}>General Information</h3>
           <Form.Control type="text" placeholder="Professional Title e.g. Doctor" name="professional_title"/>
-          <Form.Control type="text" placeholder="First and Last Name" name="name"/>  
+          <Form.Control type="text" placeholder="First Name" name="first_name"/>  
+          <Form.Control type="text" placeholder="Last Name" name="last_name"/>  
           <Form.Control type="text" placeholder="Email" name="email"/>
           <Form.Control type="password" placeholder="Password" name="password"/>
           <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>

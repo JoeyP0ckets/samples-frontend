@@ -45,9 +45,10 @@ export const useAuth = () => {
 
       
       //Signup Function
-  const signupUser = useCallback((name, password, email, address_1, address_2, city, state, zipcode, license_id, professional_title, phone_number) => {
+  const signupUser = useCallback((first_name, last_name, password, email, address_1, address_2, city, state, zipcode, license_id, professional_title, phone_number) => {
     const doctor = {
-      name, 
+      first_name,
+      last_name, 
       password,
       email,
       address_1,
