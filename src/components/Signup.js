@@ -33,7 +33,7 @@ const Signup = () => {
       <Form onSubmit={e => handleSignupSubmit(e)} className="form-width">
         <Form.Group>
           <h3 style={{paddingTop: "20px", fontFamily: "Cinzel"}}>General Information</h3>
-          <Form.Control type="text" placeholder="Profesional Title e.g. Doctor" name="professional_title"/>
+          <Form.Control type="text" placeholder="Professional Title e.g. Doctor" name="professional_title"/>
           <Form.Control type="text" placeholder="First and Last Name" name="name"/>  
           <Form.Control type="text" placeholder="Email" name="email"/>
           <Form.Control type="password" placeholder="Password" name="password"/>
