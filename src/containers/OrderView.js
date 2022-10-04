@@ -62,7 +62,7 @@ const OrderView = (props) => {
     props.selectQuantity(value)
   }
 
-  const {professional_title, address_1, address_2, name, city, state, zipcode} = props.user
+  const {professional_title, address_1, address_2, first_name, last_name, city, state, zipcode} = props.user
 
   return (
   <div className="order-form-container">
@@ -81,7 +81,7 @@ const OrderView = (props) => {
         <Modal.Body>
           <h5>Order will be sent to: </h5>
           <div className="modal-doc-info"></div>
-            {professional_title} {name}
+            {professional_title} {first_name} {last_name}
             <br></br>
             {address_1}
             <br></br>
