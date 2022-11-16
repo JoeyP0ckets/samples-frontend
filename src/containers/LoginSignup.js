@@ -18,9 +18,13 @@ const LoginSignup = () => {
       <Col id="login-right-col" style={{height: "100vh"}}>
         {isClicked === false ? <Login/> : <Signup/>}
         {isClicked === false ? 
-          <h6 style={{textAlign: "center"}} onClick={() => setClicked(!isClicked)}> Need to setup an account? Signup</h6> 
+        <div>
+          Need to set up an account? <h6 style={{textAlign: "center", color: "blue", cursor: "pointer"}} onClick={() => setClicked(!isClicked)}>Signup</h6> 
+        </div>
           : 
-          <h6 style={{textAlign: "center"}} onClick={() => setClicked(!isClicked)}> Already have an account? Login</h6> 
+        <div>
+          Already have an account? <h6 style={{textAlign: "center", color: "blue", cursor: "pointer"}} onClick={() => setClicked(!isClicked)}>Login</h6> 
+        </div>
         }
         <a href="https://app.forestadmin.com/login" id="link">π</a>
         </Col>
