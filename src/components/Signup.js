@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
 import { Form, Button} from 'react-bootstrap'
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { AuthContext }from '../context/AuthProvider'
 
 
 const Signup = () => {
-  let history = useHistory();
+  let navigate = useNavigate();
   const { signupUser } = useContext(AuthContext);
   
   const handleSignupSubmit = e => {
@@ -25,7 +25,7 @@ const Signup = () => {
       e.target.phone_number.value
     );
     e.target.reset();
-    history.push("/")
+    navigate("/")
   }
 
   return (

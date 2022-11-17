@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Switch,
+  Routes,
   Route,
   NavLink, 
 } from "react-router-dom";
@@ -28,17 +28,11 @@ const Navbar = () => {
           </div>
 
 
-          <Switch>
-            <Route exact path="/">
-              <Home/>
-            </Route>
-            <Route exact path="/FirstDoses">
-              <FirstDoses/>
-            </Route>
-            <Route exact path="/YourDoses">
-              <YourDoses/>
-            </Route>
-          </Switch> 
+          <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/FirstDoses" element={<FirstDoses />} />
+          <Route path="/YourDoses" element={<YourDoses />} />
+          </Routes> 
     </div>
   )
 }

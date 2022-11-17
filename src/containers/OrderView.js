@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {connect, useDispatch} from 'react-redux';
 import { Button, Modal } from 'react-bootstrap';
 import { API_ROOT} from '../apiRoot'
@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 
 
 const OrderView = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [lgShow, setLgShow] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -18,7 +18,7 @@ const OrderView = (props) => {
       createDoctorOrder();
       dispatch({ type: 'SELECT_SAMPLE', selectedSample: null })
       dispatch({ type: 'SELECT_QUANTITY', value: null })
-      history.push("/YourDoses");
+      navigate("/YourDoses");
     }
 
   const createDoctorOrder = () => {    
