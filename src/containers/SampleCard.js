@@ -11,7 +11,7 @@ const SampleCard = (props) => {
   const {sample_name, image_url, } = props.sample;
 
   return (
-    <Card style={{ width: '18rem' }} onClick={() => sampleClick(props.sample)}>
+    <Card style={{ width: '18rem', cursor: "pointer" }} onClick={() => sampleClick(props.sample)}>
       <Card.Img variant="top" src={image_url} alt={sample_name} />
     </Card>
   )

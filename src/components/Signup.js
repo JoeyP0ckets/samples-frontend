@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { Form, Button} from 'react-bootstrap'
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { AuthContext }from '../context/AuthProvider'
 
 
@@ -30,17 +30,17 @@ const Signup = () => {
 
   return (
     <div className="signup-form">
-      <h3 style={{paddingTop: "25px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Signup</h3>
+      <h3 style={{paddingTop: "1px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Signup</h3>
       <Form onSubmit={e => handleSignupSubmit(e)} className="form-width">
         <Form.Group>
-          <h3 style={{paddingTop: "20px", fontFamily: "Cinzel"}}>General Information</h3>
+          <h3 style={{paddingTop: "1px", fontFamily: "Cinzel"}}>General Information</h3>
           <Form.Control type="text" placeholder="Professional Title e.g. Doctor" name="professional_title"/>
           <Form.Control type="text" placeholder="First Name" name="first_name"/>  
           <Form.Control type="text" placeholder="Last Name" name="last_name"/>  
           <Form.Control type="text" placeholder="Email" name="email"/>
           <Form.Control type="password" placeholder="Password" name="password"/>
           <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>
-          <h3 style={{paddingTop: "20px", fontFamily: "Cinzel"}}>Address Information</h3>
+          <h3 style={{paddingTop: "15px", fontFamily: "Cinzel"}}>Address Information</h3>
           <Form.Control type="text" placeholder="Address 1" name="address_1"/>
           <Form.Control type="text" placeholder="Address 2 (Optional)" name="address_2"/>
           <Form.Control type="text" placeholder="City" name="city"/>

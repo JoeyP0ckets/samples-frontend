@@ -20,6 +20,7 @@ const Login = () => {
         <Form.Group>
           <Form.Control type="text" placeholder="Email" name="email"/>  
           <Form.Control type="password" placeholder="Password" name="password"/>
+          <h6 style={{paddingTop: "10px"}}>Forgot your password? Send Update Email</h6>
           <br></br>
           <Button type="submit">Login</Button>
         </Form.Group>
