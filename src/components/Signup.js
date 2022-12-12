@@ -1,7 +1,8 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { Form, Button} from 'react-bootstrap'
 import { useNavigate } from "react-router-dom"
 import { AuthContext }from '../context/AuthProvider'
+import Reactphone from "./Reactphone"
 
 
 const Signup = () => {
@@ -39,7 +40,8 @@ const Signup = () => {
           <Form.Control type="text" placeholder="Last Name" name="last_name"/>  
           <Form.Control type="text" placeholder="Email" name="email"/>
           <Form.Control type="password" placeholder="Password" name="password"/>
-          <Form.Control type="text" placeholder="Phone Number" name="phone_number"/>
+          <Reactphone/>
+          {/* <Form.Control type="text" placeholder="Phone Number" name="phone_number"/> */}
           <h3 style={{paddingTop: "15px", fontFamily: "Cinzel"}}>Address Information</h3>
           <Form.Control type="text" placeholder="Address 1" name="address_1"/>
           <Form.Control type="text" placeholder="Address 2 (Optional)" name="address_2"/>
