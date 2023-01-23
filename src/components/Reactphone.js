@@ -1,14 +1,16 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-number-input/input"
+import 'react-phone-number-input/style.css'
 
 const Reactphone = () => {
   const [value, setValue] = useState();
   return(
     <div>
     <PhoneInput
+      // style={{}}
+      style={{width: "100%", height: "37px", borderRadius: "5px", borderWidth: "1px", border: "1px inset"}}
       placeholder="Phone Number"
       value={value}
-      //Not sure about this next line to capture value might have to capture value off state here and send to signup as props
       name="phone_number"
       onChange={setValue}
       defaultCountry="US"

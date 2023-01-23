@@ -60,7 +60,8 @@ export const useAuth = () => {
       professional_title,
       phone_number,
     }
-
+     console.log(doctor.email)
+     
     const fetchObj = {
       method: "POST",
       headers: {
