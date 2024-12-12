@@ -29,6 +29,10 @@ const YourDoses = (props) => {
         props.renderDocOrders(doctorOrders)});
     }
 
+    const TesterFunction = () => {
+      console.log("I'm a tester function");
+    }
+
   return(
     <div className="your-doses-page">
       <div className="yourdose-contract-frame">
