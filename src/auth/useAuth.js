@@ -12,6 +12,7 @@ export const useAuth = () => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
+
 //Fetch User Function
 
   const getUser = useCallback(() => {
@@ -60,7 +61,6 @@ export const useAuth = () => {
       professional_title,
       phone_number,
     }
-     console.log(doctor.email)
      
     const fetchObj = {
       method: "POST",
@@ -76,10 +76,9 @@ export const useAuth = () => {
     fetch(`${API_ROOT}/doctors`, fetchObj)
       .then(res => res.json())
       .then(data => {
-        if (data.token) {
-          localStorage.setItem('auth_token', data.token);
-          setAuthTime(new Date(data.doctor.last_logged_in).getTime());
-          dispatch({ type: 'LOGIN_USER', user: data.doctor })
+        if (data.message) {
+          enqueueSnackbar(data.message, {variant: "success"})
+          
         }
         else if (data.errors) {
           enqueueSnackbar(data.errors, { variant: 'error' });
@@ -89,7 +88,7 @@ export const useAuth = () => {
         }
       })
       .catch(err => enqueueSnackbar(`Sorry there was an error with that request: ${err}`, { variant: 'error' }));
-  }, [dispatch, enqueueSnackbar]);
+  }, [enqueueSnackbar]);
       
       //Login Function
       const loginUser = useCallback((email, password) => {
