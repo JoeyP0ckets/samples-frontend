@@ -16,7 +16,7 @@ const LoginSignup = () => {
           </div>
       </Col>
       <Col id="login-right-col" style={{height: "100vh"}}>
-        {isClicked === false ? <Login/> : <Signup/>}
+        {isClicked === false ? <Login/> : <Signup setClicked={setClicked}/>}
         {isClicked === false ? 
         <div style={{paddingTop: "5px"}}>
           Need to set up an account? <h6 style={{textAlign: "center", color: "blue", cursor: "pointer"}} onClick={() => setClicked(!isClicked)}>Signup</h6> 

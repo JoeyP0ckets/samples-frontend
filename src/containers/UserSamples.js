@@ -6,7 +6,6 @@ import { API_ROOT } from '../apiRoot'
 
  
 const UserSample = (props) => {
-    
   return (
     <Table striped bordered hover variant="dark">
       <thead>

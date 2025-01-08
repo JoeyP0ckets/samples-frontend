@@ -5,8 +5,8 @@ import { AuthContext }from '../context/AuthProvider'
 import Reactphone from "./Reactphone"
 
 
-const Signup = () => {
-  let navigate = useNavigate();
+const Signup = ({setClicked}) => {
+  //let navigate = useNavigate();
   const { signupUser } = useContext(AuthContext);
   
   const handleSignupSubmit = e => {
@@ -26,7 +26,7 @@ const Signup = () => {
       e.target.phone_number.value
     );
     e.target.reset();
-    navigate("/")
+    setClicked(false);
   }
 
   return (
