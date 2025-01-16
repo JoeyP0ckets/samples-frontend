@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import Navbar from '../src/components/Navbar'
 import LoginSignup from '../src/containers/LoginSignup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import PasswordResetRequest from './components/PasswordRequestForm';
+import ResetPassword from './components/ResetPasswordForm';
 
 
 function App(props) {
@@ -14,9 +16,17 @@ function App(props) {
     <SnackbarProvider>
       <AuthProvider>
         <Router>
-        <div className="App">
-          {props.user ? <Navbar/> : <LoginSignup/>}
-        </div> 
+          <div className="App">
+            {props.user ? (
+              <Navbar />
+            ) : (
+              <Routes>
+                <Route path="/" element={<LoginSignup />} />
+                <Route path="/password-reset-request" element={<PasswordResetRequest />} /> 
+                <Route path="/reset-password" element={<ResetPassword/>}/>{/* Add route */}
+              </Routes>
+            )}
+          </div>
         </Router>
       </AuthProvider>
     </SnackbarProvider>
