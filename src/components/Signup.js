@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { Form, Button} from 'react-bootstrap'
-import { useNavigate } from "react-router-dom"
 import { AuthContext }from '../context/AuthProvider'
 import Reactphone from "./Reactphone"
 
 
 const Signup = ({setClicked}) => {
-  //let navigate = useNavigate();
+ 
   const { signupUser } = useContext(AuthContext);
   
   const handleSignupSubmit = e => {
