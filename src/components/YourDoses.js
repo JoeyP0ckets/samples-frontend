@@ -1,4 +1,4 @@
-import {React, useEffect } from "react"
+import {React, useEffect, useCallback } from "react"
 import { connect } from "react-redux"
 import ShippingLabel from '../containers/ShippingLabel';
 import ShippingTracker from '../containers/ShippingTracker';
@@ -9,25 +9,31 @@ import ContactFooter from "../containers/ContactFooter"
 
 const YourDoses = (props) => {
   
-  useEffect(() => fetchUserOrders(), []);
   //Change to check for use in props
-  const token = localStorage.getItem('auth_token')
+  
+    //testing some of my doses
 
-    const fetchObj = {
+    const fetchUserOrders = useCallback(() => {
+
+      const token = localStorage.getItem('auth_token')
+
+      const fetchObj = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Auth-Token': token
       },
     }
-    //testing some of my doses
+      fetch(`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
+        .then((resp) => resp.json())
+        .then((doctorOrders) => {
+          props.renderDocOrders(doctorOrders);
+        });
+    }, [props]);
 
-    const fetchUserOrders = () => {
-      fetch (`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
-      .then(resp => resp.json())
-      .then((doctorOrders) => {
-        props.renderDocOrders(doctorOrders)});
-    }
+    useEffect(() => {
+      fetchUserOrders();
+    }, [fetchUserOrders]);
 
   return(
     <div className="your-doses-page">

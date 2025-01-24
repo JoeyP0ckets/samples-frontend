@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useCallback } from 'react'
 import {connect} from 'react-redux'
 import SampleCard from '../containers/SampleCard'
 import SampleView from '../containers/SampleView'
@@ -9,13 +9,16 @@ import ContactFooter from '../containers/ContactFooter'
 
 const FirstDoses = (props) =>  {
  
-  const fetchSamples = () => {
-    fetch (`${API_ROOT}/samples`)
-    .then(resp => resp.json())
-    .then(allSamples => props.renderSamples(allSamples))
-  }
+  const fetchSamples = useCallback(() => { 
+    fetch(`${API_ROOT}/samples`) 
+      .then((resp) => resp.json()) 
+      .then((allSamples) => props.renderSamples(allSamples));
+  }, [props]); 
+  
+  useEffect(() => { 
+    fetchSamples();
+  }, [fetchSamples]);  
 
-  useEffect(() => fetchSamples(), []);
   
   
   const renderAllSamples = () => {

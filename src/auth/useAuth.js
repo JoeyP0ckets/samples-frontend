@@ -133,7 +133,7 @@ export const useAuth = () => {
     dispatch({ type: 'SELECT_SAMPLE', selectedSample: null});
     dispatch({ type: 'SELECT_ORDER', selectedOrder: null});
     dispatch({ type: 'GET_ALL_SAMPLES', allSamples: []})
-  }, [])
+  }, [dispatch])
  //This useEffect starts running as soon as an authTime variable is created by setAuthTime useState during Login
 // or Signup
   useEffect(() => {
