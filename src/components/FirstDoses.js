@@ -9,20 +9,25 @@ import ContactFooter from '../containers/ContactFooter'
 
 const FirstDoses = (props) =>  {
  
-  const fetchSamples = useCallback(() => { 
-    fetch(`${API_ROOT}/samples`) 
-      .then((resp) => resp.json()) 
-      .then((allSamples) => props.renderSamples(allSamples));
-  }, [props]); 
-  
-  useEffect(() => { 
+  // Destructure renderSamples from props
+  const { renderSamples, allSamples, selectedSample } = props;
+
+  // Memoized fetchSamples function
+  const fetchSamples = useCallback(() => {
+    fetch(`${API_ROOT}/samples`)
+      .then((resp) => resp.json())
+      .then((allSamples) => renderSamples(allSamples)); // Use destructured renderSamples
+  }, [renderSamples]); // Only depends on renderSamples
+
+  // Fetch samples on mount
+  useEffect(() => {
     fetchSamples();
-  }, [fetchSamples]);  
+  }, [fetchSamples]); // FetchSamples is stable and won't cause unnecessary re-renders  
 
   
   
   const renderAllSamples = () => {
-    return props.allSamples.map((sample, index) =>
+    return allSamples.map((sample, index) =>
       <SampleCard
         key={index}
         sample={sample}
@@ -34,7 +39,7 @@ const FirstDoses = (props) =>  {
     <div className="first-doses-page">
       <div id="theatre">
         <div className="sample-view-container">
-          {props.selectedSample ? <SampleView selectedSample={props.selectedSample}/> : <h3 id="please_select"> </h3>}
+          {selectedSample ? <SampleView selectedSample={selectedSample}/> : <h3 id="please_select"> </h3>}
         </div>
       </div>
       <div id="please-select-sample-header">Please select a medication below.</div>

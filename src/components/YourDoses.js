@@ -1,4 +1,4 @@
-import {React, useEffect, useCallback } from "react"
+import {React, useEffect, useCallback, useMemo } from "react"
 import { connect } from "react-redux"
 import ShippingLabel from '../containers/ShippingLabel';
 import ShippingTracker from '../containers/ShippingTracker';
@@ -8,32 +8,32 @@ import ContractsTable from "./ContractsTable";
 import ContactFooter from "../containers/ContactFooter"
 
 const YourDoses = (props) => {
-  
-  //Change to check for use in props
-  
-    //testing some of my doses
 
-    const fetchUserOrders = useCallback(() => {
+      
+  const { renderDocOrders, selectedOrder } = props;
 
-      const token = localStorage.getItem('auth_token')
-
-      const fetchObj = {
-      method: 'GET',
+  const fetchObj = useMemo(() => {
+    const token = localStorage.getItem("auth_token");
+    return {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        'Auth-Token': token
+        "Content-Type": "application/json",
+        "Auth-Token": token,
       },
-    }
-      fetch(`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
-        .then((resp) => resp.json())
-        .then((doctorOrders) => {
-          props.renderDocOrders(doctorOrders);
-        });
-    }, [props]);
+    };
+  }, []);
 
-    useEffect(() => {
-      fetchUserOrders();
-    }, [fetchUserOrders]);
+  const fetchUserOrders = useCallback(() => {
+    fetch(`${API_ROOT}/doctor_orders/return_doctors_orders`, fetchObj)
+      .then((resp) => resp.json())
+      .then((doctorOrders) => {
+        renderDocOrders(doctorOrders);
+      });
+  }, [fetchObj, renderDocOrders]);
+
+  useEffect(() => {
+    fetchUserOrders();
+  }, [fetchUserOrders]);
 
   return(
     <div className="your-doses-page">
@@ -74,7 +74,7 @@ const YourDoses = (props) => {
           </Col>
           <Col className="column-shipping" id="shipping-col-right">
             <div id="shipping-text-container">
-              {props.selectedOrder ? <ShippingLabel/> : <div id="please-select-shipping-order" className="grow-text">Please Select a Shipping Order</div>}
+              {selectedOrder ? <ShippingLabel/> : <div id="please-select-shipping-order" className="grow-text">Please Select a Shipping Order</div>}
             </div>
           </Col>
         </Row>
