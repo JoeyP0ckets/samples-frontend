@@ -89,7 +89,7 @@ const YourDoses = (props) => {
 const msp = state => {
   return {
     doctorOrders: state.doctorOrders,
-    user: state.user,
+    user: state.doctorOrders.doctor,
     selectedOrder: state.selectedOrder
   }
 }
