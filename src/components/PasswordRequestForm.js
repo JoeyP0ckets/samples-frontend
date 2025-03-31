@@ -29,17 +29,24 @@ const PasswordResetRequest = () => {
   }; 
   
   return (
-     <form onSubmit={handleSubmit}> 
-     <h2>Reset Your Password</h2> 
-     <input 
-       type="email" 
-       placeholder="Enter your email" 
-       value={email} 
-       onChange={(e) => setEmail(e.target.value)} // Update email state required 
-      /> 
-      <button type="submit">Send Reset Link</button>
-      </form> 
-      ); 
+    <div className="reset-container">
+  <div className="reset-logo-bg" />
+  <form onSubmit={handleSubmit}>
+    <h2 className="reset-title">Reset Your Password</h2>
+    <input
+      type="email"
+      placeholder="Enter your email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="reset-input"
+    />
+    <button type="submit" className="reset-button">
+      Send Reset Link
+    </button>
+  </form>
+</div>
+
+  );  
 }; 
 
 
