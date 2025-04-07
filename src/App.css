@@ -676,6 +676,18 @@
 
 /* Styles for PasswordResetRequest */
 
+.form-section-title {
+  font-family: Cinzel;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  color: #2c7a7b;
+  display: flex;
+  justify-content: center;
+}
+
 .reset-container {
   position: relative;
   max-width: 400px;
@@ -737,6 +749,25 @@
 .reset-button:hover {
   background-color: #319795; /* teal-600 */
 }
+
+.signup-scroll-wrapper {
+  max-height: 500px; /* or whatever height you want */
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #90cdf4 transparent;
+}
+
+/* Optional: style scrollbar for WebKit browsers (Chrome, Safari) */
+.signup-scroll-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.signup-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #90cdf4;
+  border-radius: 4px;
+}
+
 
 
 /* .shipping-info-data {
