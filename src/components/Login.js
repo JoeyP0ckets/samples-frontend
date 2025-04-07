@@ -15,23 +15,41 @@ const Login = () => {
   }
   
     return(
-      <div className="login-form">
-      <h3 style={{paddingTop: "200px", textAlign: "center", fontFamily: "Cinzel", fontWeight: ""}}>Login</h3>
-      <Form onSubmit={e => handleLoginSubmit(e)} className="form-width">
-        <Form.Group>
-          <Form.Control type="text" placeholder="Email" name="email"/>  
-          <Form.Control type="password" placeholder="Password" name="password"/>
-          <h6 style={{paddingTop: "10px"}}>
-            Forgot your password? {" "}
-            <Link to="/password-reset-request" style={{ color: "blue", textDecoration: "underline"}}>
-              Send Update Email
-            </Link>
-          </h6>
-          <br></br>
-          <Button type="submit">Login</Button>
+      <div className="reset-container">
+      <h2 className="reset-title" style={{ fontFamily: "Cinzel" }}>Login</h2>
+      <Form onSubmit={handleLoginSubmit}>
+        <Form.Group controlId="formEmail">
+          <Form.Control
+            type="text"
+            placeholder="Email"
+            name="email"
+            className="reset-input"
+          />
         </Form.Group>
+
+        <Form.Group controlId="formPassword">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            className="reset-input"
+          />
+        </Form.Group>
+
+        <div style={{ paddingTop: "10px", fontSize: "0.9rem" }}>
+          Forgot your password?{" "}
+          <Link to="/password-reset-request" style={{ color: "blue", textDecoration: "underline" }}>
+            Send Update Email
+          </Link>
+        </div>
+
+        <br />
+
+        <button type="submit" className="reset-button">
+          Login
+        </button>
       </Form>
-      </div>
+    </div>
   )
 }
 
