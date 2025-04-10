@@ -73,21 +73,44 @@ export const useAuth = () => {
       })
     }
 
-    fetch(`${API_ROOT}/doctors`, fetchObj)
-      .then(res => res.json())
-      .then(data => {
-        if (data.message) {
-          enqueueSnackbar(data.message, {variant: "success"})
-          
-        }
-        else if (data.errors) {
-          enqueueSnackbar(data.errors, { variant: 'error' });
-        }
-        else {
-          enqueueSnackbar('Sorry there was an error with the request', { variant: 'error' });
-        }
-      })
-      .catch(err => enqueueSnackbar(`Sorry there was an error with that request: ${err}`, { variant: 'error' }));
+    return fetch(`${API_ROOT}/doctors`, fetchObj)
+    .then(res => res.json().then(data => {
+    if (res.ok) {
+      enqueueSnackbar(data.message, { variant: "success" });
+      return { success: true };
+    } else {
+      const errorsByField = {};
+      const possibleFields = [
+        "first_name", "last_name", "email", "password",
+        "phone_number", "address_1", "address_2",
+        "city", "state", "zipcode", "license_id", "professional_title"
+      ];
+
+      if (data.errors && Array.isArray(data.errors)) {
+        data.errors.forEach(err => {
+          enqueueSnackbar(err, { variant: 'error' });
+
+          // Try to match the error to a known field
+          const matchField = possibleFields.find(field => {
+            // Handles variations like "Address can't be blank" for "address_1"
+            return err.toLowerCase().includes(field.replace(/_/g, ' '));
+          });
+
+          if (matchField && !errorsByField[matchField]) {
+            errorsByField[matchField] = err;
+          }
+        });
+      } else {
+        enqueueSnackbar("Something went wrong. Please try again.", { variant: 'error' });
+      }
+
+      return { success: false, errors: errorsByField };
+    }
+  }))
+  .catch(err => {
+    enqueueSnackbar(`Request failed: ${err}`, { variant: 'error' });
+    return { success: false, errors: {} };
+  });
   }, [enqueueSnackbar]);
       
       //Login Function
