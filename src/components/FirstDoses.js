@@ -27,7 +27,9 @@ const FirstDoses = (props) =>  {
   
   
   const renderAllSamples = () => {
-    return allSamples.map((sample, index) =>
+    const yupelriSamples = allSamples.filter(sample => sample.sample_name === "Yupelri");
+
+    return yupelriSamples.map((sample, index) =>
       <SampleCard
         key={index}
         sample={sample}

@@ -40,6 +40,7 @@ const PasswordResetRequest = () => {
       onChange={(e) => setEmail(e.target.value)}
       className="reset-input"
     />
+    If you don’t see the password reset email in your inbox, please check your spam or junk folder. We're aware of a delivery issue affecting some users and are actively working on a fix. Thank you for your patience! 
     <button type="submit" className="reset-button">
       Send Reset Link
     </button>
