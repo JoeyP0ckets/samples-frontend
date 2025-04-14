@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { AuthContext }from '../context/AuthProvider'
 import {Link} from 'react-router-dom'
-import { Form, Button } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import LoadingSpinner from "./LoadingSpinner"
 
 
@@ -18,6 +18,10 @@ const Login = () => {
       setLoggingIn(false);
       e.target.reset();  
     })
+  }
+
+  if (loggingIn) {
+    return <LoadingSpinner message="Logging you in..." />;
   }
   
     return(
