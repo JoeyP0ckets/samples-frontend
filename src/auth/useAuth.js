@@ -1,42 +1,51 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; 
 import { useSnackbar } from 'notistack';
 import { API_ROOT } from '../apiRoot';
 
 
-const TIMEOUT = 900000;
+const TIMEOUT = 60000; //5 minute timer of inactivity before logout 
+const WARNING_THRESHOLD = 15000; //2 minutes before timeout trips
 let authIntervalTimer = null;
 
 export const useAuth = () => {
   const [authTime, setAuthTime] = useState(null);
   const dispatch = useDispatch();
+  const [showWarning, setShowWarning] = useState(false); 
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate(); 
+  const [loadingUser, setLoadingUser] = useState(true); 
+
 
 
 //Fetch User Function
 
-  const getUser = useCallback(() => {
-    const token = localStorage.getItem('auth_token')
+const getUser = useCallback(() => {
+  const token = localStorage.getItem('auth_token');
+  if (!token) {
+    setLoadingUser(false); // ✅ Done loading — no token
+    return;
+  }
 
-    if(!token) {
-      return
-    }
+  const fetchObj = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Auth-Token': token
+    },
+  };
 
-    const fetchObj = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Auth-Token': token
-      },
-    }
-
-    fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
+  fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
     .then(resp => resp.json())
     .then(user => {
-      dispatch({ type: "LOGIN_USER", user: user})
-    }) 
-    
-  }, [dispatch]);
+      dispatch({ type: "LOGIN_USER", user });
+    })
+    .finally(() => {
+      setLoadingUser(false); // ✅ Done loading — whether successful or not
+    });
+}, [dispatch]);
+
 
 
   // useEffect to load user on initial load (runs one time when hook is initialized)
@@ -130,7 +139,7 @@ export const useAuth = () => {
           body: JSON.stringify(doctor)
         }
         
-        fetch(`${API_ROOT}/sessions`, fetchObj)
+        return fetch(`${API_ROOT}/sessions`, fetchObj)
           .then(res => res.json())
           .then(data => {
             if (data.token) {
@@ -156,27 +165,64 @@ export const useAuth = () => {
     dispatch({ type: 'SELECT_SAMPLE', selectedSample: null});
     dispatch({ type: 'SELECT_ORDER', selectedOrder: null});
     dispatch({ type: 'GET_ALL_SAMPLES', allSamples: []})
-  }, [dispatch])
+    navigate('/'); // ✅ redirect to login
+  }, [dispatch, navigate])
  //This useEffect starts running as soon as an authTime variable is created by setAuthTime useState during Login
 // or Signup
-  useEffect(() => {
-    if (authIntervalTimer) {
-      clearInterval(authIntervalTimer);
-    }
-  //this assigns setInterval to check whether state of authtime plus current time is greater than state of authtime plus 
-  //Timeout variable set on line 7 as the authIntervalTimer
+useEffect(() => {
+  if (authIntervalTimer) clearInterval(authIntervalTimer);
 
-    authIntervalTimer = setInterval(() => {
-      if (authTime && (Date.now() > authTime + TIMEOUT)) {
-        //if it does then clear authTime variable in state and run logout user on 135
-        setAuthTime(null);
-        logoutUser();
+  authIntervalTimer = setInterval(() => {
+    if (!authTime) return;
+
+    const timeElapsed = Date.now() - authTime;
+
+    if (timeElapsed > TIMEOUT) {
+      setAuthTime(null);
+      setShowWarning(false); // [ADDED]
+      logoutUser();
+      enqueueSnackbar("You’ve been logged out due to inactivity.", { variant: 'info' }); // [ADDED]
+    } else if (timeElapsed > TIMEOUT - WARNING_THRESHOLD) {
+      if (!showWarning) {
+        setShowWarning(true);
+        enqueueSnackbar("You will be logged out soon due to inactivity.", { variant: 'warning' }); // [ADDED]
       }
-    }, 1000);
+    }
+  }, 1000);
 
-    return () => clearInterval(authIntervalTimer);
-  }, [authTime, logoutUser]);
+  return () => clearInterval(authIntervalTimer);
+}, [authTime, logoutUser, enqueueSnackbar, showWarning]);
 
-  return { loginUser, logoutUser, signupUser }
+// Optional: reset timer on user activity
+useEffect(() => {
+  const resetTimer = () => {
+    setAuthTime(Date.now());
+    setShowWarning(false);
+  };
+
+  window.addEventListener("mousemove", resetTimer);
+  window.addEventListener("keydown", resetTimer);
+
+  return () => {
+    window.removeEventListener("mousemove", resetTimer);
+    window.removeEventListener("keydown", resetTimer);
+  };
+}, []);
+
+const staySignedIn = () => {
+  setAuthTime(Date.now());
+  setShowWarning(false);
+};
+
+return { 
+  loginUser, 
+  logoutUser, 
+  signupUser, 
+  showInactivityModal: showWarning, 
+  staySignedIn,
+  loadingUser,
+ };
 }
+
+
 
