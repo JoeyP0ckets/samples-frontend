@@ -1,17 +1,23 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { AuthContext }from '../context/AuthProvider'
 import {Link} from 'react-router-dom'
 import { Form, Button } from "react-bootstrap"
+import LoadingSpinner from "./LoadingSpinner"
 
 
 const Login = () => {
 
   const { loginUser } = useContext(AuthContext);
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const handleLoginSubmit = e => {
-    e.preventDefault()
-    loginUser(e.target.email.value, e.target.password.value);
-    e.target.reset();
+    e.preventDefault();
+    setLoggingIn(true);
+    loginUser(e.target.email.value, e.target.password.value)
+    .finally(() => {
+      setLoggingIn(false);
+      e.target.reset();  
+    })
   }
   
     return(

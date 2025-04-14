@@ -18,7 +18,7 @@ const OrderView = (props) => {
       createDoctorOrder();
       dispatch({ type: 'SELECT_SAMPLE', selectedSample: null })
       dispatch({ type: 'SELECT_QUANTITY', value: null })
-      navigate("/YourDoses");
+      navigate("/your-doses");
     }
 
   const createDoctorOrder = () => {    

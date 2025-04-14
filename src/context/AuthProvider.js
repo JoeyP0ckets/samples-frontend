@@ -1,23 +1,21 @@
-import React, { createContext } from 'react';
-import { useAuth } from '../auth/useAuth';
+import React, { createContext, useContext } from 'react';
+import { useAuth as useAuthHook } from '../auth/useAuth'; // useAuth is your custom hook
 
+// Create context
 export const AuthContext = createContext();
 
+// Wrap the app in this provider
 const AuthProvider = ({ children }) => {
-  const { loginUser, logoutUser, signupUser } = useAuth();
-
-  // Map auth functions to an object to pass into auth context
-  const authContextObj = {
-    loginUser: loginUser,
-    logoutUser: logoutUser,
-    signupUser: signupUser,
-  };
+  const auth = useAuthHook(); // Grab everything from your useAuth hook
 
   return (
-    <AuthContext.Provider value={authContextObj}>
+    <AuthContext.Provider value={auth}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export default AuthProvider; 
+// Custom hook to use the AuthContext
+export const useAuth = () => useContext(AuthContext);
+
+export default AuthProvider;

@@ -1,12 +1,11 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom'
-import ContactFooter from './ContactFooter'
-import {Container} from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import ContactFooter from './ContactFooter';
 
 const HomeContainer = () => {
- return(
-  <Container className="home-container container-fluid">
+  return (
+    <Container className="home-container container-fluid">
       <Container className="about-container container-fluid box-fade">
         <div id="about-text" className="box-fade">
           <h1 id="about-header" className="grow-text">First Dose Fulfillment</h1>
@@ -22,23 +21,28 @@ const HomeContainer = () => {
 
       <Container fluid className="doc-nav-container">
         <Row style={{ display: "flex", textAlign: "center" }}>
-          <Col className="column-home" id="home-column-left"><h2>First Doses</h2>
+          <Col className="column-home" id="home-column-left">
+            <h2>First Doses</h2>
             <div className="home-textbox">
               Shop from our selection of anti-bronchial medications. First Doses can be ordered and sent right to your office.
             </div>
-            <NavLink exact to="/FirstDoses">First Doses</NavLink>
+            <NavLink to="/first-doses">First Doses</NavLink>
           </Col>
-          <Col className="column-home" id="home-column-right"><h2>Your Doses</h2>
+
+          <Col className="column-home" id="home-column-right">
+            <h2>Your Doses</h2>
             <div className="home-textbox">
-              Keep track of your orders.  View information on your past orders as well as check the status of your current ones.
+              Keep track of your orders. View information on your past orders as well as check the status of your current ones.
             </div>
-            <NavLink exact to="/YourDoses">Your Doses</NavLink>
+            <NavLink to="/your-doses">Your Doses</NavLink>
           </Col>
         </Row>
       </Container>
-      <ContactFooter/>
-    </Container >
- )
-}
 
-export default (HomeContainer)
+      <ContactFooter />
+    </Container>
+  );
+};
+
+export default HomeContainer;
+
