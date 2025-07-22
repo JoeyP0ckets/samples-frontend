@@ -22,6 +22,7 @@ const ShippingTracker = (props) => {
                 <th>Sample Name</th>
                 <th>Quantity</th>
                 <th>Date Ordered</th>
+                <th>Delivered</th>
               </tr>
             </thead>
             <tbody>
@@ -30,6 +31,13 @@ const ShippingTracker = (props) => {
                     <td>{order.sample.sample_name}</td>
                     <td>{order.quantity} {order.quantity === 1 ? "dose" : "orders"}</td>
                     <td>{dateFormat(order.status_datetime, "mmm d, yyyy")}</td>
+                    <td style={{ textAlign: "center" }}>
+                     {order.tracking_status?.toLowerCase() === "delivered" ? (
+                       <span style={{ color: "green", fontSize: "1.2rem" }}>&#10003;</span>
+                     ) : (
+                      <span style={{ color: "red", fontSize: "1.2rem" }}>&#10007;</span>
+                     )}
+                   </td>
                   </tr>
                 ))
               }

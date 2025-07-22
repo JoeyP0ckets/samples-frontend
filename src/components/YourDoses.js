@@ -46,7 +46,7 @@ const YourDoses = (props) => {
             the status of your contract.
           </div>
           <div id="yourdose-explain-body">
-            First Dose Fulfillment uses Hellosign to easily send contracts right to your email.  Once you sign, your first dose is on the way.  Keep track with the table below.
+            First Dose Fulfillment uses Dropbox Sign to easily send contracts right to your email.  Once you sign, your first dose is on the way.  Keep track with the table below.
           </div>
         </div>
         <div className='contracts-table-scrollable-container'>
@@ -65,7 +65,7 @@ const YourDoses = (props) => {
                 your First Dose order.
               </div>
               <div id="shipping-explain-body">
-                First Dose uses ShipStation to provide up-to-date information on your current orders. Click on an order below to see its status.
+                First Dose uses Fedex Standard Ground Shipping only. Orders made before 3pm Central will be same day delivery.  Orders made after 3pm will be next day shipping.  Click on an order below to track the status of a first dose shipment.
               </div>
             </div>
             <div className="shipping-info-data">

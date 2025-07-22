@@ -5,8 +5,8 @@ import { useSnackbar } from 'notistack';
 import { API_ROOT } from '../apiRoot';
 
 
-const TIMEOUT = 60000; //5 minute timer of inactivity before logout 
-const WARNING_THRESHOLD = 15000; //2 minutes before timeout trips
+const TIMEOUT = 600000; // 10 minutes (600,000 ms) 
+const WARNING_THRESHOLD = 540000; // 9 minutes (540,000 ms)
 let authIntervalTimer = null;
 
 export const useAuth = () => {

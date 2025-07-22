@@ -10,7 +10,7 @@ const SampleView = (props) => {
   return (
     
     <div id="sample-view-window">
-    <h1 style={{ paddingTop: "20px", color: "whitesmoke", fontWeight: "bold" }}>{sample_name}</h1>
+    <h1 style={{ paddingTop: "20px", color: "whitesmoke", fontWeight: "bold" }}>{sample_name} (revefenacin) </h1>
     <img id="selected_sample_image" className="fade-in-image" src={image_url} alt={sample_name} />
     <div className="sample-info-container">
       <div id="scroll-container">
