@@ -29,7 +29,7 @@ const ShippingTracker = (props) => {
               {sortedSignedOrders.map((order) => (
                   <tr key={order.id} onClick={() => handleOrderClick(order)}>
                     <td>{order.sample.sample_name}</td>
-                    <td>{order.quantity} {order.quantity === 1 ? "dose" : "orders"}</td>
+                    <td>{order.quantity} {order.quantity === 1 ? "dose" : "doses"}</td>
                     <td>{dateFormat(order.status_datetime, "mmm d, yyyy")}</td>
                     <td style={{ textAlign: "center" }}>
                      {order.tracking_status?.toLowerCase() === "delivered" ? (

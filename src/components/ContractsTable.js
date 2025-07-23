@@ -42,7 +42,7 @@ const ContractsTable = (props) => {
               {
                 sortedOrders.map((dose) => (
                   <tr key={dose.id}>
-                    <td>{dose.quantity} {dose.quantity === 1 ? "dose" : "orders"}</td>
+                    <td>{dose.quantity} {dose.quantity === 1 ? "dose" : "doses"}</td>
                     <td>{dose.sample.sample_name}</td>
                     <td>{displayStatus(dose.status)}</td>
                     <td>{dateFormat(dose.status_datetime, "mmm d, yyyy")}</td>
