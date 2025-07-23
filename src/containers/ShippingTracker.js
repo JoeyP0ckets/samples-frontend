@@ -21,7 +21,7 @@ const ShippingTracker = (props) => {
               <tr>
                 <th>Sample Name</th>
                 <th>Quantity</th>
-                <th>Date Ordered</th>
+                <th>Date Processed</th>
                 <th>Delivered</th>
               </tr>
             </thead>

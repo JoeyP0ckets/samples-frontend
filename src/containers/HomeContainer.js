@@ -32,7 +32,7 @@ const HomeContainer = () => {
           <Col className="column-home" id="home-column-right">
             <h2>Your Doses</h2>
             <div className="home-textbox">
-              Keep track of your orders. View information on your past orders as well as check the status of your current ones.
+              Keep track of your doses. View information on your past doses as well as check the status of your current ones.
             </div>
             <NavLink to="/your-doses">Your Doses</NavLink>
           </Col>

@@ -6,7 +6,7 @@ import { API_ROOT } from '../apiRoot';
 
 
 const TIMEOUT = 600000; // 10 minutes (600,000 ms) 
-const WARNING_THRESHOLD = 540000; // 9 minutes (540,000 ms)
+const WARNING_THRESHOLD = 60000; // 9 minutes (540,000 ms)
 let authIntervalTimer = null;
 
 export const useAuth = () => {

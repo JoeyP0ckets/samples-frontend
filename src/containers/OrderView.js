@@ -93,9 +93,9 @@ const OrderView = (props) => {
             <option value="none" > 
               Select Quantity
             </option> 
-            <option value="1">1 order of {props.selectedSample.sample_size} sample</option>
-            <option value="2">2 orders of {props.selectedSample.sample_size} sample</option>
-            <option value="3">3 orders of {props.selectedSample.sample_size} sample</option>
+            <option value="1">1 dose of {props.selectedSample.sample_size} sample</option>
+            <option value="2">2 doses of {props.selectedSample.sample_size} sample</option>
+            <option value="3">3 doses of {props.selectedSample.sample_size} sample</option>
           </select>
           </div>
       <br></br>

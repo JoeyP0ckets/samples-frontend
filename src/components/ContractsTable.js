@@ -35,7 +35,7 @@ const ContractsTable = (props) => {
                 <th>Quantity</th>
                 <th>Sample Name</th>
                 <th>Status</th>
-                <th>Status Time</th>
+                <th>Last Activity Date</th>
               </tr>
             </thead>
             <tbody>

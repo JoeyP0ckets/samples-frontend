@@ -40,7 +40,7 @@ const YourDoses = (props) => {
       <div className="yourdose-contract-frame">
         <div className="yourdose-explain-container">
           <div id="yourdose-explain-header" className="grow-text aura-pulse">
-            Check
+            Review
           </div>
           <div id="yourdose-explain-firstline">
             the status of your contract.
@@ -65,8 +65,7 @@ const YourDoses = (props) => {
                 your First Dose order.
               </div>
               <div id="shipping-explain-body">
-                First Dose uses Fedex Standard Ground Shipping only. Orders made before 3pm Central will be same day delivery.  Orders made after 3pm will be next day shipping.  Click on an order below to track the status of a first dose shipment.
-              </div>
+              First Dose uses FedEx Standard Ground Shipping. Orders received before 3pm CST will be subject to same day processing. Orders received after 3pm CST will be subject to processing the next business day. Shipping times vary. Click on an order below to track the status of a first dose shipment.              </div>
             </div>
             <div className="shipping-info-data">
               <ShippingTracker/> 

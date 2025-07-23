@@ -36,8 +36,8 @@ const ShippingLabel = (props) => {
       {city} {state}, {zipcode}<br></br>
     </div>
     <hr></hr>
-    <b className="shipping-label-bold-text">Signed on:</b> {dateFormat(status_datetime, "mmm d, yyyy")}<br></br>
-    <b className="shipping-label-bold-text">Shipped At:</b>{' '}
+    <b className="shipping-label-bold-text">Processed:</b> {dateFormat(status_datetime, "mmm d, yyyy")}<br></br>
+    <b className="shipping-label-bold-text">Shipped:</b>{' '}
       {dateFormat(status_datetime, "mmm d, yyyy")}<br></br>
     <b className="shipping-label-bold-text">Tracking Status:</b>{' '}
       {tracking_status}<br></br>
