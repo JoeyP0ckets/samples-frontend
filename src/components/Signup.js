@@ -243,6 +243,9 @@ const Signup = ({setClicked}) => {
         )}
 
         <br />
+        <p>
+          *Account will only become active after validation of medical license
+        </p>
         <button type="submit" className="reset-button">
           Signup
         </button>

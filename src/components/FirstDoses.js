@@ -1,71 +1,53 @@
-import React, { useEffect, useCallback } from 'react'
-import {connect} from 'react-redux'
-import SampleCard from '../containers/SampleCard'
-import SampleView from '../containers/SampleView'
-import { API_ROOT} from '../apiRoot'
-import ContactFooter from '../containers/ContactFooter'
+import React, { useEffect, useCallback, useState } from 'react';
+import { connect } from 'react-redux';
+import SampleView from '../containers/SampleView';
+import { API_ROOT } from '../apiRoot';
+import ContactFooter from '../containers/ContactFooter';
 
+const FirstDoses = (props) => {
+  const { renderSamples, allSamples } = props;
+  const [yupelriSample, setYupelriSample] = useState(null);
 
-
-const FirstDoses = (props) =>  {
- 
-  // Destructure renderSamples from props
-  const { renderSamples, allSamples, selectedSample } = props;
-
-  // Memoized fetchSamples function
+  // Fetch all samples
   const fetchSamples = useCallback(() => {
     fetch(`${API_ROOT}/samples`)
       .then((resp) => resp.json())
-      .then((allSamples) => renderSamples(allSamples)); // Use destructured renderSamples
-  }, [renderSamples]); // Only depends on renderSamples
+      .then((samples) => {
+        renderSamples(samples);
+        const yupelri = samples.find((sample) => sample.sample_name === "Yupelri");
+        setYupelriSample(yupelri || null);
+      });
+  }, [renderSamples]);
 
-  // Fetch samples on mount
   useEffect(() => {
     fetchSamples();
-  }, [fetchSamples]); // FetchSamples is stable and won't cause unnecessary re-renders  
+  }, [fetchSamples]);
 
-  
-  
-  const renderAllSamples = () => {
-    const yupelriSamples = allSamples.filter(sample => sample.sample_name === "Yupelri");
-
-    return yupelriSamples.map((sample, index) =>
-      <SampleCard
-        key={index}
-        sample={sample}
-      />
-    )
-  }
-  
-  return(
+  return (
     <div className="first-doses-page">
       <div id="theatre">
         <div className="sample-view-container">
-          {selectedSample ? <SampleView selectedSample={selectedSample}/> : <h3 id="please_select"> </h3>}
+          {yupelriSample ? (
+            <SampleView sample={yupelriSample} />
+          ) : (
+            <p>Loading Yupelri info...</p>
+          )}
         </div>
       </div>
-      <div id="please-select-sample-header">Please select a medication below.</div>
-      <div className="samples-container">
-        {renderAllSamples()}
-      </div>
-      <ContactFooter/>
-    </div>  
-  )
-}
+      <ContactFooter />
+    </div>
+  );
+};
 
-const msp = state => {
-  return {
-    allSamples: state.allSamples,
-    selectedSample: state.selectedSample,
-    user: state.user
-  }
-}
+const msp = (state) => ({
+  allSamples: state.allSamples,
+  user: state.user
+});
 
-const mdp = dispatch => {
-  return {
-    renderSamples: (allSamples) => dispatch({ type: "GET_ALL_SAMPLES", allSamples: allSamples})
-  }
-}
+const mdp = (dispatch) => ({
+  renderSamples: (allSamples) => dispatch({ type: "GET_ALL_SAMPLES", allSamples })
+});
 
-export default connect(msp,mdp)(FirstDoses);
+export default connect(msp, mdp)(FirstDoses);
+
 
