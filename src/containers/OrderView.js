@@ -25,7 +25,7 @@ const OrderView = (props) => {
     let token = localStorage.getItem('auth_token')
     
     const doctor_order= {
-      quantity: props.quantity,
+      quantity: "1 Sample",
       sample_id: props.selectedSample.id,
     }
     
@@ -57,10 +57,6 @@ const OrderView = (props) => {
       })
   }
 
-  const handleSelect = e => {
-    let value = e.target.value
-    props.selectQuantity(value)
-  }
 
   const {professional_title, address_1, address_2, first_name, last_name, city, state, zipcode} = props.user
 
@@ -88,18 +84,8 @@ const OrderView = (props) => {
             {address_2}
             <br></br>
             {city} {state}, {zipcode}
-          <div className="modal-quantity-select">
-          <select name="quantity" onChange={handleSelect}>
-            <option value="none" > 
-              Select Quantity
-            </option> 
-            <option value="1">1 dose of {props.selectedSample.sample_size} sample</option>
-            <option value="2">2 doses of {props.selectedSample.sample_size} sample</option>
-            <option value="3">3 doses of {props.selectedSample.sample_size} sample</option>
-          </select>
-          </div>
       <br></br>
-      <Button onClick={() => orderClick()} disabled={!props.quantity}>Submit Order</Button>
+      <Button onClick={() => orderClick()}>Submit Order</Button>
         </Modal.Body>
       </Modal>
   </div>
@@ -108,16 +94,12 @@ const OrderView = (props) => {
 
 const msp = state => {
   return {
-    user: state.user,
-    selectedSample: state.selectedSample,
-    quantity: state.quantity
+    user: state.user
   }
 }
 const mdp = dispatch => {
   return {
-    renderNewDocOrder: (newOrder) => dispatch({type:"RENDER_NEW_DOCTOR_ORDER", newOrder:newOrder}),
-    selectQuantity: (value) => dispatch({type:"SELECT_QUANTITY", value:value}),
-    resetQuantity: () => dispatch({type:"RESET_QUANTITY"}),
+    renderNewDocOrder: (newOrder) => dispatch({type:"RENDER_NEW_DOCTOR_ORDER", newOrder:newOrder})
   }
 }
 

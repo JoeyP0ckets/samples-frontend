@@ -1,41 +1,49 @@
 import React from 'react';
-import {connect} from "react-redux"
-import OrderView from '../containers/OrderView'
+import { connect } from "react-redux";
+import OrderView from '../containers/OrderView';
+import yupelriLogo from "../img/yupelri_logo.png";
+import yupelriFrontImage from "../img/YUPELRI-front.jpg";
 
-
-const SampleView = (props) => {
-  
-  const {sample_name, image_url, description, sample_size} = props.selectedSample  
+const SampleView = ({ sample }) => {
+  const { sample_name } = sample;
 
   return (
-    
     <div id="sample-view-window">
-    <h1 style={{ paddingTop: "20px", color: "whitesmoke", fontWeight: "bold" }}>{sample_name} (revefenacin) </h1>
-    <img id="selected_sample_image" className="fade-in-image" src={image_url} alt={sample_name} />
-    <div className="sample-info-container">
-      <div id="scroll-container">
-        <div id="scroll-text" className="fade-in-image">
-          <h4>{description}</h4>
-          <h4>Sample Size: {sample_size}</h4>
+      {/* Banner-style logo */}
+      <img
+        src={yupelriLogo}
+        alt="Yupelri Logo"
+        className="sample-banner-logo"
+      />
+
+      <div className="sample-content-row">
+        {/* Left: Front image */}
+        <img
+          src={yupelriFrontImage}
+          alt={sample_name}
+          className="sample-front-small"
+        />
+
+        {/* Right: Description + Order */}
+        <div className="sample-description-block">
+          <p className="sample-description">
+            YUPELRI is a prescription medicine used to treat chronic obstructive pulmonary disease (COPD), a long-term (chronic) lung disease that includes chronic bronchitis, emphysema, or both. 
+          </p>
+          <p>
+            1 Sample/7 Doses
+          </p>
+          <OrderView />
         </div>
       </div>
-      <OrderView/>
     </div>
-    </div>
-      
-  )
-}
+  );
+};
 
-const msp = state => {
-  return {
-    user: state.user,
-    selectedSample: state.selectedSample,
-    quantity: state.quantity,
-    seen: state.seen
-  }
-}
+const msp = state => ({
+  user: state.user,
+  selectedSample: state.selectedSample,
+  quantity: state.quantity,
+  seen: state.seen
+});
 
-
-
-
-export default connect(msp,null)(SampleView)
+export default connect(msp, null)(SampleView);

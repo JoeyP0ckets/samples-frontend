@@ -268,44 +268,67 @@
   font-size: x-large;
 }
 
-.contact-container {
-  /* background-image: url(https://media.istockphoto.com/photos/smiling-black-female-doctor-in-white-coat-posing-with-folded-arms-picture-id1201657177?k=20&m=1201657177&s=612x612&w=0&h=TI-1JOqHQ_U-qMSO7NpWZB5hsFxMTjGEtoBucW_a-hk=); */
-  /* background-position: right;
-  background-size: contain;
-  background-repeat: no-repeat; */
-  padding-bottom: 1px;
-  margin-top: 2%;
-  /* background-color: #282c34;e */
-  border-bottom: double black;
-  background-color: rgba(1, 0, 3, 0.75);
-  opacity: 0.95;
-  border-radius: 25px;
-  margin-left: 100px;
-  margin-right: 100px;
-  height: fit-content;
-  opacity: 0.65;
+/*-------FOOTER--------*/
+
+.contact-support-text {
   text-align: center;
-  align-content: center;
-  position: sticky;
+  font-size: 1.1rem;
+  color: black;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-#contact-header {
-  padding-top: 3%;
-  padding-left: 10%;
-  font-size: 2.5rem;
+.contact-container {
+  background-color: rgba(1, 0, 3, 0.75);
+  border-bottom: double black;
+  border-radius: 20px;
+  margin: 0 100px 2rem 100px;
+  padding: 0.5rem 1rem;
+  opacity: 0.95;
 }
 
-#contact-text {
-  font-size: 1.25rem;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1 1 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nabp-badge-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.nabp-badge-wrapper img {
+  height: 80px;
+}
+
+.pharmacy-logo {
+  height: 80px;
+  margin-right: 0.5rem;
+}
+
+.pharmacy-info {
+  font-size: 0.9rem;
   color: white;
-  align-items: left;
-  /* text-align: left; */
-  width: 100%;
+  text-align: left;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
 }
 
-#contact-info {
-  padding-left: 10%;
-  padding-bottom: 5%;
+.pharmacy-info p {
+  margin: 0.1rem 0; /* reduce vertical gap between lines */
+  padding: 0;
 }
 
 
@@ -315,47 +338,104 @@
   background: white;
 }
 
+.sample-header-logo {
+  height: 150px; /* increased slightly */
+  max-width: 225px;
+  object-fit: contain;
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* match front image */
+}
+
+.sample-header-front {
+  height: 188px;
+  max-width: 375px;
+  object-fit: contain;
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 #theatre {
-  background: rgb(245, 245, 245);
-  background: radial-gradient(circle, rgba(245, 245, 245, 1) 0%, rgba(11, 59, 112, 0.68531162464986) 25%, rgb(4, 0, 53) 85%);
-  animation: fadeBackground 3s;
-  animation-fill-mode: forwards;
-  border: gray;
-  border-style: groove;
-  border-width: 1px;
-  justify-self: center;
+  background: radial-gradient(circle, rgba(245, 245, 245, 1) 0%, rgba(11, 59, 112, 0.68) 25%, rgb(4, 0, 53) 85%);
+  /* animation: fadeBackground 3s forwards; */
+  border: gray groove 1px;
   margin: auto;
   padding: 25px;
   margin-bottom: 10px;
-  /* width: 1500px; */
-  height: 510px;
+
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
 .sample-view-container {
-  background: rgb(7, 7, 8);
-  background: radial-gradient(circle, rgba(7, 7, 8, 0.63) 0%, rgba(97, 97, 97, 0.7791491596638656) 48%, rgba(9, 9, 9, 0.762) 100%);
-  animation: fadeBackground 3s;
-  animation-fill-mode: forwards;
-
-  border: #282c34;
-  border-style: inset;
-  border-width: 1px;
-  background-color: gray;
+  background: radial-gradient(circle, rgba(7, 7, 8, 0.63) 0%, rgba(97, 97, 97, 0.779) 48%, rgba(9, 9, 9, 0.762) 100%);
+  /* animation: fadeBackground 3s forwards; */
+  border: #282c34 inset 1px;
   color: white;
-  height: fit-content;
-  /* max-height: 75%; */
-  /* max-height: 700px; */
-  /* min-height: 600px; */
-  margin: 25px;
-  margin-left: 25%;
-  margin-right: 25%;
-  /* max-width: 50%; */
-  /* margin-left: 25%;
-  margin-right: 25%; */
-  font-size: larger;
-  justify-content: center;
+
+  padding: 1rem;
+  margin: 25px auto;
+  width: 80%;
   border-radius: 25px;
-  height: 405px;
+
+  /* Make height responsive */
+  min-height: 400px;
+  max-width: 900px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Banner-style logo */
+.sample-banner-logo {
+  width: 100%;             /* Full horizontal stretch */
+  height: 100px;           /* Increased from 80px (~25%) */
+  object-fit: contain;     /* Keeps aspect ratio — try 'cover' if you want it to fill completely */
+  display: block;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem 1rem;
+  background-color: white; /* Optional: if the image has a transparent background */
+}
+
+/* Two-column layout below the banner */
+.sample-content-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3rem;               /* space between image and text */
+  padding: 0 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;       /* ⬅️ adds space above the row to visually center it */
+}
+
+
+
+/* Front image (left-aligned) */
+.sample-front-small {
+  width: 300px; /* increased from 200px */
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Description and order (right-aligned) */
+.sample-description-block {
+  flex: 1;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+.sample-description {
+  margin-bottom: 1rem;
 }
 
 .samples-container{
@@ -369,9 +449,7 @@
   /* margin: 145px; */
   padding-top: 360px;
   margin: 20px;
-
   background-image: url("../src/img/first_dose_WHITE_periodic_final2.png");
-
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -383,9 +461,11 @@
 }
 
 #sample-view-window {
-  height: 420px;
-  padding-bottom: 100px;
+  min-height: 300px;
+  height: auto;
+  padding-bottom: 20px;
 }
+
 
 #selected_sample_image {
   max-width: 50%;
@@ -417,54 +497,6 @@
 
 #scroll-container h4 {
   /* border: 1px solid black; */
-}
-
-#scroll-text {
-  /* text scroll animation properties */
-  -moz-transform: translateY(100%);
-  -webkit-transform: translateY(100%);
-  transform: translateY(100%);
-
-  -moz-animation: text-scroll 20s linear infinite;
-  -webkit-animation: text-scroll 20s linear infinite;
-  animation: text-scroll 20s linear infinite;
-
-
-  /* for Firefox */
-  @-moz-keyframes text-scroll {
-    from {
-      -moz-transform: translateY(-100%);
-    }
-
-    to {
-      -moz-transform: translateY(-100%);
-    }
-  }
-}
-
-/* for Chrome */
-@-webkit-keyframes text-scroll {
-  from {
-    -webkit-transform: translateY(-100%);
-  }
-
-  to {
-    -webkit-transform: translateY(-100%);
-  }
-}
-
-@keyframes text-scroll {
-  from {
-    -moz-transform: translateY(-100%);
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-  }
-
-  to {
-    -moz-transform: translateY(-100%);
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
 }
 
 .samples-container {
