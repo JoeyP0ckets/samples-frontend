@@ -2,6 +2,14 @@
 
 .App {
   text-align: center;
+  background: linear-gradient(
+    135deg,
+    #0D168C 0%,
+    white 30%,
+    white 70%,
+    #ED0000 100%
+  );
+  
 }
 
 .App-header {
@@ -61,7 +69,7 @@
 
 .navbar-container {
   border-bottom: double black;
-  background-color: rgba(1, 0, 3, 0.75);
+  background-color: rgba(1, 0, 3, 0.95);
   border-bottom: double rgb(33, 33, 33);
   background-position: center;
   background-size: contain;
@@ -213,18 +221,7 @@
 }
 
 #about-text {
-  /* Navy background: */
-  /* background: rgb(5, 0, 77); */
-
-  /* FF7 boxes: */
-  background: linear-gradient(315deg, rgba(5, 0, 77, 1) 0%, rgba(4, 0, 53, 1) 59%, rgb(136, 132, 175) 100%);
-
-  /* Gray radial: */
-  /* background: linear-gradient(315deg, rgba(5, 0, 77, 1) 0%, rgba(4, 0, 53, 1) 59%, rgb(136, 132, 175) 100%); */
-
-  /* Blue radial: */
-  /* background: radial-gradient(circle, rgb(2, 0, 65) 0%, rgba(11, 59, 112, 0.68531162464986) 25%,rgb(4, 0, 53) 85%); */
-
+  background: #0D168C;
   color: white;
   font-style: italic;
   text-decoration: solid;
@@ -233,6 +230,7 @@
   border-radius: 15px;
   opacity: 0.95;
 }
+
 
 #about-statement {
   margin: 50px;
@@ -349,8 +347,13 @@
 /* --------First Doses Page--------- */
 
 .first-doses-page {
-  background: white;
-}
+  background: linear-gradient(
+    135deg,
+    #0D168C 0%,
+    white 30%,
+    white 70%,
+    #ED0000 100%
+  );}
 
 .sample-header-logo {
   height: 150px; /* increased slightly */
@@ -375,7 +378,7 @@
 }
 
 #theatre {
-  background: radial-gradient(circle, rgba(245, 245, 245, 1) 0%, rgba(11, 59, 112, 0.68) 25%, rgb(4, 0, 53) 85%);
+  background: #0D168C;
   /* animation: fadeBackground 3s forwards; */
   border: gray groove 1px;
   margin: auto;
