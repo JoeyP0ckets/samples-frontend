@@ -282,16 +282,14 @@
 .contact-container {
   position: fixed;
   bottom: 0;
-  left: 0;                /* ✅ ensures it hugs the left edge */
-  width: 100vw;           /* ✅ full screen width */
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(1, 0, 3, 0.75);
-  border-top: double black;
-  border-radius: 0;
+  left: 0;
+  width: 100vw;
+  transform: translateY(100%); /* Hide off-screen initially */
+  transition: transform 0.5s ease-in-out;
+  background-color: rgba(1, 0, 3, 0.95);
   z-index: 999;
-  opacity: 0.85;
-  transition: opacity 0.4s ease-in-out;
+  padding: 1rem;
+  border-top: double black;
 }
 
 .contact-container.transparent {
@@ -299,7 +297,7 @@
 }
 
 .contact-container.opaque {
-  opacity: 1;   /* when scrolled to bottom */
+  transform: translateY(0%);
 }
 
 
