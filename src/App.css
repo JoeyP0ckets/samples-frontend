@@ -195,14 +195,15 @@
 .about-container {
   background-image: url(https://wallpaperaccess.com/full/740142.jpg);
   background-position: center;
-  min-height: 25vh;
-  padding-top: 18%;
-  padding-bottom: 15%;
-  /* padding-right: 20%; */
-  text-align: center;
+  background-size: cover;       /* ✅ ensures the image fully covers the container */
+  background-repeat: no-repeat; /* ✅ prevents tiling */
+  min-height: 60vh;             /* ⬆️ increase height for more visual impact */
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;    /* keep your text box on the right */
+  align-items: center;          /* ✅ vertically center the content */
+  padding: 2rem;                /* use consistent spacing instead of %, more responsive */
 }
+
 
 #about-header {
   font-size: 2.4rem;
@@ -272,20 +273,35 @@
 
 .contact-support-text {
   text-align: center;
-  font-size: 1.1rem;
-  color: black;
+  font-size: 0.9rem;
+  color:white;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
 .contact-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;                /* ✅ ensures it hugs the left edge */
+  width: 100vw;           /* ✅ full screen width */
+  margin: 0;
+  padding: 1rem;
   background-color: rgba(1, 0, 3, 0.75);
-  border-bottom: double black;
-  border-radius: 20px;
-  margin: 0 100px 2rem 100px;
-  padding: 0.5rem 1rem;
-  opacity: 0.95;
+  border-top: double black;
+  border-radius: 0;
+  z-index: 999;
+  opacity: 0.85;
+  transition: opacity 0.4s ease-in-out;
 }
+
+.contact-container.transparent {
+  opacity: 0.6; /* default state */
+}
+
+.contact-container.opaque {
+  opacity: 1;   /* when scrolled to bottom */
+}
+
 
 .footer-content {
   display: flex;

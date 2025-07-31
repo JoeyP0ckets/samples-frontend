@@ -80,6 +80,8 @@ const YourDoses = (props) => {
         <br></br>
       </div>
       <br></br>
+      <div style={{ height: '150px' }}></div>
+      <div id="footer-trigger-marker" style={{ height: '1px' }}></div>
       <ContactFooter/>
     </div>
   )
