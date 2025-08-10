@@ -441,19 +441,18 @@
 /* Front image (left-aligned) */
 .sample-front-wrap {
   width: 320px;              /* control container width */
-  height: 220px;             /* control container height */
+  height: auto;
   display: flex;              /* center image inside */
   align-items: center;
   justify-content: center;
   overflow: hidden;           /* trims anything outside rounded corners */
 }
 
-/* Keep your image proportioned inside the wrapper */
 .sample-front-small {
   width: 300px;
   height: auto;
   object-fit: contain;
-  object-position: center 60%; /* shifts image down */
+  transform: translateY(10px); /* increase to push further down */
 }
 
 
