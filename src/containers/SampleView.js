@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import OrderView from '../containers/OrderView';
 import yupelriLogo from "../img/yupelri_logo.png";
-import yupelriFrontImage from "../img/YUPELRI-front.jpg";
+import yupelriFrontImage from "../img/Yupelri-Shadow-White.png";
 
 const SampleView = ({ sample }) => {
   const { sample_name } = sample;
