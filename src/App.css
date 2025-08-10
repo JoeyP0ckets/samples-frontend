@@ -439,13 +439,23 @@
 
 
 /* Front image (left-aligned) */
+.sample-front-wrap {
+  width: 320px;              /* control container width */
+  height: 220px;             /* control container height */
+  display: flex;              /* center image inside */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;           /* trims anything outside rounded corners */
+}
+
+/* Keep your image proportioned inside the wrapper */
 .sample-front-small {
-  width: 300px; /* increased from 200px */
+  width: 300px;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  object-position: center 60%; /* shifts image down */
 }
+
 
 /* Description and order (right-aligned) */
 .sample-description-block {
@@ -483,9 +493,13 @@
 }
 
 #sample-view-window {
-  min-height: 300px;
-  height: auto;
-  padding-bottom: 20px;
+  padding: 16px;           /* was only padding-bottom: 20px */
+  box-sizing: border-box;
+}
+
+/* 2) Kill the inline image baseline gap */
+#sample-view-window img {
+  display: block;
 }
 
 

@@ -16,26 +16,26 @@ const SampleView = ({ sample }) => {
         className="sample-banner-logo"
       />
 
-      <div className="sample-content-row">
-        {/* Left: Front image */}
-        <img
-          src={yupelriFrontImage}
-          alt={sample_name}
-          className="sample-front-small"
-        />
-
-        {/* Right: Description + Order */}
-        <div className="sample-description-block">
-          <p className="sample-description">
-            YUPELRI is a prescription medicine used to treat chronic obstructive pulmonary disease (COPD), a long-term (chronic) lung disease that includes chronic bronchitis, emphysema, or both. 
-          </p>
-          <p>
-            1 Sample/7 Doses
-          </p>
-          <OrderView />
-        </div>
-      </div>
+    <div className="sample-content-row">
+      {/* Left: Front image inside its own wrapper */}
+    <div className="sample-front-wrap">
+      <img
+        src={yupelriFrontImage}
+        alt={sample_name}
+        className="sample-front-small"
+      />
     </div>
+
+    {/* Right: Description + Order */}
+    <div className="sample-description-block">
+      <p className="sample-description">
+      YUPELRI is a prescription medicine used to treat chronic obstructive pulmonary disease (COPD), a long-term (chronic) lung disease that includes chronic bronchitis, emphysema, or both. 
+      </p>
+      <p>1 Sample/7 Doses</p>
+        <OrderView />
+    </div>
+    </div>
+  </div>
   );
 };
 
