@@ -19,7 +19,7 @@ const LoginSignup = () => {
         {isClicked === false ? <Login/> : <Signup setClicked={setClicked}/>}
         {isClicked === false ? 
         <div style={{paddingTop: "5px"}}>
-          Need to set up an account? <h6 style={{textAlign: "center", color: "blue", cursor: "pointer"}} onClick={() => setClicked(!isClicked)}>Signup</h6> 
+          Need to set up an account? <h6 style={{textAlign: "center", color: "#0D168C", cursor: "pointer"}} onClick={() => setClicked(!isClicked)}>Signup</h6> 
         </div>
           : 
         <div>

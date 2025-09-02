@@ -26,7 +26,9 @@ const HomeContainer = () => {
             <div className="home-textbox">
               Shop from our selection of anti-bronchial medications. First Doses can be ordered and sent right to your office.
             </div>
-            <NavLink to="/first-doses">First Doses</NavLink>
+            <NavLink to="/first-doses" style={{ color: '#0D168C' }}>
+              First Doses
+            </NavLink>
           </Col>
 
           <Col className="column-home" id="home-column-right">
@@ -34,7 +36,9 @@ const HomeContainer = () => {
             <div className="home-textbox">
               Keep track of your doses. View information on your past doses as well as check the status of your current ones.
             </div>
-            <NavLink to="/your-doses">Your Doses</NavLink>
+            <NavLink to="/your-doses" style={{ color: '#0D168C' }}>
+              Your Doses
+            </NavLink>
           </Col>
         </Row>
       </Container>

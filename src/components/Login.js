@@ -6,34 +6,43 @@ import LoadingSpinner from "./LoadingSpinner"
 
 
 const Login = () => {
-
   const { loginUser } = useContext(AuthContext);
   const [loggingIn, setLoggingIn] = useState(false);
 
-  const handleLoginSubmit = e => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
     setLoggingIn(true);
-    loginUser(e.target.email.value, e.target.password.value)
-    .finally(() => {
-      setLoggingIn(false);
-      e.target.reset();  
-    })
-  }
+
+    const form = e.currentTarget;
+    const email = form.email.value.trim().toLowerCase(); // ✅ normalize
+    const password = form.password.value;
+
+    Promise.resolve(loginUser(email, password))
+      .finally(() => {
+        setLoggingIn(false);
+        form.reset();
+      });
+  };
 
   if (loggingIn) {
     return <LoadingSpinner message="Logging you in..." />;
   }
-  
-    return(
-      <div className="reset-container">
+
+  return (
+    <div className="reset-container">
       <h2 className="reset-title" style={{ fontFamily: "Cinzel" }}>Login</h2>
+
       <Form onSubmit={handleLoginSubmit}>
         <Form.Group controlId="formEmail">
           <Form.Control
-            type="text"
+            type="email"                    // ✅ built-in browser validation
             placeholder="Email"
             name="email"
             className="reset-input"
+            autoComplete="username"         // ✅ helps browser managers
+            onBlur={(e) => (e.target.value = e.target.value.trim())} // ✅ trim stray spaces
+            onKeyDown={(e) => { if (e.key === " ") e.preventDefault(); }} // ✅ block spaces
+            inputMode="email"
           />
         </Form.Group>
 
@@ -43,25 +52,26 @@ const Login = () => {
             placeholder="Password"
             name="password"
             className="reset-input"
+            autoComplete="current-password"
           />
         </Form.Group>
 
         <div style={{ paddingTop: "10px", fontSize: "0.9rem" }}>
           Forgot your password?{" "}
-          <Link to="/password-reset-request" style={{ color: "blue", textDecoration: "underline" }}>
+          <Link to="/password-reset-request" style={{ color: "#0D168C", textDecoration: "underline" }}>
             Send Update Email
           </Link>
         </div>
 
         <br />
 
-        <button type="submit" className="reset-button">
-          Login
+        <button type="submit" className="reset-button" disabled={loggingIn}>
+          {loggingIn ? "Logging in..." : "Login"}
         </button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
 export default Login
 
