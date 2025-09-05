@@ -5,45 +5,41 @@ import yupelriLogo from "../img/yupelri_logo.png";
 import yupelriFrontImage from "../img/Yupelri-Shadow-White.png";
 
 const SampleView = ({ sample }) => {
-  const { sample_name } = sample;
+  if (!sample) return null; // safety for initial render
+
+  const name = sample.sample_name || "Yupelri";
 
   return (
     <div id="sample-view-window">
       {/* Banner-style logo */}
       <img
         src={yupelriLogo}
-        alt="Yupelri Logo"
+        alt={`${name} Logo`}
         className="sample-banner-logo"
       />
 
-    <div className="sample-content-row">
-      {/* Left: Front image inside its own wrapper */}
-    <div className="sample-front-wrap">
-      <img
-        src={yupelriFrontImage}
-        alt={sample_name}
-        className="sample-front-small"
-      />
-    </div>
+      <div className="sample-content-row">
+        {/* Left: product image */}
+        <div className="sample-front-wrap">
+          <img
+            src={yupelriFrontImage}
+            alt={name}
+            className="sample-front-small"
+          />
+        </div>
 
-    {/* Right: Description + Order */}
-    <div className="sample-description-block">
-      <p className="sample-description">
-      YUPELRI is a prescription medicine used to treat chronic obstructive pulmonary disease (COPD), a long-term (chronic) lung disease that includes chronic bronchitis, emphysema, or both. 
-      </p>
-      <p>1 Sample/7 Doses</p>
-        <OrderView />
+        {/* Right: description + order */}
+        <div className="sample-description-block">
+          <p className="sample-description">
+            YUPELRI is a prescription medicine used to treat chronic obstructive
+            pulmonary disease (COPD), including chronic bronchitis and emphysema.
+          </p>
+          <p>1 First Dose / 7 Doses</p>
+          <OrderView sample={sample} />
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
   );
 };
 
-const msp = state => ({
-  user: state.user,
-  selectedSample: state.selectedSample,
-  quantity: state.quantity,
-  seen: state.seen
-});
-
-export default connect(msp, null)(SampleView);
+export default SampleView;

@@ -1,55 +1,47 @@
-import React, { useEffect, useCallback, useState } from 'react';
-import { connect } from 'react-redux';
-import SampleView from '../containers/SampleView';
-import { API_ROOT } from '../apiRoot';
-import ContactFooter from '../containers/ContactFooter';
+import React, { useEffect, useState, useCallback } from "react";
+import SampleView from "../containers/SampleView";
+import ContactFooter from "../containers/ContactFooter";
+import { API_ROOT } from "../apiRoot";
 
-const FirstDoses = (props) => {
-  const { renderSamples, allSamples } = props;
-  const [yupelriSample, setYupelriSample] = useState(null);
+const FirstDoses = () => {
+  const [yupelri, setYupelri] = useState(null);
+  const [error, setError] = useState(null);
 
-  // Fetch all samples
-  const fetchSamples = useCallback(() => {
-    fetch(`${API_ROOT}/samples`)
-      .then((resp) => resp.json())
-      .then((samples) => {
-        renderSamples(samples);
-        const yupelri = samples.find((sample) => sample.sample_name === "Yupelri");
-        setYupelriSample(yupelri || null);
-      });
-  }, [renderSamples]);
+  const fetchYupelri = useCallback(() => {
+    let cancelled = false;
+
+    fetch(`${API_ROOT}/samples`) 
+      .then(res => res.json())
+      .then(samples => {
+        if (cancelled) return;
+        const match = samples.find(s => (s.sample_name || "").toLowerCase() === "yupelri");
+        setYupelri(match || null);
+      })
+      .catch(err => !cancelled && setError(err));
+
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
-    fetchSamples();
-  }, [fetchSamples]);
+    const cleanup = fetchYupelri();
+    return cleanup;
+  }, [fetchYupelri]);
 
   return (
     <div className="first-doses-page">
       <div id="theatre">
         <div className="sample-view-container">
-          {yupelriSample ? (
-            <SampleView sample={yupelriSample} />
-          ) : (
-            <p>Loading Yupelri info...</p>
-          )}
+          {error && <p style={{ color: "crimson" }}>Failed to load. Please try again.</p>}
+          {!error && !yupelri && <p>Loading Yupelri info...</p>}
+          {yupelri && <SampleView sample={yupelri} />}
         </div>
       </div>
-      <div style={{ height: '150px' }}></div>
-      <div id="footer-trigger-marker" style={{ height: '1px' }}></div>
+      <div style={{ height: "150px" }} />
+      <div id="footer-trigger-marker" style={{ height: "1px" }} />
       <ContactFooter />
     </div>
   );
 };
 
-const msp = (state) => ({
-  allSamples: state.allSamples,
-  user: state.user
-});
-
-const mdp = (dispatch) => ({
-  renderSamples: (allSamples) => dispatch({ type: "GET_ALL_SAMPLES", allSamples })
-});
-
-export default connect(msp, mdp)(FirstDoses);
-
+export default FirstDoses;
 
