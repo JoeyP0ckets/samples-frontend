@@ -55,7 +55,7 @@ const getUser = useCallback(() => {
 
       
       //Signup Function
-  const signupUser = useCallback((first_name, last_name, password, email, address_1, address_2, city, state, zipcode, license_id, professional_title, phone_number) => {
+  const signupUser = useCallback((first_name, last_name, password, email, address_1, address_2, city, state, zipcode, license_id, professional_title, referring_pharmacy, phone_number) => {
     const doctor = {
       first_name,
       last_name, 
@@ -68,8 +68,9 @@ const getUser = useCallback(() => {
       zipcode, 
       license_id,
       professional_title,
+      referring_pharmacy,
       phone_number,
-    }
+    };
      
     const fetchObj = {
       method: "POST",
@@ -91,7 +92,7 @@ const getUser = useCallback(() => {
       const errorsByField = {};
       const possibleFields = [
         "first_name", "last_name", "email", "password",
-        "phone_number", "address_1", "address_2",
+        "phone_number", "referring_pharmacy", "address_1", "address_2",
         "city", "state", "zipcode", "license_id", "professional_title"
       ];
 

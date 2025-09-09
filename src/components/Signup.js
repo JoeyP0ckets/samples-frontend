@@ -44,6 +44,7 @@ const Signup = ({setClicked}) => {
       getInputValue(e, "zipcode"),
       getInputValue(e, "license_id"),
       getInputValue(e, "professional_title"),
+      getInputValue(e, "referring_pharmacy"),
       phoneNumber 
     ).then(({ success, errors }) => {
       if (success) {
@@ -146,6 +147,19 @@ const Signup = ({setClicked}) => {
       />
       <Form.Control.Feedback type="invalid">
         {fieldErrors.phone_number}
+      </Form.Control.Feedback>
+    </Form.Group>
+
+    <Form.Group>
+      <Form.Control
+        type="text"
+        placeholder="Referring Pharmacy"
+        name="referring_pharmacy"
+        className="reset-input"
+        isInvalid={!!fieldErrors.referring_pharmacy}
+      />
+      <Form.Control.Feedback type="invalid">
+        {fieldErrors.referring_pharmacy}
       </Form.Control.Feedback>
     </Form.Group>
   </>
