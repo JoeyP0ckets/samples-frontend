@@ -61,10 +61,14 @@ const OrderView = ({ sample }) => {
       )
       .then(({ ok, status, data }) => {
         console.log("[OrderView] API response =>", { status, data });
-        if (ok && data.doctor_order) {
+      
+        // Tolerate different shapes
+        const newOrder = data?.doctor_order || data?.data || data;
+      
+        if (ok && newOrder && newOrder.id) {
           dispatch({
             type: "RENDER_NEW_DOCTOR_ORDER",
-            newOrder: data.doctor_order,
+            newOrder
           });
           enqueueSnackbar(
             data.success_message || "Your order has been placed!",
@@ -74,11 +78,12 @@ const OrderView = ({ sample }) => {
           navigate("/your-doses");
         } else {
           enqueueSnackbar(
-            data.message || `Order failed (${status})`,
+            data?.message || `Order failed (${status})`,
             { variant: "error" }
           );
         }
       })
+      
       .catch((err) => {
         enqueueSnackbar(`Sorry, there was an error: ${err}`, {
           variant: "error",
