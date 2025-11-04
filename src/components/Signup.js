@@ -32,9 +32,20 @@ const Signup = ({setClicked}) => {
 
     const getInputValue = (e, name) => e.target[name]?.value || "";
 
+    const password = getInputValue(e, "password");
+    const passwordConfirmation = getInputValue(e, "password_confirmation");
+    if (password !== passwordConfirmation) {
+      setFieldErrors(prev => ({
+        ...prev,
+        password_confirmation: "Passwords don't match"
+      }));
+      return; // stop submit
+    }
+
     signupUser(
       getInputValue(e, "first_name"),
       getInputValue(e, "last_name"),
+      password,
       getInputValue(e, "password"),
       getInputValue(e, "email"),
       getInputValue(e, "address_1"),
@@ -134,6 +145,30 @@ const Signup = ({setClicked}) => {
         {fieldErrors.password}
       </Form.Control.Feedback>
     </Form.Group>
+
+    <Form.Group>
+      <Form.Control
+      type="password"
+      placeholder="Confirm Password"
+      name="password_confirmation"
+      className="reset-input"
+      isInvalid={!!fieldErrors.password_confirmation}
+    />
+    <Form.Control.Feedback type="invalid">
+      {fieldErrors.password_confirmation}
+    </Form.Control.Feedback>
+   </Form.Group>
+
+    {(() => {
+       const pwd = document.querySelector('input[name="password"]')?.value || "";
+       const pwd2 = document.querySelector('input[name="password_confirmation"]')?.value || "";
+    return pwd && pwd2 && pwd !== pwd2 ? (
+       <div style={{ fontSize: 12, marginTop: 4, color: '#b26a00' }}>
+        Passwords don’t match.
+       </div>
+     ) : null;
+    })()}
+
 
     <Form.Group>
       <Form.Control
