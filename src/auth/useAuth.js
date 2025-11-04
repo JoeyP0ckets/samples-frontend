@@ -148,6 +148,12 @@ const getUser = useCallback(() => {
               setAuthTime(new Date(data.doctor.last_logged_in).getTime());
               dispatch({ type: 'LOGIN_USER', user: data.doctor });
             }
+            else if (data.status === "pending_verification") {
+              enqueueSnackbar(data.message || "Your account is pending verification.", {
+                variant: 'warning',
+                style: { backgroundColor: '#FFC107', color: '#000' } // optional custom yellow
+              });
+            }
             else if (data.message) {
               enqueueSnackbar(data.message, { variant: 'error' });
             }
