@@ -47,8 +47,15 @@ const getUser = useCallback(() => {
     .then(data => {
       if (!data) return;
 
-      // ✅ handle both shapes: { doctor: {...} } or {...}
-      const u = data?.doctor ?? data;
+      const maybe =
+      data?.doctor ??
+      data?.user ??
+      data?.data ??
+      data;
+  
+    const u = (maybe && (maybe.id || maybe.doctor_id))
+      ? { ...maybe, id: maybe.id ?? maybe.doctor_id }
+      : null;
 
       if (u && u.id) {
         dispatch({ type: "LOGIN_USER", user: u });
