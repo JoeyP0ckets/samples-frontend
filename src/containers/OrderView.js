@@ -14,7 +14,9 @@ const OrderView = ({ sample }) => {
   const [lgShow, setLgShow] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  // Debug: confirm the sample coming in
+  // Fallback to cached user if Redux user is momentarily null
+  const doc = user || JSON.parse(localStorage.getItem("fdf_user") || "null");
+
   useEffect(() => {
     if (!sample) {
       enqueueSnackbar("Sample details failed to load.", { variant: "error" });
@@ -40,7 +42,6 @@ const OrderView = ({ sample }) => {
       },
     };
 
-    console.log("[OrderView] POST payload =>", payload);
     setSubmitting(true);
 
     fetch(`${API_ROOT}/doctor_orders`, {
@@ -48,11 +49,10 @@ const OrderView = ({ sample }) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        "Auth-Token": token, 
+        "Auth-Token": token,
       },
       body: JSON.stringify(payload),
     })
-      // Safely parse JSON and carry along status/ok
       .then((res) =>
         res
           .json()
@@ -60,22 +60,16 @@ const OrderView = ({ sample }) => {
           .then((data) => ({ ok: res.ok, status: res.status, data }))
       )
       .then(({ ok, status, data }) => {
-        console.log("[OrderView] API response =>", { status, data });
-      
-        // Tolerate different shapes
         const newOrder = data?.doctor_order || data?.data || data;
-      
+
         if (ok && newOrder && newOrder.id) {
-          dispatch({
-            type: "RENDER_NEW_DOCTOR_ORDER",
-            newOrder
-          });
+          dispatch({ type: "RENDER_NEW_DOCTOR_ORDER", newOrder });
           enqueueSnackbar(
             data.success_message || "Your order has been placed!",
             { variant: "success" }
           );
           setLgShow(false);
-          navigate("/your-doses");
+          navigate("/your-doses"); // SPA navigation — no page reload
         } else {
           enqueueSnackbar(
             data?.message || `Order failed (${status})`,
@@ -83,7 +77,6 @@ const OrderView = ({ sample }) => {
           );
         }
       })
-      
       .catch((err) => {
         enqueueSnackbar(`Sorry, there was an error: ${err}`, {
           variant: "error",
@@ -92,6 +85,7 @@ const OrderView = ({ sample }) => {
       .finally(() => setSubmitting(false));
   };
 
+  // Destructure from doc (Redux user OR cached user)
   const {
     professional_title,
     first_name,
@@ -101,15 +95,24 @@ const OrderView = ({ sample }) => {
     city,
     state,
     zipcode,
-  } = user || {};
+  } = doc || {};
 
   return (
     <div className="order-form-container">
+      {/* Prevent accidental form submit */}
       <Button
+        type="button"
         variant="primary"
         className="btn-primary"
         id="place-order-button"
-        onClick={() => setLgShow(true)}
+        onClick={() => {
+          if (!doc) {
+            enqueueSnackbar("Please log in first.", { variant: "error" });
+            navigate("/login");
+            return;
+          }
+          setLgShow(true);
+        }}
         disabled={!sample}
       >
         Place Order
@@ -140,7 +143,12 @@ const OrderView = ({ sample }) => {
           {city} {state}, {zipcode}
           <br />
           <div style={{ marginTop: 16 }}>
-            <Button onClick={createDoctorOrder} disabled={submitting || !sample}>
+            {/* Prevent accidental form submit */}
+            <Button
+              type="button"
+              onClick={createDoctorOrder}
+              disabled={submitting || !sample}
+            >
               {submitting ? "Submitting..." : "Submit Order"}
             </Button>
           </div>
@@ -151,3 +159,4 @@ const OrderView = ({ sample }) => {
 };
 
 export default OrderView;
+

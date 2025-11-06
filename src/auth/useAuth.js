@@ -37,24 +37,56 @@ const getUser = useCallback(() => {
   };
 
   fetch(`${API_ROOT}/doctors/showdoctor`, fetchObj)
-    .then(resp => resp.json())
-    .then(user => {
-      dispatch({ type: "LOGIN_USER", user });
+    .then(res => {
+      if (!res.ok) {
+        console.warn("getUser failed:", res.status);
+        return null;
+      }
+      return res.json();
+    })
+    .then(data => {
+      if (!data) return;
+
+      // ✅ handle both shapes: { doctor: {...} } or {...}
+      const u = data?.doctor ?? data;
+
+      if (u && u.id) {
+        dispatch({ type: "LOGIN_USER", user: u });
+        localStorage.setItem('fdf_user', JSON.stringify(u));
+      } else {
+        console.warn("Unexpected user shape in getUser:", data);
+      }
+    })
+    .catch(err => {
+      console.error("Error fetching user:", err);
     })
     .finally(() => {
       setLoadingUser(false); // ✅ Done loading — whether successful or not
     });
 }, [dispatch]);
 
+// ✅ Load cached user instantly, then refresh from API
+useEffect(() => {
+  const cachedUser = localStorage.getItem('fdf_user');
+
+  if (cachedUser) {
+    try {
+      const parsedUser = JSON.parse(cachedUser);
+      if (parsedUser && parsedUser.id) {
+        dispatch({ type: "LOGIN_USER", user: parsedUser });
+        setLoadingUser(false); // ← optional: avoid UI flicker if you show a spinner
+      }
+    } catch (err) {
+      console.warn("Invalid cached user JSON:", err);
+      localStorage.removeItem('fdf_user'); // cleanup if corrupt
+    }
+  }
+
+  getUser(); // background refresh
+}, [getUser, dispatch]);
 
 
-  // useEffect to load user on initial load (runs one time when hook is initialized)
-  useEffect(() => {
-    getUser();
-  }, [getUser])
-
-      
-      //Signup Function
+    //Signup Function
   const signupUser = useCallback((first_name, last_name, password, email, address_1, address_2, city, state, zipcode, license_id, professional_title, referring_pharmacy, phone_number) => {
     const doctor = {
       first_name,
@@ -147,6 +179,7 @@ const getUser = useCallback(() => {
               localStorage.setItem('auth_token', data.token);
               setAuthTime(new Date(data.doctor.last_logged_in).getTime());
               dispatch({ type: 'LOGIN_USER', user: data.doctor });
+              localStorage.setItem('fdf_user', JSON.stringify(data.doctor));
             }
             else if (data.status === "pending_verification") {
               enqueueSnackbar(data.message || "Your account is pending verification.", {
@@ -166,7 +199,8 @@ const getUser = useCallback(() => {
   
   //Logout Function
   const logoutUser = useCallback(() => {
-    localStorage.clear('auth_token');
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('fdf_user');
     dispatch({ type: 'LOGOUT_USER' });
     dispatch({ type: 'CLEAR_DOCTOR_ORDERS'});
     dispatch({ type: 'SELECT_SAMPLE', selectedSample: null});
