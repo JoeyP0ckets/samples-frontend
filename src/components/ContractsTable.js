@@ -15,7 +15,7 @@ const ContractsTable = (props) => {
       "awaiting signature": "Contract requested",
       "signature request viewed": "Action pending",
       "signature request declined": "Declined by doctor",
-      "signature request all signed": "Contract signing completed",
+      "signature request all signed": "Contract signing completed - refer to tracking below",
     };
   
     // Use backticks for the special case
